@@ -568,11 +568,16 @@
     }
 
     .hero__content {
-        order: 1;
+        order: 0;
     }
 
     .hero__visual {
-        order: 0;
+        order: 1;
+    }
+
+    .hero__graphic {
+        max-width: 250px;
+        margin: 0 auto;
     }
 
     .hero__tagline,
