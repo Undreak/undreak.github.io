@@ -134,24 +134,21 @@ class ProjectsManager {
         const sourceIcon = repo.source === 'github' ? this.getGitHubIcon() : this.getGitLabIcon();
 
         return `
-            <div class="project-card">
+            <article class="project-card" data-project="${repo.name}">
+                <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-card__link-overlay" aria-label="View ${repo.name}"></a>
                 <div class="project-card__header">
                     <h3 class="project-card__title">${repo.name}</h3>
-                    <div class="project-card__links">
-                        <a href="${repo.html_url}"
-                           class="project-card__link"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="View ${repo.name} on ${repo.source}"
-                           title="${repo.source === 'github' ? 'GitHub' : 'GitLab'}">
+                    <div class="project-card__icons">
+                        <span class="project-card__source" title="${repo.source === 'github' ? 'GitHub' : 'GitLab'}">
                             ${sourceIcon}
-                        </a>
+                        </span>
                         ${repo.homepage ? `
                             <a href="${repo.homepage}"
-                               class="project-card__link"
+                               class="project-card__external"
                                target="_blank"
                                rel="noopener noreferrer"
-                               aria-label="View ${repo.name} live demo">
+                               aria-label="View ${repo.name} live demo"
+                               title="Live demo">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                                     <polyline points="15 3 21 3 21 9"/>
@@ -185,7 +182,7 @@ class ProjectsManager {
                         </span>
                     ` : ''}
                 </div>
-            </div>
+            </article>
         `;
     }
 
@@ -197,7 +194,7 @@ class ProjectsManager {
 
     getGitLabIcon() {
         return `<svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L.395 10.93c-.526.529-.526 1.385 0 1.914l10.48 10.479c.604.604 1.582.604 2.186 0l10.48-10.478c.527-.529.527-1.385.005-1.914zM12 19.25L4.75 12 12 4.75 19.25 12 12 19.25z"/>
+            <path d="M23.955 13.587l-1.342-4.135-2.664-8.189a.455.455 0 0 0-.867 0L16.418 9.45H7.582L4.919 1.263a.455.455 0 0 0-.867 0L1.388 9.452.045 13.587a.924.924 0 0 0 .331 1.023L12 23.054l11.624-8.443a.924.924 0 0 0 .331-1.024"/>
         </svg>`;
     }
 

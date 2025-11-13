@@ -412,6 +412,7 @@
 }
 
 .project-card {
+    position: relative;
     background-color: var(--bg-elevated);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
@@ -419,12 +420,22 @@
     display: flex;
     flex-direction: column;
     transition: all var(--transition-base);
+    cursor: pointer;
 }
 
 .project-card:hover {
     box-shadow: var(--shadow-lg);
     transform: translateY(-4px);
     border-color: var(--accent);
+}
+
+.project-card__link-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
 }
 
 .project-card__header {
@@ -441,23 +452,42 @@
     flex: 1;
 }
 
-.project-card__links {
+.project-card__icons {
     display: flex;
     gap: var(--space-2);
+    align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
-.project-card__link {
+.project-card__source {
+    display: flex;
+    align-items: center;
     color: var(--text-secondary);
-    transition: color var(--transition-fast);
 }
 
-.project-card__link:hover {
+.project-card__source svg {
+    width: 18px;
+    height: 18px;
+}
+
+.project-card__external {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+    padding: var(--space-1);
+    border-radius: var(--radius-sm);
+}
+
+.project-card__external:hover {
     color: var(--accent);
+    background-color: var(--accent-light);
 }
 
-.project-card__link svg {
-    width: 20px;
-    height: 20px;
+.project-card__external svg {
+    width: 18px;
+    height: 18px;
 }
 
 .project-card__description {
@@ -486,6 +516,11 @@
     text-align: center;
     padding: var(--space-6);
     color: var(--text-secondary);
+}
+
+.projects__view-all {
+    text-align: center;
+    margin-top: var(--space-6);
 }
 
 /* ============================
