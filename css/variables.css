@@ -1,0 +1,100 @@
+/* CSS Custom Properties - Design System */
+:root {
+    /* Colors - Light Theme (Default) */
+    --bg-primary: #FAF7F5;
+    --bg-secondary: #F5F1EE;
+    --bg-elevated: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5A5A5A;
+    --text-tertiary: #8A8A8A;
+    --accent: #E07856;
+    --accent-hover: #D26745;
+    --accent-light: rgba(224, 120, 86, 0.1);
+    --border: rgba(26, 26, 26, 0.08);
+    --shadow: rgba(26, 26, 26, 0.08);
+
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Space Grotesk', var(--font-primary);
+    --font-mono: 'JetBrains Mono', 'Monaco', 'Courier New', monospace;
+
+    /* Font Sizes - Fluid Typography */
+    --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+    --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+    --text-xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+    --text-2xl: clamp(2rem, 1.6rem + 2vw, 3rem);
+    --text-3xl: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+    --text-4xl: clamp(3rem, 2.5rem + 3vw, 5rem);
+
+    /* Font Weights */
+    --weight-light: 300;
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* Spacing - 8px base unit */
+    --space-1: 0.5rem;   /* 8px */
+    --space-2: 1rem;     /* 16px */
+    --space-3: 1.5rem;   /* 24px */
+    --space-4: 2rem;     /* 32px */
+    --space-5: 2.5rem;   /* 40px */
+    --space-6: 3rem;     /* 48px */
+    --space-8: 4rem;     /* 64px */
+    --space-10: 5rem;    /* 80px */
+    --space-12: 6rem;    /* 96px */
+    --space-16: 8rem;    /* 128px */
+
+    /* Layout */
+    --container-width: 1200px;
+    --container-padding: var(--space-4);
+    --section-padding: var(--space-12);
+
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 400ms ease;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px var(--shadow);
+    --shadow-md: 0 4px 8px var(--shadow);
+    --shadow-lg: 0 8px 16px var(--shadow);
+    --shadow-xl: 0 16px 32px var(--shadow);
+
+    /* Z-index */
+    --z-nav: 100;
+    --z-modal: 200;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --bg-primary: #0F0F0F;
+    --bg-secondary: #1A1A1A;
+    --bg-elevated: #252525;
+    --text-primary: #E8E8E8;
+    --text-secondary: #B0B0B0;
+    --text-tertiary: #808080;
+    --accent: #F08B6E;
+    --accent-hover: #FF9978;
+    --accent-light: rgba(240, 139, 110, 0.15);
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
