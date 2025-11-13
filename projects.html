@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="All projects by Alexandre De Cuyper - GitHub and GitLab repositories">
+    <meta name="author" content="Alexandre De Cuyper">
+    <title>All Projects | Alexandre De Cuyper</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/projects-page.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" role="navigation">
+        <div class="nav__container">
+            <a href="index.html" class="nav__logo" aria-label="Home">Alexandre De Cuyper</a>
+            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span class="nav__toggle-line"></span>
+                <span class="nav__toggle-line"></span>
+                <span class="nav__toggle-line"></span>
+            </button>
+            <div class="nav__menu">
+                <a href="index.html#about" class="nav__link">About</a>
+                <a href="index.html#research" class="nav__link">Research</a>
+                <a href="index.html#skills" class="nav__link">Skills</a>
+                <a href="projects.html" class="nav__link is-active">Projects</a>
+                <a href="index.html#contact" class="nav__link">Contact</a>
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Page -->
+    <main class="projects-page">
+        <div class="container">
+            <!-- Header -->
+            <header class="projects-page__header">
+                <h1 class="projects-page__title">All Projects</h1>
+                <p class="projects-page__subtitle">Complete collection of my GitHub and GitLab repositories</p>
+            </header>
+
+            <!-- Controls -->
+            <div class="projects-page__controls">
+                <!-- Search -->
+                <div class="search-box">
+                    <svg class="search-box__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    <input type="text"
+                           id="search-input"
+                           class="search-box__input"
+                           placeholder="Search projects..."
+                           aria-label="Search projects">
+                </div>
+
+                <!-- Filters -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <label class="filter-label">Source:</label>
+                        <div class="filter-buttons" id="source-filter">
+                            <button class="filter-btn is-active" data-source="all">All</button>
+                            <button class="filter-btn" data-source="github">GitHub</button>
+                            <button class="filter-btn" data-source="gitlab">GitLab</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">Sort by:</label>
+                        <select id="sort-select" class="filter-select">
+                            <option value="updated">Recently Updated</option>
+                            <option value="stars">Most Stars</option>
+                            <option value="name">Name (A-Z)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group" id="language-filter-container" style="display: none;">
+                        <label class="filter-label">Language:</label>
+                        <select id="language-filter" class="filter-select">
+                            <option value="all">All Languages</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="projects-page__stats" id="stats">
+                <span class="stat-badge">Loading...</span>
+            </div>
+
+            <!-- Loading -->
+            <div class="projects-page__loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading all projects from GitHub and GitLab...</p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-page__grid" id="projects-grid">
+                <!-- Projects will be inserted here -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="projects-page__empty" id="empty-state" style="display: none;">
+                <p>No projects found matching your criteria.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">
+                &copy; 2025 Alexandre De Cuyper. Built with curiosity and code.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/projects-page.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
