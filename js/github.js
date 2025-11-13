@@ -2,10 +2,22 @@
 
 class ProjectsManager {
     constructor() {
+        console.log('ProjectsManager: Initializing...');
         this.githubUsername = 'Undreak';
         this.gitlabUsername = 'Undreak';
         this.container = document.getElementById('projects-container');
         this.loading = document.getElementById('projects-loading');
+
+        if (!this.container) {
+            console.error('ProjectsManager: Container element not found!');
+            return;
+        }
+        if (!this.loading) {
+            console.error('ProjectsManager: Loading element not found!');
+            return;
+        }
+
+        console.log('ProjectsManager: Elements found, starting init...');
         this.init();
     }
 
@@ -19,11 +31,23 @@ class ProjectsManager {
             const allProjects = [];
 
             if (githubProjects.status === 'fulfilled') {
+                console.log('GitHub projects loaded:', githubProjects.value.length);
                 allProjects.push(...githubProjects.value);
+            } else {
+                console.warn('GitHub fetch failed:', githubProjects.reason);
             }
 
             if (gitlabProjects.status === 'fulfilled') {
+                console.log('GitLab projects loaded:', gitlabProjects.value.length);
                 allProjects.push(...gitlabProjects.value);
+            } else {
+                console.warn('GitLab fetch failed:', gitlabProjects.reason);
+            }
+
+            console.log('Total projects before filtering:', allProjects.length);
+
+            if (allProjects.length === 0) {
+                console.warn('No projects found from either platform');
             }
 
             // Sort by last updated
@@ -32,6 +56,7 @@ class ProjectsManager {
             this.displayProjects(allProjects.slice(0, 6));
             this.hideLoading();
         } catch (error) {
+            console.error('Init error:', error);
             this.handleError(error);
         }
     }
@@ -73,27 +98,34 @@ class ProjectsManager {
 
         // Normalize GitLab projects to match GitHub structure
         return projects
-            .filter(project => !project.fork)
+            .filter(project => {
+                // GitLab uses 'forked_from_project' instead of 'fork'
+                return !project.forked_from_project;
+            })
             .map(project => ({
                 name: project.name,
-                description: project.description,
+                description: project.description || null,
                 html_url: project.web_url,
                 homepage: null,
                 topics: project.topics || project.tag_list || [],
                 language: null, // GitLab API requires separate call for languages
-                stargazers_count: project.star_count,
+                stargazers_count: project.star_count || 0,
                 updated_at: project.last_activity_at,
                 source: 'gitlab'
             }));
     }
 
     displayProjects(repos) {
+        console.log('Displaying projects:', repos.length);
         if (repos.length === 0) {
             this.container.innerHTML = '<p class="projects__empty">No projects to display yet.</p>';
             return;
         }
 
-        this.container.innerHTML = repos.map(repo => this.createProjectCard(repo)).join('');
+        const cardsHTML = repos.map(repo => this.createProjectCard(repo)).join('');
+        console.log('Generated HTML length:', cardsHTML.length);
+        this.container.innerHTML = cardsHTML;
+        console.log('Projects displayed successfully');
     }
 
     createProjectCard(repo) {
