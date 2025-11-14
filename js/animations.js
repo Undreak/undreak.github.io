@@ -27,33 +27,17 @@ class AnimationManager {
             });
         }, this.observerOptions);
 
-        // Observe sections
+        // Observe sections - styles now in CSS
         const sections = document.querySelectorAll('.section');
         sections.forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(section);
         });
 
-        // Observe cards and timeline items
+        // Observe cards and timeline items - styles now in CSS
         const cards = document.querySelectorAll('.project-card, .skill-category, .timeline__item');
-        cards.forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        cards.forEach(card => {
             observer.observe(card);
         });
-
-        // Add visible class styles
-        const style = document.createElement('style');
-        style.textContent = `
-            .is-visible {
-                opacity: 1 !important;
-                transform: translateY(0) !important;
-            }
-        `;
-        document.head.appendChild(style);
     }
 
     setupParallax() {
@@ -105,29 +89,10 @@ class AnimationManager {
     }
 }
 
-// Add subtle hover effects to cards
+// Initialize animations on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Skill badges glow effect
-    const skillBadges = document.querySelectorAll('.skill-badge');
-    skillBadges.forEach(badge => {
-        badge.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.05)';
-        });
-        badge.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-        });
-    });
-
-    // Button press effect
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(btn => {
-        btn.addEventListener('mousedown', function() {
-            this.style.transform = 'scale(0.98)';
-        });
-        btn.addEventListener('mouseup', function() {
-            this.style.transform = '';
-        });
-    });
+    // All hover and interaction effects now in CSS for CSP compliance
+    // No inline styles needed - everything handled via classes and CSS
 
     // Initialize animation manager
     new AnimationManager();
@@ -169,19 +134,5 @@ window.addEventListener('scroll', () => {
             link.classList.add('is-active');
         }
     });
-
-    // Add style for active link
-    const style = document.createElement('style');
-    style.textContent = `
-        .nav__link.is-active {
-            color: var(--accent);
-        }
-        .nav__link.is-active::after {
-            width: 100%;
-        }
-    `;
-    if (!document.querySelector('#active-nav-style')) {
-        style.id = 'active-nav-style';
-        document.head.appendChild(style);
-    }
+    // Active nav link styles now in CSS for CSP compliance
 }, { passive: true });
