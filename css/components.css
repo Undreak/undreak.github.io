@@ -34,6 +34,18 @@
     transform: translateY(-2px);
 }
 
+.btn--outline {
+    border: 2px solid var(--text-secondary);
+    color: var(--text-primary);
+    background-color: transparent;
+}
+
+.btn--outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
 /* Cards */
 .card {
     background-color: var(--bg-elevated);
