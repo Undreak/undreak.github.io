@@ -139,15 +139,29 @@ window.addEventListener('scroll', () => {
     const navLinks = document.querySelectorAll('.nav__link');
 
     let current = '';
+    const scrollPosition = window.pageYOffset + 150; // Offset for better detection
 
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
+        const sectionBottom = sectionTop + sectionHeight;
 
-        if (pageYOffset >= sectionTop - 100) {
+        // Check if scroll position is within this section
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
             current = section.getAttribute('id');
         }
     });
+
+    // Special handling for last section (contact) when near bottom of page
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    if (window.pageYOffset + windowHeight >= documentHeight - 50) {
+        // Near bottom of page, highlight contact
+        const contactSection = document.querySelector('#contact');
+        if (contactSection) {
+            current = 'contact';
+        }
+    }
 
     navLinks.forEach(link => {
         link.classList.remove('is-active');
