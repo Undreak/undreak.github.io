@@ -104,7 +104,16 @@ class AllProjectsManager {
             clearTimeout(timeoutId);
 
             if (response.status === 403) {
-                throw new Error('GitHub API rate limit exceeded. Please try again later.');
+                const resetTime = response.headers.get('X-RateLimit-Reset');
+                let message = 'GitHub API rate limit exceeded.';
+                if (resetTime) {
+                    const resetDate = new Date(parseInt(resetTime) * 1000);
+                    const minutesUntilReset = Math.ceil((resetDate - new Date()) / 60000);
+                    message += ` Try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? 's' : ''}.`;
+                } else {
+                    message += ' Please try again later.';
+                }
+                throw new Error(message);
             }
 
             if (!response.ok) {
@@ -240,7 +249,7 @@ class AllProjectsManager {
                 option.textContent = lang;
                 this.languageFilter.appendChild(option);
             });
-            document.getElementById('language-filter-container').style.display = 'block';
+            document.getElementById('language-filter-container').classList.remove('hidden');
         }
     }
 
@@ -288,13 +297,13 @@ class AllProjectsManager {
 
     displayProjects() {
         if (this.filteredProjects.length === 0) {
-            this.grid.style.display = 'none';
-            this.emptyState.style.display = 'block';
+            this.grid.classList.add('hidden');
+            this.emptyState.classList.remove('hidden');
             return;
         }
 
-        this.grid.style.display = 'grid';
-        this.emptyState.style.display = 'none';
+        this.grid.classList.remove('hidden');
+        this.emptyState.classList.add('hidden');
 
         this.grid.innerHTML = this.filteredProjects.map(project => this.createProjectCard(project)).join('');
     }
@@ -400,7 +409,7 @@ class AllProjectsManager {
 
     hideLoading() {
         if (this.loading) {
-            this.loading.style.display = 'none';
+            this.loading.classList.add('hidden');
         }
     }
 

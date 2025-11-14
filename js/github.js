@@ -97,7 +97,15 @@ class ProjectsManager {
 
             if (response.status === 403) {
                 const resetTime = response.headers.get('X-RateLimit-Reset');
-                throw new Error('GitHub API rate limit exceeded. Please try again later.');
+                let message = 'GitHub API rate limit exceeded.';
+                if (resetTime) {
+                    const resetDate = new Date(parseInt(resetTime) * 1000);
+                    const minutesUntilReset = Math.ceil((resetDate - new Date()) / 60000);
+                    message += ` Try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? 's' : ''}.`;
+                } else {
+                    message += ' Please try again later.';
+                }
+                throw new Error(message);
             }
 
             if (!response.ok) {
@@ -283,7 +291,7 @@ class ProjectsManager {
 
     hideLoading() {
         if (this.loading) {
-            this.loading.style.display = 'none';
+            this.loading.classList.add('hidden');
         }
     }
 }

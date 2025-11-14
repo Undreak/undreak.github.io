@@ -9,8 +9,10 @@
     <!-- Security Headers -->
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com https://gitlab.com; frame-ancestors 'none'; base-uri 'self';">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com https://gitlab.com; frame-ancestors 'none'; base-uri 'self';">
 
     <title>All Projects | Alexandre De Cuyper</title>
 
@@ -122,7 +124,7 @@
                         </select>
                     </div>
 
-                    <div class="filter-group" id="language-filter-container" style="display: none;">
+                    <div class="filter-group hidden" id="language-filter-container">
                         <label class="filter-label">Language:</label>
                         <select id="language-filter" class="filter-select">
                             <option value="all">All Languages</option>
@@ -148,7 +150,7 @@
             </div>
 
             <!-- Empty State -->
-            <div class="projects-page__empty" id="empty-state" style="display: none;">
+            <div class="projects-page__empty hidden" id="empty-state">
                 <p>No projects found matching your criteria.</p>
             </div>
         </div>
@@ -164,8 +166,17 @@
     </footer>
 
     <!-- Scripts -->
-    <!-- DOMPurify for XSS protection -->
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js" integrity="sha384-sGXNIHpdJSEfTkXLnvHLLQNgJVCBh+FvzGmIHKHPD+lVELKZjVKkPvGHxVz0kVhk" crossorigin="anonymous"></script>
+    <!--
+        DOMPurify for XSS protection
+        For enhanced reliability, download locally:
+        1. Download from https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js
+        2. Save to js/vendor/purify.min.js
+        3. Uncomment the onerror handler below
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"
+            integrity="sha384-sGXNIHpdJSEfTkXLnvHLLQNgJVCBh+FvzGmIHKHPD+lVELKZjVKkPvGHxVz0kVhk"
+            crossorigin="anonymous"></script>
+            <!-- onerror="this.onerror=null;this.src='js/vendor/purify.min.js';this.removeAttribute('integrity')"> -->
     <script src="js/theme.js"></script>
     <script src="js/projects-page.js"></script>
     <script src="js/main.js"></script>
