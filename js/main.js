@@ -111,60 +111,81 @@ class NavigationManager {
     }
 }
 
-// Form validation for contact (if needed in future)
+// Form validation and submission for contact form
 class FormManager {
     constructor() {
-        this.forms = document.querySelectorAll('form');
+        this.form = document.getElementById('contact-form');
+        this.status = document.getElementById('form-status');
         this.init();
     }
 
     init() {
-        this.forms.forEach(form => {
-            form.addEventListener('submit', (e) => this.handleSubmit(e, form));
-        });
+        if (this.form) {
+            this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        }
     }
 
-    handleSubmit(e, form) {
+    async handleSubmit(e) {
         e.preventDefault();
 
         // Basic validation
-        const requiredFields = form.querySelectorAll('[required]');
+        const requiredFields = this.form.querySelectorAll('[required]');
         let isValid = true;
 
         requiredFields.forEach(field => {
             if (!field.value.trim()) {
                 isValid = false;
-                this.showError(field, 'This field is required');
+                field.style.borderColor = 'var(--accent)';
             } else {
-                this.clearError(field);
+                field.style.borderColor = '';
             }
         });
 
-        if (isValid) {
-            // Handle form submission
-            console.log('Form is valid, submitting...');
-            // Add your form submission logic here
+        if (!isValid) {
+            this.showStatus('Please fill in all required fields.', 'error');
+            return;
+        }
+
+        // Disable submit button
+        const submitBtn = this.form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+            const formData = new FormData(this.form);
+            const response = await fetch(this.form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                this.showStatus('✓ Message sent successfully! I\'ll get back to you soon.', 'success');
+                this.form.reset();
+            } else {
+                throw new Error('Failed to send message');
+            }
+        } catch (error) {
+            this.showStatus('✗ Failed to send message. Please try again or email me directly.', 'error');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
         }
     }
 
-    showError(field, message) {
-        const errorElement = document.createElement('span');
-        errorElement.className = 'form-error';
-        errorElement.textContent = message;
-        errorElement.style.color = 'var(--accent)';
-        errorElement.style.fontSize = 'var(--text-sm)';
-        errorElement.style.marginTop = 'var(--space-1)';
+    showStatus(message, type) {
+        this.status.textContent = message;
+        this.status.className = `form-status ${type}`;
 
-        field.parentElement.appendChild(errorElement);
-        field.style.borderColor = 'var(--accent)';
-    }
-
-    clearError(field) {
-        const errorElement = field.parentElement.querySelector('.form-error');
-        if (errorElement) {
-            errorElement.remove();
+        // Auto-hide success messages after 5 seconds
+        if (type === 'success') {
+            setTimeout(() => {
+                this.status.className = 'form-status';
+            }, 5000);
         }
-        field.style.borderColor = '';
     }
 }
 
