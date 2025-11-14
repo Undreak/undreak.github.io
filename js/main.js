@@ -127,6 +127,11 @@ class FormManager {
 
     // Sanitize input to prevent XSS
     sanitizeInput(input) {
+        // Use DOMPurify if available, otherwise fallback to textContent method
+        if (typeof DOMPurify !== 'undefined') {
+            return DOMPurify.sanitize(input, { ALLOWED_TAGS: [] });
+        }
+        // Fallback for edge cases where DOMPurify might not be loaded
         const div = document.createElement('div');
         div.textContent = input;
         return div.innerHTML;
@@ -140,15 +145,29 @@ class FormManager {
 
     // Rate limiting check (prevent spam)
     canSubmit() {
-        const lastSubmit = localStorage.getItem('lastFormSubmit');
-        if (lastSubmit) {
-            const timeSinceLastSubmit = Date.now() - parseInt(lastSubmit);
-            const ONE_MINUTE = 60000;
-            if (timeSinceLastSubmit < ONE_MINUTE) {
-                return false;
+        try {
+            const lastSubmit = localStorage.getItem('lastFormSubmit');
+            if (lastSubmit) {
+                const timestamp = parseInt(lastSubmit, 10);
+
+                // Validate timestamp is reasonable (not NaN, not negative, not future)
+                if (isNaN(timestamp) || timestamp < 0 || timestamp > Date.now()) {
+                    console.warn('Invalid timestamp in localStorage, removing');
+                    localStorage.removeItem('lastFormSubmit');
+                    return true;
+                }
+
+                const timeSinceLastSubmit = Date.now() - timestamp;
+                const ONE_MINUTE = 60000;
+                if (timeSinceLastSubmit < ONE_MINUTE) {
+                    return false;
+                }
             }
+            return true;
+        } catch (error) {
+            console.error('Error checking rate limit:', error);
+            return true; // Fail open to not block legitimate users
         }
-        return true;
     }
 
     async handleSubmit(e) {

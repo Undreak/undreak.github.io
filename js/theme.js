@@ -8,15 +8,30 @@ class ThemeManager {
     }
 
     getInitialTheme() {
-        // Check localStorage first
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            return savedTheme;
-        }
+        try {
+            // Check localStorage first
+            const savedTheme = localStorage.getItem('theme');
 
-        // Respect system preference (default to light per user request)
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        return prefersDark ? 'dark' : 'light';
+            // Validate saved theme is one of the allowed values
+            if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
+                return savedTheme;
+            }
+
+            // If invalid theme was stored, remove it
+            if (savedTheme) {
+                console.warn('Invalid theme in localStorage, removing');
+                localStorage.removeItem('theme');
+            }
+
+            // Respect system preference (default to light per user request)
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            return prefersDark ? 'dark' : 'light';
+        } catch (error) {
+            console.error('Error reading theme from localStorage:', error);
+            // Fallback to system preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            return prefersDark ? 'dark' : 'light';
+        }
     }
 
     init() {
@@ -41,7 +56,11 @@ class ThemeManager {
     toggleTheme() {
         this.theme = this.theme === 'light' ? 'dark' : 'light';
         this.applyTheme(this.theme);
-        localStorage.setItem('theme', this.theme);
+        try {
+            localStorage.setItem('theme', this.theme);
+        } catch (error) {
+            console.error('Error saving theme to localStorage:', error);
+        }
     }
 
     applyTheme(theme) {
