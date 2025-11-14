@@ -5,7 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Alexandre De Cuyper - Physics Researcher specializing in soft matter, polymer physics, and scattering techniques">
     <meta name="author" content="Alexandre De Cuyper">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com https://gitlab.com https://formspree.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io;">
+
     <title>Alexandre De Cuyper | Physics Researcher</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://undreak.github.io/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://undreak.github.io/">
+    <meta property="og:title" content="Alexandre De Cuyper | Physics Researcher">
+    <meta property="og:description" content="Experimental physicist specializing in soft matter, polymer dynamics, and scattering techniques (SAXS/SANS). Master's in Physics of Soft Matter from Université Paris Cité.">
+    <meta property="og:site_name" content="Alexandre De Cuyper">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alexandre De Cuyper | Physics Researcher">
+    <meta name="twitter:description" content="Experimental physicist specializing in soft matter, polymer dynamics, and scattering techniques (SAXS/SANS).">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Alexandre De Cuyper",
+      "jobTitle": "Experimental Physicist",
+      "description": "Physics Researcher specializing in soft matter, polymer physics, and scattering techniques",
+      "url": "https://undreak.github.io",
+      "email": "alexandre.decuyper@icloud.com",
+      "sameAs": [
+        "https://github.com/Undreak",
+        "https://gitlab.com/Undreak",
+        "https://www.linkedin.com/in/alexandre-decuyper"
+      ],
+      "alumniOf": [
+        {
+          "@type": "Organization",
+          "name": "Université Paris Cité",
+          "sameAs": "https://u-paris.fr/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Universidad de La Coruña",
+          "sameAs": "https://www.udc.es/"
+        }
+      ],
+      "knowsAbout": [
+        "Soft Matter Physics",
+        "Polymer Dynamics",
+        "SAXS/SANS",
+        "Neutron Scattering",
+        "Atomic Force Microscopy",
+        "Scientific Computing",
+        "Python Programming",
+        "C/C++ Programming"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Physics Researcher",
+        "occupationLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "FR"
+          }
+        }
+      }
+    }
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -480,25 +554,32 @@
                 <!-- Contact Form -->
                 <div class="contact__form-wrapper">
                     <h3 class="contact__form-title">Or send me a message</h3>
-                    <form class="contact__form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form">
+                    <div class="form-notice" style="background: var(--bg-elevated); border: 2px solid var(--accent); border-radius: var(--radius-md); padding: var(--space-4); margin-bottom: var(--space-4);">
+                        <p style="margin: 0; color: var(--text-secondary);">
+                            ⚠️ <strong>Note:</strong> The contact form is currently being configured. Please use the email link above to reach me directly.
+                        </p>
+                    </div>
+                    <form class="contact__form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form" style="opacity: 0.6; pointer-events: none;">
                         <div class="form-group">
                             <label for="name" class="form-label">Name <span class="required">*</span></label>
-                            <input type="text" id="name" name="name" class="form-input" required>
+                            <input type="text" id="name" name="name" class="form-input" required disabled>
                         </div>
                         <div class="form-group">
                             <label for="email" class="form-label">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" class="form-input" required>
+                            <input type="email" id="email" name="email" class="form-input" required disabled>
                         </div>
                         <div class="form-group">
                             <label for="subject" class="form-label">Subject <span class="required">*</span></label>
-                            <input type="text" id="subject" name="subject" class="form-input" required>
+                            <input type="text" id="subject" name="subject" class="form-input" required disabled>
                         </div>
                         <div class="form-group">
                             <label for="message" class="form-label">Message <span class="required">*</span></label>
-                            <textarea id="message" name="message" class="form-input form-input--textarea" rows="6" required></textarea>
+                            <textarea id="message" name="message" class="form-input form-input--textarea" rows="6" required disabled></textarea>
                         </div>
-                        <button type="submit" class="btn btn--primary btn--full">Send Message</button>
-                        <p class="form-status" id="form-status"></p>
+                        <!-- Honeypot field for bot protection (when form is enabled) -->
+                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                        <button type="submit" class="btn btn--primary btn--full" disabled>Send Message (Coming Soon)</button>
+                        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
                     </form>
                 </div>
             </div>
@@ -515,6 +596,8 @@
     </footer>
 
     <!-- Scripts -->
+    <!-- DOMPurify for XSS protection -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js" integrity="sha384-sGXNIHpdJSEfTkXLnvHLLQNgJVCBh+FvzGmIHKHPD+lVELKZjVKkPvGHxVz0kVhk" crossorigin="anonymous"></script>
     <script src="js/theme.js"></script>
     <script src="js/github.js"></script>
     <script src="js/animations.js"></script>

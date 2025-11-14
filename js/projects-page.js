@@ -2,9 +2,9 @@
 
 class AllProjectsManager {
     constructor() {
-        console.log('AllProjectsManager: Initializing...');
         this.githubUsername = 'Undreak';
         this.gitlabUsername = 'Undreak';
+        this.API_TIMEOUT = 10000; // 10 seconds
 
         this.grid = document.getElementById('projects-grid');
         this.loading = document.getElementById('loading');
@@ -27,6 +27,33 @@ class AllProjectsManager {
         this.init();
     }
 
+    // URL validation to prevent open redirect vulnerabilities
+    isValidURL(url) {
+        if (!url) return null;
+        try {
+            const parsed = new URL(url);
+            // Only allow http/https protocols
+            if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+                return null;
+            }
+            return parsed.href;
+        } catch {
+            return null;
+        }
+    }
+
+    // Sanitize text content to prevent XSS
+    sanitizeText(text) {
+        if (!text) return '';
+        // Use DOMPurify if available, otherwise escape HTML
+        if (typeof DOMPurify !== 'undefined') {
+            return DOMPurify.sanitize(text, { ALLOWED_TAGS: [] });
+        }
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     async init() {
         try {
             await this.fetchAllProjects();
@@ -39,28 +66,22 @@ class AllProjectsManager {
     }
 
     async fetchAllProjects() {
-        console.log('Fetching ALL projects...');
-
         const [githubProjects, gitlabProjects] = await Promise.allSettled([
             this.fetchAllGitHubRepos(),
             this.fetchAllGitLabProjects()
         ]);
 
         if (githubProjects.status === 'fulfilled') {
-            console.log('GitHub projects:', githubProjects.value.length);
             this.allProjects.push(...githubProjects.value);
         } else {
             console.warn('GitHub fetch failed:', githubProjects.reason);
         }
 
         if (gitlabProjects.status === 'fulfilled') {
-            console.log('GitLab projects:', gitlabProjects.value.length);
             this.allProjects.push(...gitlabProjects.value);
         } else {
             console.warn('GitLab fetch failed:', gitlabProjects.reason);
         }
-
-        console.log('Total projects loaded:', this.allProjects.length);
 
         if (this.allProjects.length === 0) {
             throw new Error('No projects found');
@@ -71,63 +92,113 @@ class AllProjectsManager {
     }
 
     async fetchAllGitHubRepos() {
-        // Fetch up to 100 repos (GitHub API limit per page)
-        const response = await fetch(`https://api.github.com/users/${this.githubUsername}/repos?per_page=100&sort=updated`);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), this.API_TIMEOUT);
 
-        if (!response.ok) {
-            throw new Error(`GitHub API error: ${response.status}`);
+        try {
+            const response = await fetch(
+                `https://api.github.com/users/${this.githubUsername}/repos?per_page=100&sort=updated`,
+                { signal: controller.signal }
+            );
+
+            clearTimeout(timeoutId);
+
+            if (response.status === 403) {
+                throw new Error('GitHub API rate limit exceeded. Please try again later.');
+            }
+
+            if (!response.ok) {
+                throw new Error(`GitHub API error: ${response.status}`);
+            }
+
+            const repos = await response.json();
+
+            return repos
+                .filter(repo => !repo.fork)
+                .filter(repo => !repo.name.includes('.github.io'))
+                .map(repo => ({
+                    name: repo.name,
+                    description: repo.description,
+                    html_url: repo.html_url,
+                    homepage: repo.homepage,
+                    topics: repo.topics || [],
+                    language: repo.language,
+                    stargazers_count: repo.stargazers_count,
+                    updated_at: repo.updated_at,
+                    created_at: repo.created_at,
+                    source: 'github'
+                }));
+        } catch (error) {
+            if (error.name === 'AbortError') {
+                throw new Error('GitHub request timed out. Please check your connection.');
+            }
+            throw error;
+        } finally {
+            clearTimeout(timeoutId);
         }
-
-        const repos = await response.json();
-
-        return repos
-            .filter(repo => !repo.fork)
-            .filter(repo => !repo.name.includes('.github.io'))
-            .map(repo => ({
-                name: repo.name,
-                description: repo.description,
-                html_url: repo.html_url,
-                homepage: repo.homepage,
-                topics: repo.topics || [],
-                language: repo.language,
-                stargazers_count: repo.stargazers_count,
-                updated_at: repo.updated_at,
-                created_at: repo.created_at,
-                source: 'github'
-            }));
     }
 
     async fetchAllGitLabProjects() {
-        // Fetch up to 100 projects (GitLab API limit)
-        const response = await fetch(`https://gitlab.com/api/v4/users/${this.gitlabUsername}/projects?per_page=100&order_by=updated_at`);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), this.API_TIMEOUT);
 
-        if (!response.ok) {
-            throw new Error(`GitLab API error: ${response.status}`);
+        try {
+            const response = await fetch(
+                `https://gitlab.com/api/v4/users/${this.gitlabUsername}/projects?per_page=100&order_by=updated_at`,
+                { signal: controller.signal }
+            );
+
+            clearTimeout(timeoutId);
+
+            if (response.status === 429) {
+                throw new Error('GitLab API rate limit exceeded. Please try again later.');
+            }
+
+            if (!response.ok) {
+                throw new Error(`GitLab API error: ${response.status}`);
+            }
+
+            const projects = await response.json();
+
+            return projects
+                .filter(project => !project.forked_from_project)
+                .map(project => ({
+                    name: project.name,
+                    description: project.description || null,
+                    html_url: project.web_url,
+                    homepage: null,
+                    topics: project.topics || project.tag_list || [],
+                    language: null,
+                    stargazers_count: project.star_count || 0,
+                    updated_at: project.last_activity_at,
+                    created_at: project.created_at,
+                    source: 'gitlab'
+                }));
+        } catch (error) {
+            if (error.name === 'AbortError') {
+                throw new Error('GitLab request timed out. Please check your connection.');
+            }
+            throw error;
+        } finally {
+            clearTimeout(timeoutId);
         }
-
-        const projects = await response.json();
-
-        return projects
-            .filter(project => !project.forked_from_project)
-            .map(project => ({
-                name: project.name,
-                description: project.description || null,
-                html_url: project.web_url,
-                homepage: null,
-                topics: project.topics || project.tag_list || [],
-                language: null,
-                stargazers_count: project.star_count || 0,
-                updated_at: project.last_activity_at,
-                created_at: project.created_at,
-                source: 'gitlab'
-            }));
     }
 
     setupEventListeners() {
-        // Search
+        // Search with debouncing
+        let searchTimeout;
         this.searchInput.addEventListener('input', (e) => {
-            this.currentFilters.search = e.target.value.toLowerCase();
-            this.applyFilters();
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                // Sanitize and limit search input
+                const sanitized = e.target.value
+                    .replace(/[<>]/g, '')
+                    .trim()
+                    .toLowerCase()
+                    .substring(0, 100);
+                this.currentFilters.search = sanitized;
+                this.applyFilters();
+            }, 300);
         });
 
         // Sort
@@ -230,24 +301,35 @@ class AllProjectsManager {
 
     createProjectCard(repo) {
         const topics = repo.topics || [];
-        const description = repo.description || 'No description available';
+        const description = this.sanitizeText(repo.description) || 'No description available';
+        const name = this.sanitizeText(repo.name);
+        const language = this.sanitizeText(repo.language);
         const sourceIcon = repo.source === 'github' ? this.getGitHubIcon() : this.getGitLabIcon();
 
+        // Validate URLs to prevent XSS and open redirect
+        const repoUrl = this.isValidURL(repo.html_url);
+        const homepageUrl = this.isValidURL(repo.homepage);
+
+        if (!repoUrl) {
+            console.warn('Invalid repository URL:', repo.html_url);
+            return '';
+        }
+
         return `
-            <article class="project-card" data-project="${repo.name}">
-                <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-card__link-overlay" aria-label="View ${repo.name}"></a>
+            <article class="project-card" data-project="${name}">
+                <a href="${repoUrl}" target="_blank" rel="noopener noreferrer" class="project-card__link-overlay" aria-label="View ${name}"></a>
                 <div class="project-card__header">
-                    <h3 class="project-card__title">${repo.name}</h3>
+                    <h3 class="project-card__title">${name}</h3>
                     <div class="project-card__icons">
                         <span class="project-card__source" title="${repo.source === 'github' ? 'GitHub' : 'GitLab'}">
                             ${sourceIcon}
                         </span>
-                        ${repo.homepage ? `
-                            <a href="${repo.homepage}"
+                        ${homepageUrl ? `
+                            <a href="${homepageUrl}"
                                class="project-card__external"
                                target="_blank"
                                rel="noopener noreferrer"
-                               aria-label="View ${repo.name} live demo"
+                               aria-label="View ${name} live demo"
                                title="Live demo">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -261,7 +343,7 @@ class AllProjectsManager {
                 <p class="project-card__description">${description}</p>
                 ${topics.length > 0 ? `
                     <div class="project-card__tags">
-                        ${topics.slice(0, 5).map(topic => `<span class="tag">${topic}</span>`).join('')}
+                        ${topics.slice(0, 5).map(topic => `<span class="tag">${this.sanitizeText(topic)}</span>`).join('')}
                     </div>
                 ` : ''}
                 <div class="project-card__stats">
@@ -273,12 +355,12 @@ class AllProjectsManager {
                             <span>${repo.stargazers_count}</span>
                         </span>
                     ` : ''}
-                    ${repo.language ? `
+                    ${language ? `
                         <span class="stat">
                             <svg viewBox="0 0 16 16" fill="currentColor">
                                 <circle cx="8" cy="8" r="3"/>
                             </svg>
-                            <span>${repo.language}</span>
+                            <span>${language}</span>
                         </span>
                     ` : ''}
                 </div>
@@ -327,9 +409,9 @@ class AllProjectsManager {
         this.grid.innerHTML = `
             <div class="error-message">
                 <h3>Unable to load projects</h3>
-                <p>${error.message}</p>
-                <p>Visit my <a href="https://github.com/${this.githubUsername}" target="_blank">GitHub</a> or
-                   <a href="https://gitlab.com/${this.gitlabUsername}" target="_blank">GitLab</a> directly.</p>
+                <p>${this.sanitizeText(error.message)}</p>
+                <p>Visit my <a href="https://github.com/${this.githubUsername}" target="_blank" rel="noopener noreferrer">GitHub</a> or
+                   <a href="https://gitlab.com/${this.gitlabUsername}" target="_blank" rel="noopener noreferrer">GitLab</a> directly.</p>
             </div>
         `;
     }

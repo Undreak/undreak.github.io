@@ -125,11 +125,55 @@ class FormManager {
         }
     }
 
+    // Sanitize input to prevent XSS
+    sanitizeInput(input) {
+        const div = document.createElement('div');
+        div.textContent = input;
+        return div.innerHTML;
+    }
+
+    // Validate email format
+    isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Rate limiting check (prevent spam)
+    canSubmit() {
+        const lastSubmit = localStorage.getItem('lastFormSubmit');
+        if (lastSubmit) {
+            const timeSinceLastSubmit = Date.now() - parseInt(lastSubmit);
+            const ONE_MINUTE = 60000;
+            if (timeSinceLastSubmit < ONE_MINUTE) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     async handleSubmit(e) {
         e.preventDefault();
 
-        // Basic validation
-        const requiredFields = this.form.querySelectorAll('[required]');
+        // Check if form is configured
+        if (this.form.action.includes('YOUR_FORM_ID')) {
+            this.showStatus('⚠️ Contact form is not yet configured. Please use the email link above.', 'error');
+            return;
+        }
+
+        // Rate limiting
+        if (!this.canSubmit()) {
+            this.showStatus('⏱️ Please wait a minute before sending another message.', 'error');
+            return;
+        }
+
+        // Get field values
+        const nameField = this.form.querySelector('[name="name"]');
+        const emailField = this.form.querySelector('[name="email"]');
+        const subjectField = this.form.querySelector('[name="subject"]');
+        const messageField = this.form.querySelector('[name="message"]');
+
+        // Validate required fields
+        const requiredFields = [nameField, emailField, subjectField, messageField];
         let isValid = true;
 
         requiredFields.forEach(field => {
@@ -142,7 +186,27 @@ class FormManager {
         });
 
         if (!isValid) {
-            this.showStatus('Please fill in all required fields.', 'error');
+            this.showStatus('❌ Please fill in all required fields.', 'error');
+            return;
+        }
+
+        // Validate email format
+        if (!this.isValidEmail(emailField.value)) {
+            this.showStatus('❌ Please enter a valid email address.', 'error');
+            emailField.style.borderColor = 'var(--accent)';
+            return;
+        }
+
+        // Check message length
+        if (messageField.value.length < 10) {
+            this.showStatus('❌ Message is too short. Please provide more details.', 'error');
+            messageField.style.borderColor = 'var(--accent)';
+            return;
+        }
+
+        if (messageField.value.length > 5000) {
+            this.showStatus('❌ Message is too long. Please keep it under 5000 characters.', 'error');
+            messageField.style.borderColor = 'var(--accent)';
             return;
         }
 
@@ -159,17 +223,25 @@ class FormManager {
                 body: formData,
                 headers: {
                     'Accept': 'application/json'
-                }
+                },
+                signal: AbortSignal.timeout(15000) // 15 second timeout
             });
 
             if (response.ok) {
                 this.showStatus('✓ Message sent successfully! I\'ll get back to you soon.', 'success');
                 this.form.reset();
+                // Set rate limit timestamp
+                localStorage.setItem('lastFormSubmit', Date.now().toString());
             } else {
-                throw new Error('Failed to send message');
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.error || 'Failed to send message');
             }
         } catch (error) {
-            this.showStatus('✗ Failed to send message. Please try again or email me directly.', 'error');
+            if (error.name === 'TimeoutError') {
+                this.showStatus('⏱️ Request timed out. Please try again.', 'error');
+            } else {
+                this.showStatus('✗ Failed to send message. Please try again or email me directly.', 'error');
+            }
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = originalText;
@@ -184,6 +256,7 @@ class FormManager {
         if (type === 'success') {
             setTimeout(() => {
                 this.status.className = 'form-status';
+                this.status.textContent = '';
             }, 5000);
         }
     }
@@ -229,20 +302,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add loading complete class to body
     document.body.classList.add('loaded');
 
-    // Log initialization
-    console.log('🎨 Portfolio initialized successfully!');
-    console.log('Built with: HTML5, CSS3, Vanilla JavaScript');
-    console.log('Design: Swiss Modernism + Brutalist elements');
-});
-
-// Handle page visibility changes
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        // Page is hidden
-        console.log('Page hidden');
-    } else {
-        // Page is visible
-        console.log('Page visible');
+    // Log initialization (only in development)
+    const DEBUG = false;
+    if (DEBUG) {
+        console.log('🎨 Portfolio initialized successfully!');
+        console.log('Built with: HTML5, CSS3, Vanilla JavaScript');
+        console.log('Design: Swiss Modernism + Brutalist elements');
     }
 });
 
