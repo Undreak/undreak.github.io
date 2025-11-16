@@ -112,7 +112,6 @@
             <div class="nav__menu">
                 <a href="#about" class="nav__link">About</a>
                 <a href="#research" class="nav__link">Research</a>
-                <a href="#publications" class="nav__link">Publications</a>
                 <a href="#skills" class="nav__link">Skills</a>
                 <a href="#projects" class="nav__link">Projects</a>
                 <a href="#contact" class="nav__link">Contact</a>
@@ -286,83 +285,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Publications Section -->
-    <section class="section publications" id="publications">
-        <div class="container">
-            <h2 class="section__title">Publications & Presentations</h2>
-            <p class="section__subtitle">Research outputs and academic contributions</p>
-
-            <div class="publications__grid">
-                <!-- Master's Thesis -->
-                <article class="publication-card">
-                    <div class="publication-card__type">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                        </svg>
-                        <span>Master's Thesis</span>
-                    </div>
-                    <h3 class="publication-card__title">Polymer Wetting Dynamics on Nano-textured Surfaces</h3>
-                    <p class="publication-card__authors">Alexandre De Cuyper</p>
-                    <p class="publication-card__venue">Université Paris Cité • 2024</p>
-                    <p class="publication-card__description">
-                        Investigation of polymer wetting behavior on nano-structured surfaces using SAXS/SANS and AFM,
-                        with computational modeling of surface interactions and polymer dynamics at the nanoscale.
-                    </p>
-                    <div class="publication-card__tags">
-                        <span class="tag">SAXS/SANS</span>
-                        <span class="tag">AFM</span>
-                        <span class="tag">Polymer Physics</span>
-                        <span class="tag">Computational Modeling</span>
-                    </div>
-                </article>
-
-                <!-- Presentations/Posters -->
-                <article class="publication-card">
-                    <div class="publication-card__type">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                        <span>Training</span>
-                    </div>
-                    <h3 class="publication-card__title">Formation Annuelle à la Neutronique</h3>
-                    <p class="publication-card__authors">Alexandre De Cuyper</p>
-                    <p class="publication-card__venue">Institut Laue-Langevin • Summer 2024</p>
-                    <p class="publication-card__description">
-                        Intensive 3-day summer school in neutron scattering techniques and neutron physics
-                        at Europe's leading neutron research facility.
-                    </p>
-                    <div class="publication-card__tags">
-                        <span class="tag">Neutron Scattering</span>
-                        <span class="tag">SANS</span>
-                        <span class="tag">Instrumentation</span>
-                    </div>
-                </article>
-
-                <!-- Placeholder for future publications -->
-                <article class="publication-card publication-card--placeholder">
-                    <div class="publication-card__type">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 5v14M5 12h14"/>
-                        </svg>
-                        <span>Future Work</span>
-                    </div>
-                    <h3 class="publication-card__title">Upcoming Publications</h3>
-                    <p class="publication-card__description">
-                        Currently preparing manuscripts from recent research work on polymer wetting dynamics
-                        and nano-textured surface interactions. Publications forthcoming.
-                    </p>
-                </article>
-            </div>
-
-            <div class="publications__note">
-                <p>📄 <strong>Looking for my CV?</strong> <a href="#contact" class="link-inline">Get in touch</a> for a detailed academic CV with full publication list.</p>
             </div>
         </div>
     </section>
@@ -551,38 +473,6 @@
                         </svg>
                         <span>LinkedIn</span>
                     </a>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="contact__form-wrapper">
-                    <h3 class="contact__form-title">Or send me a message</h3>
-                    <div class="form-notice">
-                        <p>
-                            ⚠️ <strong>Note:</strong> The contact form is currently being configured. Please use the email link above to reach me directly.
-                        </p>
-                    </div>
-                    <form class="contact__form form--disabled" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Name <span class="required">*</span></label>
-                            <input type="text" id="name" name="name" class="form-input" required disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" class="form-input" required disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject" class="form-label">Subject <span class="required">*</span></label>
-                            <input type="text" id="subject" name="subject" class="form-input" required disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Message <span class="required">*</span></label>
-                            <textarea id="message" name="message" class="form-input form-input--textarea" rows="6" required disabled></textarea>
-                        </div>
-                        <!-- Honeypot field for bot protection (when form is enabled) -->
-                        <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off">
-                        <button type="submit" class="btn btn--primary btn--full" disabled>Send Message (Coming Soon)</button>
-                        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-                    </form>
                 </div>
             </div>
         </div>
