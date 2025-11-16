@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ARTICLE TITLE] | Alexandre De Cuyper</title>
+    <meta name="description" content="[SHORT DESCRIPTION FOR SEO]">
+
+    <!-- Open Graph / Social sharing -->
+    <meta property="og:title" content="[ARTICLE TITLE]">
+    <meta property="og:description" content="[DESCRIPTION FOR SOCIAL MEDIA]">
+    <meta property="og:type" content="article">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/article.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav__container">
+            <a href="../index.html" class="nav__logo">AD</a>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="theme-toggle__icon theme-toggle__icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+                <svg class="theme-toggle__icon theme-toggle__icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article class="article">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="../index.html#publications">Publications</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>[SHORT TITLE]</span>
+        </nav>
+
+        <!-- Article Header -->
+        <header class="article__header">
+            <h1 class="article__title">[ARTICLE TITLE]</h1>
+            <p class="article__subtitle">[ARTICLE SUBTITLE OR TAGLINE]</p>
+
+            <div class="article__meta">
+                <!-- Type Badge - Choose one: Master's Thesis, Conference Paper, Training, Presentation, Research Note -->
+                <span class="article__type-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <!-- Book icon (for thesis) -->
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        <!-- OR Presentation icon: <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/> -->
+                    </svg>
+                    [TYPE]
+                </span>
+                <!-- Date -->
+                <span class="article__meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    [DATE OR DATE RANGE]
+                </span>
+                <!-- Location -->
+                <span class="article__meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    [LOCATION/INSTITUTION]
+                </span>
+            </div>
+        </header>
+
+        <!-- Article Content -->
+        <div class="article__content">
+            <!--
+                WRITING GUIDE:
+
+                Use these HTML elements to structure your article:
+
+                <h2>Main Sections</h2>
+                <h3>Subsections</h3>
+                <h4>Minor headings</h4>
+
+                <p>Regular paragraphs</p>
+
+                <ul>
+                    <li>Unordered list items</li>
+                </ul>
+
+                <ol>
+                    <li>Ordered list items</li>
+                </ol>
+
+                <blockquote>
+                    <p>Important quotes or callouts</p>
+                </blockquote>
+
+                <pre><code>Code blocks or equations</code></pre>
+
+                <p>Inline <code>code snippets</code></p>
+
+                Images:
+                <div class="article__image">
+                    <img src="path/to/image.jpg" alt="Description">
+                    <p class="article__image-caption">Caption text</p>
+                </div>
+
+                Image placeholders:
+                <div class="article__image">
+                    <div class="article__image-placeholder">
+                        Image description - placeholder
+                    </div>
+                    <p class="article__image-caption">Caption text</p>
+                </div>
+
+                Info boxes:
+                <div class="article__info-box">
+                    <p><strong>Label:</strong> Information</p>
+                </div>
+
+                Expandable sections:
+                <details>
+                    <summary>Click to expand</summary>
+                    <p>Hidden content goes here</p>
+                </details>
+
+                Horizontal dividers:
+                <hr>
+
+                Resources section (at the end):
+                <section class="article__resources">
+                    <h2>Resources</h2>
+                    <ul>
+                        <li>📄 <strong>Link title</strong> - <a href="#">URL</a></li>
+                    </ul>
+                </section>
+            -->
+
+            <!-- START YOUR CONTENT HERE -->
+
+            <section>
+                <h2>Overview</h2>
+                <p>Start with a brief overview of what this article is about...</p>
+            </section>
+
+            <hr>
+
+            <section>
+                <h2>Section Title</h2>
+                <p>Your content goes here...</p>
+
+                <h3>Subsection</h3>
+                <p>More detailed content...</p>
+            </section>
+
+            <hr>
+
+            <!-- Add more sections as needed -->
+
+            <!-- Resources (optional) -->
+            <section class="article__resources">
+                <h2>Resources</h2>
+                <ul>
+                    <li>📄 <strong>Resource Name</strong> - <a href="#">Link</a></li>
+                    <li>💻 <strong>Code Repository</strong> - <a href="#">Link</a></li>
+                </ul>
+            </section>
+
+            <!-- END CONTENT -->
+        </div>
+
+        <!-- Article Footer -->
+        <footer class="article__footer">
+            <p><em>[Optional closing note, e.g., "This project was conducted at... during..."]</em></p>
+        </footer>
+
+        <!-- Back Link -->
+        <a href="../index.html#publications" class="article__back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Publications
+        </a>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">
+                &copy; 2025 Alexandre De Cuyper. Built with curiosity and code.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/theme.js"></script>
+</body>
+</html>
