@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Days at Europe's Neutron Factory | Alexandre De Cuyper</title>
+    <meta name="description" content="My experience at the Formation Annuelle à la Neutronique 2024 at Institut Laue-Langevin in Grenoble">
+
+    <!-- Open Graph / Social sharing -->
+    <meta property="og:title" content="Three Days at Europe's Neutron Factory">
+    <meta property="og:description" content="A grad student's journal from the FAN 2024 training at ILL - neutrons, nanoparticles, and no air conditioning">
+    <meta property="og:type" content="article">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/article.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav__container">
+            <a href="../index.html" class="nav__logo">AD</a>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="theme-toggle__icon theme-toggle__icon--dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+                <svg class="theme-toggle__icon theme-toggle__icon--light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article class="article">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="../index.html#publications">Publications</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>FAN 2024 Experience</span>
+        </nav>
+
+        <!-- Article Header -->
+        <header class="article__header">
+            <h1 class="article__title">Three Days at Europe's Neutron Factory</h1>
+            <p class="article__subtitle">A master's student's journey through the Formation Annuelle à la Neutronique at ILL</p>
+
+            <div class="article__meta">
+                <span class="article__type-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                    Personal Journal
+                </span>
+                <span class="article__meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    June 25-27, 2024
+                </span>
+                <span class="article__meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Grenoble, France
+                </span>
+            </div>
+        </header>
+
+        <!-- Article Content -->
+        <div class="article__content">
+            <!-- Day 0 -->
+            <section>
+                <h2>The Journey Begins</h2>
+                <p>
+                    When my train pulled into Grenoble on the evening of June 24th, I pressed my face against the window like a kid. The mountains. <em>Those mountains.</em> The Alps rising dramatically around the valley, still snow-capped in late June. Coming from Paris, where the tallest things are buildings, this was something else entirely.
+                </p>
+                <p>
+                    I checked into the Marie Curie residence—yes, that Marie Curie—where they'd housed all the FAN participants. The irony wasn't lost on me: here I was, a master's student still figuring out if I even belonged in research, staying in a residence named after perhaps the most legendary scientist in history. No pressure, right?
+                </p>
+                <p>
+                    I was nervous. The participant list had arrived a few days earlier, and I'd done what any anxious grad student does: I looked everyone up. PhD students from top labs. Permanent researchers with publications I'd actually read. And then there was me—the only person doing this during a master's internship, my thesis still in progress, trying not to feel like I'd accidentally crashed a party I wasn't invited to.
+                </p>
+            </section>
+
+            <hr>
+
+            <!-- Day 1 Morning -->
+            <section>
+                <h2>Day 1: Welcome to the Neutron World</h2>
+
+                <h3>8:00 AM - First Impressions</h3>
+                <p>
+                    We met at the EPN campus entrance at 8 AM. The Institut Laue-Langevin doesn't look like a typical research facility—it looks like a small city. Buildings everywhere, each one housing different neutron instruments. Scientists from what felt like every country on Earth walking between them. And at the center of it all: the reactor.
+                </p>
+                <p>
+                    Jacques Jestin and Marie Plazanet welcomed us in room 101 of ILL50. Coffee hadn't kicked in yet, but the excitement in the room was palpable. Twenty researchers, all here for the same reason: to learn how to shoot neutrons at things and figure out what those things are made of. When you put it that way, physics sounds pretty cool.
+                </p>
+
+                <h3>9:00 AM - Neutronics 101</h3>
+                <p>
+                    Alain Menelle's introduction to neutronics was dense. Really dense. We covered neutron production (nuclear reactors, spallation sources), neutron properties (they're neutral, they interact with nuclei, they have magnetic moments), and why neutrons are uniquely suited for studying soft matter and biological systems.
+                </p>
+                <p>
+                    The key insight that stuck with me: <strong>neutrons "see" things X-rays can't.</strong> Because they interact with nuclei rather than electron clouds, they can distinguish between hydrogen and deuterium. This is huge for soft matter—swap regular water (H₂O) for heavy water (D₂O) in your sample, and suddenly you can highlight specific components. It's like having a biological highlighter at the atomic scale.
+                </p>
+
+                <h3>11:00 AM - The Reactor Tour</h3>
+                <p>
+                    Then came the moment I'd been waiting for: the facility tour.
+                </p>
+                <p>
+                    I wasn't prepared for the scale. ILL has <em>dozens</em> of instruments spread across multiple buildings. Each instrument is essentially a specialized microscope that uses neutrons instead of light. Some are the size of entire rooms. There are time-of-flight spectrometers that measure how molecules move. Diffractometers that map out crystal structures atom by atom. Small-angle scattering instruments—like the one I'd use the next day—that reveal the shapes and sizes of nanoparticles suspended in liquids.
+                </p>
+                <blockquote>
+                    <p>
+                        It's overwhelming in the best way possible. You walk through these halls and realize: every major question in condensed matter physics has probably been tackled here at some point.
+                    </p>
+                </blockquote>
+                <p>
+                    Seeing the reactor building itself (from the outside—we didn't go in) was surreal. Somewhere in there, uranium atoms are splitting, releasing neutrons that travel through tubes to instruments all over the campus. It's like the world's most sophisticated plumbing system, except instead of water, it's subatomic particles.
+                </p>
+            </section>
+
+            <hr>
+
+            <!-- Day 1 Afternoon -->
+            <section>
+                <h2>Day 1 Afternoon: Choosing a Path</h2>
+
+                <p>
+                    After lunch, the group split. Half went to learn about diffraction and inelastic scattering (the hard matter track). I went to room 158 with the soft matter & biophysics crew.
+                </p>
+
+                <h3>2:00 PM - Introduction to SANS (Fabrice Cousin)</h3>
+                <p>
+                    Fabrice Cousin's SANS lecture was where things clicked for me. Small-Angle Neutron Scattering is conceptually elegant: shine neutrons at your sample, and they scatter at small angles depending on the sizes and shapes of the structures inside. Measure the scattering pattern, do some Fourier transform magic, and boom—you know if you're looking at spherical nanoparticles, rod-like polymers, or weird fractal aggregates.
+                </p>
+                <p>
+                    The math got heavy (scattering functions, form factors, structure factors), but Fabrice had this way of grounding everything in real examples. "You want to know if your polymer chains are extended or collapsed? SANS. You want to measure the thickness of a lipid bilayer? SANS. You want to see if your nanoparticles are aggregating? Believe it or not, also SANS."
+                </p>
+                <p>
+                    I was already planning my experiment. I'd brought a sample of silica nanoparticles—the exact same ones I'd been using at CEA Saclay to fabricate nano-textured surfaces for my thesis. The manufacturer claimed they were around 100 nm in diameter. Tomorrow, I'd get to check that claim with one of the world's best SANS instruments.
+                </p>
+
+                <h3>4:15 PM - Spectroscopy: Watching Molecules Dance</h3>
+                <p>
+                    Jean-Marc Zanotti introduced us to Time-of-Flight (ToF) and Backscattering (BS) spectroscopy. If SANS tells you what structures look like, spectroscopy tells you how they <em>move</em>.
+                </p>
+                <p>
+                    Imagine you could watch individual polymer chains wiggle, or measure how fast water molecules diffuse through a protein. That's what these techniques do. They measure the energy transfer when neutrons scatter off moving atoms. The result: you can see dynamics on timescales from picoseconds to microseconds.
+                </p>
+                <p>
+                    I'll be honest—the theory was tough. The room was hot (it was summer, no AC, and 20 people in a small lecture hall), and keeping up with the derivations required serious concentration. But the applications were mind-blowing. You can literally watch molecules do things in real-time at the atomic scale.
+                </p>
+
+                <h3>Evening: Dinner and Impostor Syndrome</h3>
+                <p>
+                    That evening, the whole group went to dinner together. This is where I realized I'd been worried for nothing.
+                </p>
+                <p>
+                    Yes, I was the only master's student. Yes, everyone else had more experience. But nobody cared. The PhD students were just as confused by the spectroscopy math as I was. The permanent researchers admitted they were there to learn techniques outside their expertise. We were all students here.
+                </p>
+                <p>
+                    The conversations were incredible. I talked to a researcher studying protein folding, another working on magnetic materials, someone doing polymer rheology. Everyone had a different reason for being there, but we all shared this common language of neutron scattering.
+                </p>
+                <p>
+                    Walking back to the Marie Curie residence that night, I felt something shift. Maybe I did belong here after all.
+                </p>
+            </section>
+
+            <hr>
+
+            <!-- Day 2 -->
+            <section>
+                <h2>Day 2: Hands-On Science</h2>
+
+                <h3>The SANS Practical - SAM Instrument</h3>
+                <p>
+                    Wednesday was the day I'd been waiting for. Our group headed to the SAM beamline—one of ILL's small-angle neutron scattering instruments. Nicolas Martin and Fabrice Cousin would be our guides for the day.
+                </p>
+                <p>
+                    The instrument itself is beautiful in a very physics-y way. There's the sample chamber, where your tiny vial sits. Behind it, a massive neutron detector—a 1-meter-square panel that captures the scattering pattern. The whole thing is enclosed in radiation shielding, with computer screens showing real-time data.
+                </p>
+
+                <h3>My Sample: Checking the Manufacturer's Homework</h3>
+                <p>
+                    I'd brought my silica nanoparticles in a small vial. These weren't just any nanoparticles—they were the foundation of my entire master's thesis. I'd been using them to create controlled nano-textured surfaces to study wetting dynamics. The manufacturer said they were 100 nm in diameter, and I'd been trusting that number for months.
+                </p>
+                <p>
+                    But here's the thing: <strong>I'd never actually checked.</strong>
+                </p>
+                <p>
+                    Was measuring them with SANS crucial to my thesis? Not really—I'd already characterized the surfaces with AFM. But it was the perfect sample for this practical. It would give me a direct connection from theory (yesterday's lectures on SANS) to practice (today's experiment) to data analysis (tomorrow morning). Plus, I was genuinely curious: were the manufacturer's specs actually accurate?
+                </p>
+
+                <h3>Running the Experiment</h3>
+                <p>
+                    Here's something I didn't expect: <strong>I got to start the instrument myself.</strong>
+                </p>
+                <p>
+                    Nicolas walked me through it. Load the sample into the holder. Check the alignment. Set the detector distance. Configure the measurement time. Then, the moment of truth: pressing the button to open the shutter and let neutrons hit my sample.
+                </p>
+                <p>
+                    There's something surreal about it. You can't see neutrons. You can't hear them. But you know they're streaming out of that reactor, traveling through guides, hitting your tiny nanoparticles, and scattering in specific patterns that encode information about their size and shape. And within minutes, the detector starts collecting data.
+                </p>
+
+                <div class="article__image">
+                    <div class="article__image-placeholder">
+                        SANS scattering pattern - concentric rings showing particle form factor
+                    </div>
+                    <p class="article__image-caption">Typical SANS pattern from spherical nanoparticles</p>
+                </div>
+
+                <p>
+                    The scattering pattern appeared on screen: a beautiful circular pattern, symmetric and smooth. The classic signature of monodisperse spherical particles. Already I could tell—these were good nanoparticles. Uniform. Well-dispersed. No weird aggregation. The manufacturer hadn't lied.
+                </p>
+
+                <h3>The Time Crunch</h3>
+                <p>
+                    The experiment ran smoothly. Maybe too smoothly. Because when it came time for data analysis, we hit a problem: I had a train to Paris that afternoon.
+                </p>
+                <p>
+                    We rushed through the basics. Loaded the data into the analysis software. Fit a sphere model to the scattering curve. The result popped up: <strong>106 nm diameter, ± 8 nm.</strong>
+                </p>
+                <p>
+                    The manufacturer had said 100 nm. We measured 106 nm. That's about 6% difference—well within normal variation for nanoparticle synthesis. In other words: validated.
+                </p>
+                <p>
+                    I wanted more time to dig into the data, to play with different models, to really understand every parameter. But the train schedule was unforgiving. Nicolas and Fabrice walked us through the key points—how to extract the size distribution, how to account for the background scattering, how to recognize when your model doesn't fit the data.
+                </p>
+                <p>
+                    It wasn't the deep dive I'd hoped for, but it was real. This is what experimental physics is actually like: time constraints, compromises, and making the most of the data you get.
+                </p>
+            </section>
+
+            <hr>
+
+            <!-- Day 3 -->
+            <section>
+                <h2>Day 3: Data Analysis and Farewells</h2>
+
+                <p>
+                    Thursday morning was reserved for data analysis and modeling with our instructors. My group worked with Nicolas and Fabrice to go deeper into the SANS data processing pipeline.
+                </p>
+                <p>
+                    Even though my own data analysis had been rushed the day before, watching others work through their datasets was incredibly valuable. A PhD student had measured polymer micelles—the scattering pattern showed a core-shell structure. Someone else had bilayers. Each analysis revealed different tricks: how to handle polydispersity, how to combine SANS with other techniques, how to know when you're overfitting your model.
+                </p>
+                <p>
+                    By mid-morning, people started trickling out to catch trains and flights. The atmosphere was bittersweet. We'd only spent three days together, but there's something about shared learning experiences—especially intense ones in hot lecture halls with no AC—that bonds people quickly.
+                </p>
+            </section>
+
+            <hr>
+
+            <!-- Reflections -->
+            <section>
+                <h2>What I'm Taking Home</h2>
+
+                <h3>The Technical Stuff</h3>
+                <p>
+                    I now understand SANS well enough to design experiments, analyze data, and interpret results. I can read papers using time-of-flight spectroscopy and actually follow what they're doing. I know when neutrons are the right tool for a problem—and when they're not.
+                </p>
+                <p>
+                    More importantly, I've seen the entire workflow: from theoretical prediction to experimental measurement to data analysis. That's surprisingly rare in physics education. You often get theory in lectures and experiments in lab courses, but rarely do you see them connected in real-time on a world-class instrument.
+                </p>
+
+                <h3>The People</h3>
+                <p>
+                    Being the youngest person in the room turned out to be an advantage. Everyone was incredibly generous with their time and knowledge. PhD students shared their experiences navigating research. Permanent researchers gave advice about career paths. I collected more wisdom in three days than in months of working alone in the lab.
+                </p>
+                <p>
+                    I also learned that impostor syndrome is universal. Even the experienced researchers admitted to feeling out of their depth when learning new techniques. The difference between a master's student and a permanent researcher isn't confidence—it's that the researchers have learned to be comfortable with not knowing things yet.
+                </p>
+
+                <h3>Why This Matters</h3>
+                <p>
+                    When I got back to CEA Saclay the following week, I looked at my nanoparticle samples differently. Now I knew—not just believed, but <em>knew</em>—that they were 106 nm in diameter. That knowledge came from me, from an experiment I ran, with my own hands, on one of the best instruments in the world.
+                </p>
+                <p>
+                    That's the thing about experimental physics. You can read about techniques in textbooks, but until you've actually run the experiment, fought with the data analysis, and seen the results appear on screen, it's all just abstract. FAN made it real.
+                </p>
+            </section>
+
+            <hr>
+
+            <!-- Epilogue -->
+            <section>
+                <h2>Epilogue: Grenoble in the Rearview Mirror</h2>
+                <p>
+                    On the train back to Paris, I pulled out my notebook and tried to capture everything while it was fresh. The physics. The people. The mountains. The overwhelming feeling of standing in ILL's main hall and realizing this is what the cutting edge of science looks like.
+                </p>
+                <p>
+                    Would I go back? In a heartbeat. Would I recommend FAN to other master's students or early PhD students? Absolutely. It's three days of intensive learning, but it's also three days of realizing you're part of something bigger—a community of people who think that shooting neutrons at things to figure out how they work is the coolest job in the world.
+                </p>
+                <p>
+                    Because honestly? It kind of is.
+                </p>
+            </section>
+
+            <hr>
+
+            <!-- Acknowledgments -->
+            <section class="article__resources">
+                <h2>Thanks To</h2>
+                <ul>
+                    <li>📚 <strong>2FDN & ILL</strong> - For organizing the FAN training program</li>
+                    <li>👨‍🏫 <strong>Fabrice Cousin & Nicolas Martin</strong> - SANS instructors who made complex physics accessible</li>
+                    <li>👨‍🏫 <strong>Jean-Marc Zanotti</strong> - For the spectroscopy crash course</li>
+                    <li>👨‍🏫 <strong>Alain Menelle, Jacques Jestin & Marie Plazanet</strong> - For the introduction and organization</li>
+                    <li>👥 <strong>My fellow participants</strong> - For the discussions, the dinner, and making me feel less like an impostor</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Article Footer -->
+        <footer class="article__footer">
+            <p><em>Written in June 2024, shortly after completing the Formation Annuelle à la Neutronique at Institut Laue-Langevin in Grenoble.</em></p>
+        </footer>
+
+        <!-- Back Link -->
+        <a href="../index.html#publications" class="article__back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Publications
+        </a>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">
+                &copy; 2025 Alexandre De Cuyper. Built with curiosity and code.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/theme.js"></script>
+</body>
+</html>
