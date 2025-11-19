@@ -95,18 +95,27 @@
         `;
         toggle.addEventListener('click', toggleMobileTOC);
         document.body.appendChild(toggle);
+
+        // Store toggle reference for later use
+        window.tocToggleButton = toggle;
     }
 
     // Toggle mobile TOC
     function toggleMobileTOC() {
         tocElement.classList.toggle('active');
         document.querySelector('.toc-overlay').classList.toggle('active');
+        if (window.tocToggleButton) {
+            window.tocToggleButton.classList.toggle('active');
+        }
     }
 
     // Close mobile TOC
     function closeMobileTOC() {
         tocElement.classList.remove('active');
         document.querySelector('.toc-overlay').classList.remove('active');
+        if (window.tocToggleButton) {
+            window.tocToggleButton.classList.remove('active');
+        }
     }
 
     // Scroll to heading with smooth behavior

@@ -1,10 +1,17 @@
 /* Table of Contents Sidebar */
 
-/* Adjust article layout to accommodate TOC */
+/* Adjust article layout to accommodate TOC - only on desktop */
 @media (min-width: 1025px) {
     body:has(.toc) .article {
         /* Shift article right by half TOC width to re-center in remaining space */
         transform: translateX(130px);
+    }
+}
+
+/* Ensure article is not shifted on mobile/tablet */
+@media (max-width: 1024px) {
+    body:has(.toc) .article {
+        transform: none;
     }
 }
 
@@ -45,30 +52,39 @@
 .toc__toggle {
     display: none;
     position: fixed;
-    top: 80px;
-    left: var(--space-3);
+    top: 16px;
+    right: var(--space-3);
     width: 44px;
     height: 44px;
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+    background: transparent;
+    border: none;
     cursor: pointer;
-    z-index: 60;
+    z-index: 100;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    box-shadow: var(--shadow-md);
+    gap: 6px;
+    padding: var(--space-1);
     transition: all var(--transition-fast);
+}
+
+/* Hide toggle button when TOC is open to avoid overlap with "Contents" */
+.toc__toggle.active {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.toc__toggle:active {
+    transform: scale(0.95);
 }
 
 .toc__toggle:hover {
     background: var(--accent-light);
-    border-color: var(--accent);
+    border-radius: var(--radius-md);
 }
 
 .toc__toggle-line {
-    width: 20px;
+    width: 24px;
     height: 2px;
     background: var(--text-primary);
     transition: all var(--transition-fast);
@@ -176,11 +192,11 @@
 /* Very small screens */
 @media (max-width: 480px) {
     .toc {
-        width: 80vw;
+        width: 85vw;
     }
 
     .toc__toggle {
-        left: var(--space-2);
-        top: 75px;
+        top: 16px;
+        right: var(--space-2);
     }
 }
