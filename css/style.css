@@ -506,6 +506,19 @@
     transform: translateY(-2px);
 }
 
+/* Clickable card timeline items */
+a.card-timeline__card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+a.card-timeline__card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
 /* Date badge for research cards */
 .research-card__date-badge {
     display: inline-block;
@@ -516,6 +529,21 @@
     padding: var(--space-1) var(--space-3);
     border-radius: var(--radius-sm);
     margin-bottom: var(--space-3);
+}
+
+/* Placeholder/future work styling */
+.card-timeline__marker--placeholder {
+    background: var(--text-tertiary);
+}
+
+.card-timeline__card--placeholder {
+    border-style: dashed;
+    opacity: 0.8;
+}
+
+.research-card__date-badge--placeholder {
+    background: var(--text-tertiary);
+    opacity: 0.8;
 }
 
 .link-inline:hover {
