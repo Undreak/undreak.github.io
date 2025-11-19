@@ -362,6 +362,28 @@
     border-style: dashed;
 }
 
+/* Clickable publication cards */
+.publication-card--link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.publication-card--link:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+}
+
+.publication-card--link .publication-card__title {
+    color: var(--text-primary);
+    transition: color var(--transition-fast);
+}
+
+.publication-card--link:hover .publication-card__title {
+    color: var(--accent);
+}
+
 .publication-card__type {
     display: flex;
     align-items: center;
