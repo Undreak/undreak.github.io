@@ -112,7 +112,6 @@
             <div class="nav__menu">
                 <a href="#about" class="nav__link">About</a>
                 <a href="#research" class="nav__link">Research</a>
-                <a href="#publications" class="nav__link">Publications</a>
                 <a href="#skills" class="nav__link">Skills</a>
                 <a href="#projects" class="nav__link">Projects</a>
                 <a href="#contact" class="nav__link">Contact</a>
@@ -196,17 +195,21 @@
                 <div class="about__info">
                     <div class="info-card">
                         <h3 class="info-card__title">Education</h3>
-                        <div class="info-card__item">
-                            <strong>M2 Physics of Soft Matter & Complex Materials</strong>
-                            <span>Paris Cité × U. de La Coruña (dual degree) • 2023-2024</span>
+                        <div class="info-card__item info-card__item--dual-degree">
+                            <span class="info-card__note">Dual Master's Degree, Erasmus+ • 2023-2024</span>
+                            <strong>M2 Physics of Soft Matter</strong>
+                            <span>Université Paris Cité</span>
+                            <strong>M2 Complex Materials</strong>
+
+                            <span>Universidad de La Coruña (Spain)</span>
                         </div>
                         <div class="info-card__item">
                             <strong>M1 Fundamental Physics</strong>
                             <span>Université Paris Cité • 2020-2022</span>
                         </div>
                         <div class="info-card__item">
-                            <strong>Formation Annuelle à la Neutronique</strong>
-                            <span>Institut Laue-Langevin • 2024</span>
+                            <strong>Licence Physics</strong>
+                            <span>Université Paris Cité • 2016-2020</span>
                         </div>
                     </div>
                     <div class="info-card">
@@ -226,42 +229,91 @@
         </div>
     </section>
 
-    <!-- Research Section -->
+    <!-- Research & Publications Section -->
     <section class="section research" id="research">
         <div class="container">
-            <h2 class="section__title">Research Experience</h2>
-            <div class="timeline">
-                <div class="timeline__item">
-                    <div class="timeline__marker"></div>
-                    <div class="timeline__content">
-                        <span class="timeline__date">June - Sept 2024</span>
-                        <h3 class="timeline__title">Polymer Wetting Dynamics on Nano-textured Surfaces</h3>
-                        <p class="timeline__location">Laboratoire Léon Brillouin, CEA Saclay</p>
-                        <p class="timeline__description">
+            <h2 class="section__title">Research & Publications</h2>
+            <p class="section__subtitle">Experimental work, academic outputs, and professional development</p>
+
+            <div class="card-timeline">
+                <!-- Master's Thesis - 2024 -->
+                <div class="card-timeline__item">
+                    <div class="card-timeline__marker"></div>
+                    <a href="articles/polymer-wetting-dynamics.html" class="card-timeline__card" style="display: block; text-decoration: none; color: inherit;">
+                        <span class="research-card__date-badge">June - Sept 2024</span>
+                        <div class="publication-card__type">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                            </svg>
+                            <span>Master's Thesis</span>
+                        </div>
+                        <h3 class="publication-card__title">Polymer Wetting Dynamics on Nano-textured Surfaces</h3>
+                        <p class="publication-card__authors">Alexandre De Cuyper</p>
+                        <p class="publication-card__venue">Laboratoire Léon Brillouin, CEA Saclay</p>
+                        <p class="publication-card__description">
                             Investigated polymer wetting behavior on nano-structured surfaces using advanced scattering
                             techniques (SAXS/SANS) and atomic force microscopy. Developed computational models in Python
                             to analyze surface interactions and polymer dynamics at the nanoscale.
                         </p>
-                        <div class="timeline__tags">
+                        <div class="publication-card__tags">
                             <span class="tag">SAXS/SANS</span>
                             <span class="tag">AFM</span>
                             <span class="tag">Polymer Physics</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Data Analysis</span>
+                            <span class="tag">Computational Modeling</span>
                         </div>
-                    </div>
+                    </a>
                 </div>
-                <div class="timeline__item">
-                    <div class="timeline__marker"></div>
-                    <div class="timeline__content">
-                        <span class="timeline__date">2019</span>
-                        <h3 class="timeline__title">Optical Nano-antennas</h3>
-                        <p class="timeline__location">Institut de nanoscience de Paris, Sorbonne Université</p>
-                        <p class="timeline__description">
+
+                <!-- FAN Training - Summer 2024 -->
+                <div class="card-timeline__item">
+                    <div class="card-timeline__marker"></div>
+                    <a href="articles/fan-2024-experience.html" class="card-timeline__card" style="display: block; text-decoration: none; color: inherit;">
+                        <span class="research-card__date-badge">Summer 2024</span>
+                        <div class="publication-card__type">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                            <span>Training</span>
+                        </div>
+                        <h3 class="publication-card__title">Formation Annuelle à la Neutronique</h3>
+                        <p class="publication-card__authors">Alexandre De Cuyper</p>
+                        <p class="publication-card__venue">Institut Laue-Langevin, Grenoble</p>
+                        <p class="publication-card__description">
+                            Completed intensive 3-day practical training organized by 2FDN in collaboration with ILL.
+                            Followed the soft matter & biophysics track with courses on SANS and time-of-flight/backscattering
+                            spectroscopy, followed by hands-on practicals and data analysis at Europe's leading neutron facility.
+                        </p>
+                        <div class="publication-card__tags">
+                            <span class="tag">SANS</span>
+                            <span class="tag">Spectroscopy</span>
+                            <span class="tag">Soft Matter</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Optical Nano-antennas - 2019 -->
+                <div class="card-timeline__item">
+                    <div class="card-timeline__marker"></div>
+                    <div class="card-timeline__card">
+                        <span class="research-card__date-badge">2019</span>
+                        <div class="publication-card__type">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            <span>L3 Internship</span>
+                        </div>
+                        <h3 class="publication-card__title">Optical Nano-antennas</h3>
+                        <p class="publication-card__authors">Alexandre De Cuyper</p>
+                        <p class="publication-card__venue">Institut de nanoscience de Paris, Sorbonne Université</p>
+                        <p class="publication-card__description">
                             Studied light-matter interactions at the nanoscale during L3 internship. Applied electromagnetic
                             scattering theory and developed computational simulations to model optical nano-antenna behavior.
                         </p>
-                        <div class="timeline__tags">
+                        <div class="publication-card__tags">
                             <span class="tag">Nanophotonics</span>
                             <span class="tag">Optical Physics</span>
                             <span class="tag">Simulation</span>
@@ -269,101 +321,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="timeline__item">
-                    <div class="timeline__marker"></div>
-                    <div class="timeline__content">
-                        <span class="timeline__date">Summer 2024</span>
-                        <h3 class="timeline__title">Formation Annuelle à la Neutronique</h3>
-                        <p class="timeline__location">Institut Laue-Langevin, Grenoble</p>
-                        <p class="timeline__description">
-                            Completed intensive 3-day practical training organized by 2FDN in collaboration with ILL.
-                            Followed the soft matter & biophysics track with courses on SANS and time-of-flight/backscattering
-                            spectroscopy, followed by hands-on practicals and data analysis at Europe's leading neutron facility.
-                        </p>
-                        <div class="timeline__tags">
-                            <span class="tag">SANS</span>
-                            <span class="tag">Spectroscopy</span>
-                            <span class="tag">Soft Matter</span>
+
+                <!-- Future/Placeholder -->
+                <div class="card-timeline__item">
+                    <div class="card-timeline__marker" style="background: var(--text-tertiary);"></div>
+                    <div class="card-timeline__card" style="border-style: dashed; opacity: 0.8;">
+                        <span class="research-card__date-badge" style="background: var(--text-tertiary); opacity: 0.8;">Future</span>
+                        <div class="publication-card__type">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 5v14M5 12h14"/>
+                            </svg>
+                            <span>Future Work</span>
                         </div>
+                        <h3 class="publication-card__title">Upcoming Publications & Projects</h3>
+                        <p class="publication-card__description">
+                            Currently preparing manuscripts from recent research work on polymer wetting dynamics
+                            and nano-textured surface interactions. Additional projects and publications forthcoming.
+                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Publications Section -->
-    <section class="section publications" id="publications">
-        <div class="container">
-            <h2 class="section__title">Publications & Presentations</h2>
-            <p class="section__subtitle">Research outputs and academic contributions</p>
-
-            <div class="publications__grid">
-                <!-- Master's Thesis -->
-                <a href="articles/polymer-wetting-dynamics.html" class="publication-card publication-card--link">
-                    <div class="publication-card__type">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                        </svg>
-                        <span>Master's Thesis</span>
-                    </div>
-                    <h3 class="publication-card__title">Polymer Wetting Dynamics on Nano-textured Surfaces</h3>
-                    <p class="publication-card__authors">Alexandre De Cuyper</p>
-                    <p class="publication-card__venue">Université Paris Cité • 2024</p>
-                    <p class="publication-card__description">
-                        Investigation of polymer wetting behavior on nano-structured surfaces using SAXS/SANS and AFM,
-                        with computational modeling of surface interactions and polymer dynamics at the nanoscale.
-                    </p>
-                    <div class="publication-card__tags">
-                        <span class="tag">SAXS/SANS</span>
-                        <span class="tag">AFM</span>
-                        <span class="tag">Polymer Physics</span>
-                        <span class="tag">Computational Modeling</span>
-                    </div>
-                </a>
-
-                <!-- Presentations/Posters -->
-                <a href="articles/fan-2024-experience.html" class="publication-card publication-card--link">
-                    <div class="publication-card__type">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                        <span>Training</span>
-                    </div>
-                    <h3 class="publication-card__title">Formation Annuelle à la Neutronique</h3>
-                    <p class="publication-card__authors">Alexandre De Cuyper</p>
-                    <p class="publication-card__venue">Institut Laue-Langevin • Summer 2024</p>
-                    <p class="publication-card__description">
-                        Practical training organized by 2FDN in collaboration with ILL. Soft matter & biophysics track
-                        including theoretical courses, hands-on practicals, and data analysis on SANS and spectroscopy techniques.
-                    </p>
-                    <div class="publication-card__tags">
-                        <span class="tag">SANS</span>
-                        <span class="tag">Spectroscopy</span>
-                        <span class="tag">Soft Matter</span>
-                    </div>
-                </a>
-
-                <!-- Placeholder for future publications -->
-                <article class="publication-card publication-card--placeholder">
-                    <div class="publication-card__type">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 5v14M5 12h14"/>
-                        </svg>
-                        <span>Future Work</span>
-                    </div>
-                    <h3 class="publication-card__title">Upcoming Publications</h3>
-                    <p class="publication-card__description">
-                        Currently preparing manuscripts from recent research work on polymer wetting dynamics
-                        and nano-textured surface interactions. Publications forthcoming.
-                    </p>
-                </article>
-            </div>
-
-            <div class="publications__note">
-                <p>📄 <strong>Looking for my CV?</strong> <a href="#contact" class="link-inline">Get in touch</a> for a detailed academic CV with full publication list.</p>
             </div>
         </div>
     </section>

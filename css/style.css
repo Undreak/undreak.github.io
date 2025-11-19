@@ -457,6 +457,67 @@
     transition: opacity var(--transition-fast);
 }
 
+/* Card Timeline (for unified Research & Publications) */
+.card-timeline {
+    max-width: 900px;
+    margin: var(--space-6) auto 0;
+    position: relative;
+}
+
+.card-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+.card-timeline__item {
+    position: relative;
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-6);
+}
+
+.card-timeline__marker {
+    position: absolute;
+    left: -0.5rem;
+    top: 1.5rem;
+    width: 1rem;
+    height: 1rem;
+    background: var(--accent);
+    border: 3px solid var(--bg-primary);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.card-timeline__card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    transition: all var(--transition-normal);
+}
+
+.card-timeline__card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* Date badge for research cards */
+.research-card__date-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-3);
+}
+
 .link-inline:hover {
     opacity: 0.8;
 }

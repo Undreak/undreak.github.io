@@ -35,7 +35,7 @@ class AnimationManager {
 
         // Observe static cards and timeline items - styles now in CSS
         // Note: project-card elements are dynamically loaded, so they're visible by default
-        const cards = document.querySelectorAll('.skill-category, .timeline__item');
+        const cards = document.querySelectorAll('.skill-category, .timeline__item, .card-timeline__item');
         cards.forEach(card => {
             observer.observe(card);
         });
