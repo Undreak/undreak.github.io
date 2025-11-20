@@ -394,6 +394,11 @@
     flex-wrap: wrap;
 }
 
+/* Add padding when card has code badge to prevent overlap */
+.card-timeline__card--has-code-badge .publication-card__header {
+    padding-right: 140px;
+}
+
 .publication-card__type {
     display: flex;
     align-items: center;
