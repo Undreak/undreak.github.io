@@ -384,11 +384,28 @@
     color: var(--accent);
 }
 
+/* Publication card header (date + type on same line) */
+.publication-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+    flex-wrap: wrap;
+}
+
+/* Left side of header (date + code badge) */
+.publication-card__header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
 .publication-card__type {
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    margin-bottom: var(--space-3);
     color: var(--accent);
     font-size: var(--text-sm);
     font-weight: var(--weight-semibold);
@@ -528,7 +545,6 @@ a.card-timeline__card:hover {
     font-weight: var(--weight-semibold);
     padding: var(--space-1) var(--space-3);
     border-radius: var(--radius-sm);
-    margin-bottom: var(--space-3);
 }
 
 /* Placeholder/future work styling */
