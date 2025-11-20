@@ -394,9 +394,12 @@
     flex-wrap: wrap;
 }
 
-/* Add padding when card has code badge to prevent overlap */
-.card-timeline__card--has-code-badge .publication-card__header {
-    padding-right: 140px;
+/* Left side of header (date + code badge) */
+.publication-card__header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
 }
 
 .publication-card__type {

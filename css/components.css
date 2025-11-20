@@ -449,10 +449,6 @@
 }
 
 /* Code Badge (for thesis LLB link) */
-.card-timeline__card--has-code-badge {
-    position: relative;
-}
-
 .card-timeline__card--clickable {
     cursor: pointer;
 }
@@ -482,11 +478,4 @@
 .code-badge svg {
     width: 14px;
     height: 14px;
-}
-
-.code-badge--top-right {
-    position: absolute;
-    top: var(--space-3);
-    right: var(--space-3);
-    z-index: 10;
 }
