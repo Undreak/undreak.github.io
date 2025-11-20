@@ -357,12 +357,37 @@ class ExpandableCards {
     }
 }
 
+// Clickable Cards Handler (for cards with nested links)
+class ClickableCards {
+    constructor() {
+        this.cards = document.querySelectorAll('.card-timeline__card--clickable[data-href]');
+        this.init();
+    }
+
+    init() {
+        this.cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Don't navigate if clicking on a link or button
+                if (e.target.closest('a') || e.target.closest('button')) {
+                    return;
+                }
+
+                const href = card.dataset.href;
+                if (href) {
+                    window.location.href = href;
+                }
+            });
+        });
+    }
+}
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new NavigationManager();
     new FormManager();
     new LazyLoader();
     new ExpandableCards();
+    new ClickableCards();
 
     // Add loading complete class to body
     document.body.classList.add('loaded');

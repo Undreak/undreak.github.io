@@ -453,6 +453,10 @@
     position: relative;
 }
 
+.card-timeline__card--clickable {
+    cursor: pointer;
+}
+
 .code-badge {
     display: inline-flex;
     align-items: center;
