@@ -1,0 +1,119 @@
+/* Hero Graphic Animations - Soft Matter Physics Visualization */
+
+/* Main floating animation (already exists, keep it) */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Subtle pulse for scattering rings */
+@keyframes scatterPulse {
+    0%, 100% {
+        opacity: 0.15;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.25;
+        transform: scale(1.02);
+    }
+}
+
+/* Brownian motion for particles */
+@keyframes brownian1 {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(3px, -2px); }
+    50% { transform: translate(-2px, 3px); }
+    75% { transform: translate(2px, 1px); }
+}
+
+@keyframes brownian2 {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-2px, 3px); }
+    50% { transform: translate(3px, -1px); }
+    75% { transform: translate(-1px, -2px); }
+}
+
+@keyframes brownian3 {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(2px, 2px); }
+    50% { transform: translate(-3px, -2px); }
+    75% { transform: translate(1px, 3px); }
+}
+
+/* Gentle polymer chain sway */
+@keyframes polymerSway {
+    0%, 100% { transform: rotate(0deg) translateX(0); }
+    50% { transform: rotate(2deg) translateX(2px); }
+}
+
+/* Droplet subtle breathing */
+@keyframes dropletBreath {
+    0%, 100% { transform: scaleX(1); }
+    50% { transform: scaleX(1.01); }
+}
+
+/* Precursor film spreading */
+@keyframes filmSpread {
+    0%, 100% { transform: scaleX(1); opacity: 0.8; }
+    50% { transform: scaleX(1.02); opacity: 1; }
+}
+
+/* Sample point glow */
+@keyframes sampleGlow {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.1); }
+}
+
+/* Apply animations to hero graphic elements */
+.hero__graphic {
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero__graphic .scattering-pattern {
+    animation: scatterPulse 4s ease-in-out infinite;
+    transform-origin: 200px 160px;
+}
+
+.hero__graphic .particle-1 { animation: brownian1 3s ease-in-out infinite; }
+.hero__graphic .particle-2 { animation: brownian2 3.5s ease-in-out infinite; }
+.hero__graphic .particle-3 { animation: brownian3 4s ease-in-out infinite; }
+.hero__graphic .particle-4 { animation: brownian1 3.2s ease-in-out infinite 0.5s; }
+.hero__graphic .particle-5 { animation: brownian2 3.8s ease-in-out infinite 0.3s; }
+.hero__graphic .particle-6 { animation: brownian3 3.3s ease-in-out infinite 0.7s; }
+
+.hero__graphic .polymer-chain {
+    animation: polymerSway 5s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.hero__graphic .droplet-body {
+    animation: dropletBreath 4s ease-in-out infinite;
+    transform-origin: 200px 296px;
+}
+
+.hero__graphic .precursor-film {
+    animation: filmSpread 5s ease-in-out infinite;
+    transform-origin: 200px 298px;
+}
+
+.hero__graphic .sample-point {
+    animation: sampleGlow 3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .hero__graphic,
+    .hero__graphic .scattering-pattern,
+    .hero__graphic .particle,
+    .hero__graphic .polymer-chain,
+    .hero__graphic .droplet-body,
+    .hero__graphic .precursor-film,
+    .hero__graphic .sample-point {
+        animation: none;
+    }
+}
