@@ -352,7 +352,7 @@ class ExpandableCards {
         // Update button text
         const textElement = toggle.querySelector('.expandable-toggle__text');
         if (textElement) {
-            textElement.textContent = isExpanded ? 'View Projects (3)' : 'Hide Projects';
+            textElement.textContent = isExpanded ? 'View Projects (5)' : 'Hide Projects';
         }
     }
 }
