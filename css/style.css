@@ -486,7 +486,7 @@ body::before {
     font-size: var(--text-base);
     line-height: 1.6;
     color: var(--text-secondary);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
 }
 
 .publication-card__tags {
@@ -535,18 +535,18 @@ body::before {
 
 .card-timeline__item {
     position: relative;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
     padding-left: var(--space-6);
     transition: transform var(--transition-base);
 }
 
 /* Diagonal flow - subtle zigzag */
 .card-timeline__item:nth-child(odd) {
-    transform: translateX(1rem);
+    transform: translateX(2rem) rotate(0.5deg);
 }
 
 .card-timeline__item:nth-child(even) {
-    transform: translateX(-0.5rem);
+    transform: translateX(-2rem) rotate(-0.5deg);
 }
 
 .card-timeline__marker {
