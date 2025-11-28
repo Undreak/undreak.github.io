@@ -1,5 +1,62 @@
 /* Hero Graphic Animations - Soft Matter Physics Visualization */
 
+/* ============================
+   Orchestrated Hero Entry Animations
+   ============================ */
+
+/* Fade in with upward motion */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade in with scale */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Apply staggered entrance animations to hero elements */
+.hero__greeting {
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.hero__name {
+    animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.hero__title {
+    animation: fadeInUp 0.6s ease 0.6s both;
+}
+
+.hero__tagline {
+    animation: fadeInUp 0.6s ease 0.8s both;
+}
+
+.hero__skills {
+    animation: fadeInUp 0.8s ease 1s both;
+}
+
+.hero__cta {
+    animation: fadeInUp 0.6s ease 1.2s both;
+}
+
+.hero__visual {
+    animation: fadeInScale 1s ease 0.6s both;
+}
+
 /* Main floating animation (already exists, keep it) */
 @keyframes float {
     0%, 100% {
@@ -107,6 +164,13 @@
 
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+    .hero__greeting,
+    .hero__name,
+    .hero__title,
+    .hero__tagline,
+    .hero__skills,
+    .hero__cta,
+    .hero__visual,
     .hero__graphic,
     .hero__graphic .scattering-pattern,
     .hero__graphic .particle,
@@ -114,6 +178,8 @@
     .hero__graphic .droplet-body,
     .hero__graphic .precursor-film,
     .hero__graphic .sample-point {
-        animation: none;
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
