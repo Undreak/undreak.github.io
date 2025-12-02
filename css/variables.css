@@ -10,7 +10,7 @@
 
     /* Physics-inspired palette: neutron scattering intensity map */
     --accent-primary: #E63946;      /* High intensity (red) */
-    --accent-secondary: #457B9D;    /* Medium intensity (blue) */
+    --accent-secondary: #5B9FCC;    /* Medium intensity (blue) */
     --accent-tertiary: #F1A208;     /* Highlight (amber) */
 
     /* Legacy accent (mapped to primary for compatibility) */
@@ -99,8 +99,8 @@
 
     /* Physics-inspired palette: adjusted for dark theme */
     --accent-primary: #FF4D5A;      /* Brighter red for dark bg */
-    --accent-secondary: #5B9FCC;    /* Brighter blue for dark bg */
-    --accent-tertiary: #FFB830;     /* Brighter amber for dark bg */
+    --accent-secondary: #457B9D;    /* Brighter blue for dark bg */
+    --accent-tertiary: rgba(255, 184, 48, 0.4);     /* Brighter amber for dark bg */
 
     /* Legacy accent */
     --accent: var(--accent-primary);

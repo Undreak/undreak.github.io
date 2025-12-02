@@ -668,6 +668,484 @@ a.card-timeline__card {
 .link-inline:hover {
     opacity: 0.8;
 }
+/* ============================
+   HERO THESIS CARD
+   Uses .thesis-bg-image element instead of ::before
+   ============================ */
+
+.card-timeline__card--thesis {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    background: var(--bg-elevated);
+    padding: var(--space-5);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Background image element */
+.thesis-bg-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 95%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.thesis-bg-image img {
+    width: 100%;
+    height: 110%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.35;
+    mask-image: linear-gradient(to right, transparent 10%, grey 99%);
+    -webkit-mask-image: -webkit-linear-gradient(to right, transparent 10%, grey 99%);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    blur(1px)
+}
+
+.card-timeline__card--thesis:hover .thesis-bg-image img {
+    opacity: 0.6;
+    transform: scale(1.03);
+}
+
+.card-timeline__card--thesis:hover {
+    transform: translateY(-4px);
+}
+
+
+/* Accent bar on left */
+.card-timeline__card--thesis::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(
+            to bottom,
+            #E07850 0%,
+            var(--accent) 50%,
+            #C45A3A 100%
+    );
+    border-radius: 4px 0 0 4px;
+    z-index: 2;
+}
+
+/* Content needs to sit above the background */
+.card-timeline__card--thesis .publication-card__header,
+.card-timeline__card--thesis .publication-card__title,
+.card-timeline__card--thesis .publication-card__venue,
+.card-timeline__card--thesis .publication-card__description,
+.card-timeline__card--thesis .publication-card__tags {
+    position: relative;
+    z-index: 1;
+}
+
+/* Larger title for hero */
+.card-timeline__card--thesis .publication-card__title {
+    font-size: var(--text-xl);
+    max-width: 55%;
+}
+
+.card-timeline__card--thesis .publication-card__description {
+    max-width: 50%;
+}
+
+/* Featured badge */
+.thesis-featured-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono), monospace;
+    font-size: 10px;
+    font-weight: var(--weight-semibold);
+    color: #B8860B;
+    background: linear-gradient(135deg, rgba(184, 134, 11, 0.12) 0%, rgba(218, 165, 32, 0.08) 100%);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(184, 134, 11, 0.2);
+}
+
+.thesis-featured-badge svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* Hover state */
+.card-timeline__card--thesis:hover {
+    transform: translateY(-4px);
+    box-shadow:
+            0 5px 25px var(--accent-tertiary),
+            0 0 20px var(--accent-secondary),
+            0 0 0 2px var(--accent-primary);
+
+}
+
+/* Dark theme */
+[data-theme="dark"] .thesis-bg-image img {
+    opacity: 0.4;
+}
+
+[data-theme="dark"] .card-timeline__card--thesis:hover .thesis-bg-image img {
+    opacity: 0.55;
+}
+
+[data-theme="dark"] .card-timeline__card--thesis:hover {
+    transform: translateY(-4px);
+    box-shadow:
+            0 15px 35px var(--accent-tertiary),
+            0 0 30px var(--accent-secondary),
+            0 0 0 2px var(--accent-primary);
+}
+
+[data-theme="dark"] .thesis-featured-badge {
+    color: #DAA520;
+    background: linear-gradient(135deg, rgba(218, 165, 32, 0.15) 0%, rgba(184, 134, 11, 0.1) 100%);
+    border-color: rgba(218, 165, 32, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-timeline__card--thesis {
+        padding: var(--space-4);
+        min-height: auto;
+    }
+
+    .thesis-bg-image {
+        width: 100%;
+        height: 40%;
+        top: auto;
+        bottom: 0;
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    }
+
+    .thesis-bg-image img {
+        mask-image: linear-gradient(to bottom, transparent 0%, black 50%);
+        -webkit-mask-image: -webkit-linear-gradient(to bottom, transparent 0%, black 50%);
+        opacity: 0.35;
+    }
+
+    .card-timeline__card--thesis .publication-card__title,
+    .card-timeline__card--thesis .publication-card__description {
+        max-width: 100%;
+    }
+}
+
+
+
+
+/* ============================
+   ARCHIVAL INTERNSHIP CARD
+   ============================ */
+
+.card-timeline__card--archival {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    position: relative;
+    /* Muted/faded appearance */
+    opacity: 0.85;
+    transition: all 0.3s ease;
+}
+
+/* Subtle "aged" gradient overlay */
+.card-timeline__card--archival::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            135deg,
+            rgba(139, 119, 101, 0.03) 0%,
+            transparent 50%,
+            rgba(139, 119, 101, 0.02) 100%
+    );
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* Compact date badge */
+.card-timeline__card--archival .research-card__date-badge {
+    font-size: 11px;
+    padding: 4px 10px;
+    background: var(--text-tertiary);
+    opacity: 0.8;
+}
+
+/* Smaller title */
+.card-timeline__card--archival .publication-card__title {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-1);
+}
+
+/* Compact venue */
+.card-timeline__card--archival .publication-card__venue {
+    font-size: var(--text-xs);
+    margin-bottom: var(--space-2);
+}
+
+/* Shorter description or hide it */
+.card-timeline__card--archival .publication-card__description {
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-2);
+    /* Optional: truncate to 2 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Smaller tags */
+.card-timeline__card--archival .publication-card__tags {
+    gap: 4px;
+}
+
+.card-timeline__card--archival .tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    opacity: 0.7;
+}
+
+/* Type badge - more muted */
+.card-timeline__card--archival .publication-card__type {
+    color: var(--text-tertiary);
+    font-size: var(--text-xs);
+}
+
+/* Archival indicator */
+.archival-indicator {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-tertiary);
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Hover - brings it back to life slightly */
+.card-timeline__card--archival:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.card-timeline__card--archival:hover .publication-card__title {
+    color: var(--text-primary);
+}
+
+.card-timeline__card--archival:hover .tag {
+    opacity: 1;
+}
+
+/* Dark theme */
+[data-theme="dark"] .card-timeline__card--archival {
+    opacity: 0.75;
+}
+
+[data-theme="dark"] .card-timeline__card--archival:hover {
+    opacity: 0.95;
+}
+
+/* Responsive - stays compact */
+@media (max-width: 768px) {
+    .card-timeline__card--archival {
+        padding: var(--space-2);
+    }
+
+    .card-timeline__card--archival .publication-card__description {
+        -webkit-line-clamp: 2;
+    }
+}
+/* ============================
+   TRAINING CARD - FAN/ILL Style
+   Horizontal layout with institutional badge
+   ============================ */
+
+.card-timeline__card--training {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 0;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    min-height: 200px;
+}
+
+/* Blue accent bar on left edge */
+.card-timeline__card--training::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(
+            to bottom,
+            #1A8BB5 0%,
+            var(--accent-secondary) 50%,
+            #0D6E8F 100%
+    );
+    border-radius: 4px 0 0 4px;
+    z-index: 2;
+}
+
+/* Logo container - left side */
+.training-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    background: linear-gradient(
+            135deg,
+            rgba(26, 139, 181, 0.06) 0%,
+            rgba(69, 123, 157, 0.03) 100%
+    );
+    border-right: 1px solid var(--border);
+    position: relative;
+}
+
+.training-logo img {
+    width: 80px;
+    height: auto;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+    /* Optional: apply your brand color as filter */
+    /* filter: sepia(20%) saturate(200%) hue-rotate(160deg); */
+}
+
+.card-timeline__card--training:hover .training-logo img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Subtle pattern overlay on logo area */
+.training-logo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+            radial-gradient(circle at 50% 50%, transparent 30%, rgba(26, 139, 181, 0.03) 100%);
+    pointer-events: none;
+}
+
+/* Content area - right side */
+.training-content {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Override default header styles inside training card */
+.card-timeline__card--training .publication-card__header {
+    margin-bottom: var(--space-2);
+}
+
+.card-timeline__card--training .publication-card__title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-1);
+}
+
+.card-timeline__card--training .publication-card__venue {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-2);
+}
+
+.card-timeline__card--training .publication-card__description {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-3);
+    /* Limit to 3 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-timeline__card--training .publication-card__tags {
+    gap: 6px;
+}
+
+.card-timeline__card--training .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+}
+
+/* Training type badge - blue tinted */
+.card-timeline__card--training .publication-card__type {
+    color: var(--accent-secondary);
+}
+
+/* Hover state */
+.card-timeline__card--training:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-secondary);
+    box-shadow:
+            0 12px 32px rgba(26, 139, 181, 0.12),
+            0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark theme */
+[data-theme="dark"] .training-logo {
+    background: linear-gradient(
+            135deg,
+            rgba(26, 139, 181, 0.1) 0%,
+            rgba(69, 123, 157, 0.05) 100%
+    );
+}
+
+[data-theme="dark"] .training-logo img {
+    opacity: 0.75;
+    /* Brighten logo in dark mode */
+    filter: brightness(1.1);
+}
+
+[data-theme="dark"] .card-timeline__card--training:hover .training-logo img {
+    opacity: 0.9;
+}
+
+[data-theme="dark"] .card-timeline__card--training:hover {
+    box-shadow:
+            0 16px 40px rgba(0, 0, 0, 0.3),
+            0 0 30px rgba(26, 139, 181, 0.1);
+}
+
+/* Responsive - stack vertically on mobile */
+@media (max-width: 640px) {
+    .card-timeline__card--training {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .training-logo {
+        padding: var(--space-3);
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .training-logo img {
+        width: 60px;
+    }
+
+    .training-content {
+        padding: var(--space-3);
+    }
+}
 
 /* ============================
    Skills Section
