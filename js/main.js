@@ -312,48 +312,56 @@ class LazyLoader {
     }
 }
 
-// Expandable Cards Manager
-class ExpandableCards {
+// Lab Papers Stack Manager
+class LabPapersStack {
     constructor() {
-        this.expandableCards = document.querySelectorAll('[data-expandable]');
+        this.stacks = document.querySelectorAll('.lab-papers-stack');
         this.init();
     }
 
     init() {
-        this.expandableCards.forEach(card => {
-            const toggle = card.querySelector('.expandable-toggle');
-            const content = card.querySelector('.expandable-content');
+        this.stacks.forEach(stack => {
+            const label = stack.querySelector('.lab-papers-stack__label');
+            const papers = stack.querySelectorAll('.lab-paper');
 
-            if (!toggle || !content) return;
+            if (!label) return;
 
-            // Add click handler
-            toggle.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent card click event
-                this.toggleCard(toggle, content);
+            // Label click expands the full grid
+            label.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.expandStack(stack);
             });
 
-            // Add keyboard support
-            toggle.addEventListener('keydown', (e) => {
+            // Keyboard support for label
+            label.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    this.toggleCard(toggle, content);
+                    this.expandStack(stack);
                 }
             });
+
+            // Prevent papers from triggering expansion
+            papers.forEach(paper => {
+                paper.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    // Papers are just for viewing on hover, not clicking
+                });
+            });
+
+            // Make label focusable
+            label.setAttribute('tabindex', '0');
+            label.setAttribute('role', 'button');
+            label.setAttribute('aria-label', 'Click to view all 5 research projects');
         });
     }
 
-    toggleCard(toggle, content) {
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+    expandStack(stack) {
+        stack.setAttribute('data-expanded', 'true');
 
-        // Toggle states
-        toggle.setAttribute('aria-expanded', !isExpanded);
-        content.setAttribute('aria-hidden', isExpanded);
-
-        // Update button text
-        const textElement = toggle.querySelector('.expandable-toggle__text');
-        if (textElement) {
-            textElement.textContent = isExpanded ? 'View Projects (5)' : 'Hide Projects';
-        }
+        // Smooth scroll animation
+        setTimeout(() => {
+            stack.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
     }
 }
 
@@ -386,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new NavigationManager();
     new FormManager();
     new LazyLoader();
-    new ExpandableCards();
+    new LabPapersStack();
     new ClickableCards();
 
     // Add loading complete class to body

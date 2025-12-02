@@ -1,0 +1,572 @@
+/* ============================
+   Bento Grid Skills Section
+   ============================ */
+
+.skills__bento-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+}
+
+/* Grid Layout using areas for precise control */
+.bento-box--experimental {
+    grid-column: span 3;
+    grid-row: span 2;
+}
+
+.bento-box--programming {
+    grid-column: span 3;
+    grid-row: span 2;
+}
+
+.bento-box--theoretical {
+    grid-column: span 4;
+    grid-row: span 1;
+}
+
+.bento-box--languages {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.bento-box--tools-unified {
+    grid-column: span 6;
+    grid-row: span 1;
+}
+
+/* Base Bento Box Styling */
+.bento-box {
+    position: relative;
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    transition: all var(--transition-base);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Subtle background patterns per category */
+.bento-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity var(--transition-base);
+}
+
+/* Dark theme: slightly more visible patterns */
+[data-theme="dark"] .bento-box::before {
+    opacity: 0.05;
+}
+
+/* Scattering pattern for experimental techniques - SAXS/SANS inspired concentric rings */
+.bento-box--experimental::before {
+    background-image:
+        /* Central beam stop */
+        radial-gradient(circle at 75% 25%, var(--accent-secondary) 0, var(--accent-secondary) 3px, transparent 3px),
+        /* Inner ring - high q */
+        repeating-radial-gradient(circle at 75% 25%,
+            transparent 0,
+            transparent 28px,
+            var(--accent-secondary) 28px,
+            var(--accent-secondary) 30px,
+            transparent 30px,
+            transparent 32px
+        ),
+        /* Middle ring */
+        repeating-radial-gradient(circle at 75% 25%,
+            transparent 0,
+            transparent 58px,
+            var(--accent-secondary) 58px,
+            var(--accent-secondary) 60px,
+            transparent 60px,
+            transparent 64px
+        ),
+        /* Outer ring - low q */
+        repeating-radial-gradient(circle at 75% 25%,
+            transparent 0,
+            transparent 88px,
+            var(--accent-secondary) 88px,
+            var(--accent-secondary) 90px,
+            transparent 90px,
+            transparent 96px
+        ),
+        /* Faint background glow */
+        radial-gradient(circle at 75% 25%, rgba(91, 159, 204, 0.03) 0%, transparent 70%);
+    opacity: 0.06;
+}
+
+[data-theme="dark"] .bento-box--experimental::before {
+    opacity: 0.09;
+}
+
+/* Grid pattern for programming - terminal/code editor inspired */
+.bento-box--programming::before {
+    background-image:
+        /* Horizontal lines like code lines */
+        repeating-linear-gradient(0deg,
+            transparent 0,
+            transparent 18px,
+            var(--accent-primary) 18px,
+            var(--accent-primary) 19px,
+            transparent 19px,
+            transparent 38px
+        ),
+        /* Vertical columns like text alignment */
+        repeating-linear-gradient(90deg,
+            transparent 0,
+            transparent 8px,
+            var(--accent-primary) 8px,
+            var(--accent-primary) 8.5px,
+            transparent 8.5px,
+            transparent 80px
+        ),
+        /* Cursor glow */
+        radial-gradient(circle at 15% 15%, rgba(230, 57, 70, 0.04) 0%, transparent 40%);
+    opacity: 0.035;
+}
+
+[data-theme="dark"] .bento-box--programming::before {
+    opacity: 0.055;
+}
+
+/* Wave interference pattern for theoretical - quantum/diffraction inspired */
+.bento-box--theoretical::before {
+    background-image:
+        /* Wave source 1 */
+        repeating-radial-gradient(circle at 20% 50%,
+            transparent 0,
+            transparent 14px,
+            var(--accent-tertiary) 14px,
+            var(--accent-tertiary) 15px,
+            transparent 15px,
+            transparent 28px
+        ),
+        /* Wave source 2 - creates interference */
+        repeating-radial-gradient(circle at 80% 50%,
+            transparent 0,
+            transparent 14px,
+            var(--accent-secondary) 14px,
+            var(--accent-secondary) 15px,
+            transparent 15px,
+            transparent 28px
+        ),
+        /* Central intensity maximum */
+        radial-gradient(ellipse at 50% 50%, rgba(241, 162, 8, 0.025) 0%, transparent 35%),
+        /* Wave amplitude envelope */
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(69, 123, 157, 0.015) 50%,
+            transparent 100%
+        );
+    opacity: 0.028;
+}
+
+[data-theme="dark"] .bento-box--theoretical::before {
+    opacity: 0.045;
+}
+
+/* Minimal dots for tools and languages */
+.bento-box--tools-unified::before,
+.bento-box--languages::before {
+    background-image: radial-gradient(circle, var(--text-tertiary) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.02;
+}
+
+/* Hover Effects - differentiated by size */
+.bento-box {
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bento-box:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-secondary);
+}
+
+.bento-box::before {
+    transition: opacity 0.35s ease-out;
+}
+
+.bento-box:hover::before {
+    opacity: 0.08;
+}
+
+[data-theme="dark"] .bento-box:hover::before {
+    opacity: 0.12;
+}
+
+/* Large boxes: more dramatic hover (core competencies) */
+.bento-box--experimental:hover,
+.bento-box--programming:hover,
+.bento-box--theoretical:hover {
+    box-shadow:
+        0 20px 48px rgba(69, 123, 157, 0.24),
+        0 8px 16px rgba(69, 123, 157, 0.12),
+        0 0 0 2px var(--accent-secondary),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-8px) scale(1.015);
+}
+
+/* Medium boxes: moderate hover */
+.bento-box--languages:hover,
+.bento-box--tools-unified:hover {
+    box-shadow:
+        0 16px 36px rgba(69, 123, 157, 0.18),
+        0 6px 12px rgba(69, 123, 157, 0.1),
+        0 0 0 1px var(--accent-secondary);
+    transform: translateY(-5px) scale(1.01);
+}
+
+/* Dark theme hover effects */
+[data-theme="dark"] .bento-box--experimental:hover,
+[data-theme="dark"] .bento-box--programming:hover,
+[data-theme="dark"] .bento-box--theoretical:hover {
+    box-shadow:
+        0 24px 56px rgba(0, 0, 0, 0.6),
+        0 10px 20px rgba(0, 0, 0, 0.4),
+        0 0 48px rgba(91, 159, 204, 0.3),
+        0 0 0 2px var(--accent-secondary),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .bento-box--languages:hover,
+[data-theme="dark"] .bento-box--tools-unified:hover {
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.5),
+        0 8px 16px rgba(0, 0, 0, 0.35),
+        0 0 36px rgba(91, 159, 204, 0.25),
+        0 0 0 1px var(--accent-secondary);
+}
+
+/* Content within boxes */
+.bento-box__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.bento-box__header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.bento-box__icon {
+    width: 40px;
+    height: 40px;
+    color: var(--accent-secondary);
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+}
+
+/* Large boxes get bigger icons */
+.bento-box--experimental .bento-box__icon,
+.bento-box--programming .bento-box__icon,
+.bento-box--theoretical .bento-box__icon {
+    width: 48px;
+    height: 48px;
+}
+
+.bento-box:hover .bento-box__icon {
+    transform: scale(1.08);
+}
+
+.bento-box__title-wrapper {
+    flex: 1;
+}
+
+.bento-box__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Larger titles for large boxes */
+.bento-box--experimental .bento-box__title,
+.bento-box--programming .bento-box__title,
+.bento-box--theoretical .bento-box__title {
+    font-size: var(--text-xl);
+}
+
+.bento-box__subtitle {
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+    margin-top: var(--space-1);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Skills list within boxes */
+.bento-box__skills {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    flex: 1;
+}
+
+.bento-skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast);
+    font-size: var(--text-base);
+}
+
+.bento-skill-item:hover {
+    background-color: var(--accent-light);
+}
+
+.bento-skill-item__name {
+    color: var(--text-primary);
+}
+
+.bento-skill-item__level {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+/* Unified tools box - grid layout */
+.bento-box--tools-unified .bento-box__skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--space-2);
+}
+
+/* Badge style for tools */
+.bento-tool-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2) var(--space-3);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-elevated) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-align: center;
+    min-height: 42px;
+    font-family: var(--font-mono);
+    font-weight: var(--weight-medium);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+}
+
+/* Distinctive accent for each badge type */
+.bento-tool-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent-secondary), var(--accent-primary));
+    opacity: 0.6;
+    transition: all 0.3s ease-out;
+}
+
+/* Shimmer effect on hover */
+.bento-tool-badge::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.03) 45%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.03) 55%,
+        transparent 100%);
+    opacity: 0;
+    transform: rotate(45deg);
+    transition: opacity 0.3s ease-out;
+}
+
+.bento-tool-badge:hover {
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--bg-elevated) 100%);
+    border-color: var(--accent-secondary);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        0 6px 16px rgba(69, 123, 157, 0.2),
+        0 2px 4px rgba(69, 123, 157, 0.1);
+}
+
+.bento-tool-badge:hover::before {
+    width: 100%;
+    opacity: 0.1;
+}
+
+.bento-tool-badge:hover::after {
+    opacity: 1;
+}
+
+/* Dark theme badge enhancement */
+[data-theme="dark"] .bento-tool-badge {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+[data-theme="dark"] .bento-tool-badge:hover {
+    box-shadow:
+        0 8px 20px rgba(91, 159, 204, 0.3),
+        0 2px 6px rgba(91, 159, 204, 0.15);
+}
+
+/* Accent indicators - small colored bars */
+.bento-box__accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 40px;
+    border-radius: 0 0 var(--radius-sm) 0;
+    opacity: 0.6;
+    transition: all var(--transition-base);
+}
+
+.bento-box:hover .bento-box__accent {
+    height: 60px;
+    opacity: 1;
+}
+
+.bento-box--experimental .bento-box__accent {
+    background: linear-gradient(180deg, var(--accent-secondary), var(--accent-primary));
+}
+
+.bento-box--programming .bento-box__accent {
+    background: linear-gradient(180deg, var(--accent-primary), var(--accent-tertiary));
+}
+
+.bento-box--languages .bento-box__accent {
+    background: var(--accent-tertiary);
+}
+
+.bento-box--theoretical .bento-box__accent {
+    background: linear-gradient(180deg, var(--accent-tertiary), var(--accent-secondary));
+}
+
+.bento-box--tools-unified .bento-box__accent {
+    background: var(--accent-secondary);
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+    .skills__bento-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .bento-box--experimental {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .bento-box--programming {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .bento-box--theoretical {
+        grid-column: span 3;
+        grid-row: span 1;
+    }
+
+    .bento-box--languages {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .bento-box--tools-unified {
+        grid-column: span 4;
+        grid-row: span 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .skills__bento-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+
+    .bento-box--experimental,
+    .bento-box--programming,
+    .bento-box--theoretical,
+    .bento-box--languages,
+    .bento-box--tools-unified {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    /* Adjust icon sizes on mobile */
+    .bento-box--experimental .bento-box__icon,
+    .bento-box--programming .bento-box__icon,
+    .bento-box--theoretical .bento-box__icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .bento-box__title {
+        font-size: var(--text-base);
+    }
+
+    .bento-box--experimental .bento-box__title,
+    .bento-box--programming .bento-box__title,
+    .bento-box--theoretical .bento-box__title {
+        font-size: var(--text-lg);
+    }
+
+    .bento-box--tools-unified .bento-box__skills {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Animation on scroll (optional - requires JS) */
+@keyframes bento-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bento-box {
+    animation: bento-fade-in 0.6s ease-out backwards;
+}
+
+/* Stagger animation delays */
+.bento-box--experimental { animation-delay: 0.1s; }
+.bento-box--programming { animation-delay: 0.15s; }
+.bento-box--theoretical { animation-delay: 0.2s; }
+.bento-box--languages { animation-delay: 0.25s; }
+.bento-box--tools-unified { animation-delay: 0.3s; }
+
+/* Disable animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .bento-box {
+        animation: none;
+    }
+}
