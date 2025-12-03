@@ -26,67 +26,71 @@
     <link rel="stylesheet" href="../css/lightbox.css">
     <link rel="stylesheet" href="../css/toc.css">
 
+    <!-- MathJax for equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav" role="navigation">
-        <div class="nav__container">
-            <a href="../index.html" class="nav__logo" aria-label="Home">ADC</a>
-            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
-                <span class="nav__toggle-line"></span>
-                <span class="nav__toggle-line"></span>
-                <span class="nav__toggle-line"></span>
+<!-- Navigation -->
+<nav class="nav" role="navigation">
+    <div class="nav__container">
+        <a href="../index.html" class="nav__logo" aria-label="Home">ADC</a>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+        </button>
+        <div class="nav__menu">
+            <a href="../index.html#about" class="nav__link">About</a>
+            <a href="../index.html#research" class="nav__link">Research</a>
+            <a href="../index.html#publications" class="nav__link">Publications</a>
+            <a href="../index.html#skills" class="nav__link">Skills</a>
+            <a href="../index.html#projects" class="nav__link">Projects</a>
+            <a href="../index.html#contact" class="nav__link">Contact</a>
+            <button class="theme-toggle" aria-label="Toggle theme">
+                <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
             </button>
-            <div class="nav__menu">
-                <a href="../index.html#about" class="nav__link">About</a>
-                <a href="../index.html#research" class="nav__link">Research</a>
-                <a href="../index.html#publications" class="nav__link">Publications</a>
-                <a href="../index.html#skills" class="nav__link">Skills</a>
-                <a href="../index.html#projects" class="nav__link">Projects</a>
-                <a href="../index.html#contact" class="nav__link">Contact</a>
-                <button class="theme-toggle" aria-label="Toggle theme">
-                    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"/>
-                        <line x1="12" y1="1" x2="12" y2="3"/>
-                        <line x1="12" y1="21" x2="12" y2="23"/>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                        <line x1="1" y1="12" x2="3" y2="12"/>
-                        <line x1="21" y1="12" x2="23" y2="12"/>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                    </svg>
-                    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                    </svg>
-                </button>
-            </div>
         </div>
+    </div>
+</nav>
+
+<!-- Article -->
+<article class="article">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+        <a href="../index.html#publications">Publications</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+        <span>Wetting Dynamics</span>
     </nav>
 
-    <!-- Article -->
-    <article class="article">
-        <!-- Breadcrumb -->
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a href="../index.html">Home</a>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-            <a href="../index.html#publications">Publications</a>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-            <span>Wetting Dynamics</span>
-        </nav>
+    <!-- Article Header -->
+    <header class="article__header">
+        <h1 class="article__title">Wetting Dynamics on Nano-Textured Surfaces</h1>
+        <p class="article__subtitle">A systematic study of how liquids spread on precisely engineered surfaces at the nanoscale</p>
 
-        <!-- Article Header -->
-        <header class="article__header">
-            <h1 class="article__title">Wetting Dynamics on Nano-Textured Surfaces</h1>
-            <p class="article__subtitle">A systematic study of how liquids spread on precisely engineered surfaces at the nanoscale</p>
-
-            <div class="article__meta">
+        <div class="article__meta">
                 <span class="article__type-badge">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
@@ -94,317 +98,365 @@
                     </svg>
                     Master's Thesis
                 </span>
-                <span class="article__meta-item">
+            <span class="article__meta-item">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                         <line x1="16" y1="2" x2="16" y2="6"></line>
                         <line x1="8" y1="2" x2="8" y2="6"></line>
                         <line x1="3" y1="10" x2="21" y2="10"></line>
                     </svg>
-                    June - September 2024
+                    June – September 2024
                 </span>
-                <span class="article__meta-item">
+            <span class="article__meta-item">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                         <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                     CEA Saclay
                 </span>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <div class="article__content">
+        <!-- Overview Section -->
+        <section>
+            <h2>Overview</h2>
+            <div class="article__info-box">
+                <p><strong>Duration:</strong> June – September 2024</p>
+                <p><strong>Location:</strong> Laboratoire Léon Brillouin, CEA Saclay</p>
+                <p><strong>Supervisor:</strong> Marion Grzelka</p>
+                <p><strong>Field:</strong> Soft Matter Physics & Surface Science</p>
             </div>
-        </header>
+        </section>
 
-        <!-- Article Content -->
-        <div class="article__content">
-            <!-- Overview Section -->
-            <section>
-                <h2>Overview</h2>
-                <div class="article__info-box">
-                    <p><strong>Duration:</strong> June - September 2024</p>
-                    <p><strong>Location:</strong> Laboratoire Léon Brillouin, CEA Saclay</p>
-                    <p><strong>Role:</strong> Research Intern</p>
-                    <p><strong>Field:</strong> Soft Matter Physics & Surface Science</p>
-                </div>
-            </section>
+        <hr>
 
-            <hr>
-
-            <!-- The Big Picture -->
-            <section>
-                <h2>The Big Picture</h2>
-                <p>
-                    When you spill water on a table, it spreads. Simple, right? But what happens when that surface isn't smooth—when it has tiny bumps and valleys just nanometers tall? This is crucial for everything from waterproof coatings to lab-on-a-chip devices.
-                </p>
-                <p>
-                    While wetting on rough surfaces has been studied for decades, precisely controlling nanoscale defects to study their specific effects remained challenging. This project aimed to answer: <strong>Do the classical laws of wetting still apply when surfaces have controlled nanometer-scale roughness?</strong>
-                </p>
-
-                <div class="article__image">
-                    <img src="../images/articles/polymer-wetting-dynamics/origin.webp" alt="Droplet spreading sequence on nano-textured surface">
-                    <p class="article__image-caption">Microscope image (top view) of a droplet spreading on a smooth surface</p>
-                </div>
-            </section>
-
-            <hr>
-
-            <!-- The Challenge -->
-            <section>
-                <h2>The Challenge</h2>
-                <p>
-                    Traditional wetting theory assumes perfectly smooth surfaces. But real-world surfaces are never perfectly smooth—they have defects, roughness, and texture. The question was:
-                </p>
-
-                <blockquote>
-                    <p>Can we control nano-scale surface features precisely enough to study their effect on wetting dynamics?</p>
-                </blockquote>
-
-                <p>The technical challenges:</p>
-                <ul>
-                    <li>Creating surfaces with <strong>controlled nanoscale defects</strong> (20-80 nm tall)</li>
-                    <li>Measuring liquid spreading at <strong>micrometer scales</strong> in real-time</li>
-                    <li>Analyzing hundreds of spreading events to get statistically meaningful results</li>
-                </ul>
-            </section>
-
-            <hr>
-
-            <!-- My Approach -->
-            <section>
-                <h2>My Approach</h2>
-                <p>
-                    To answer this question, I needed to control three things: create surfaces with precisely defined nanoscale features, characterize them at multiple scales, and measure spreading dynamics across enough droplets for statistical significance. This required combining surface fabrication, microscopy, scattering techniques, and automated image analysis.
-                </p>
-
-                <h3>1. Engineering Nano-Textured Surfaces</h3>
-                <p>
-                    I fabricated <strong>32 different surfaces</strong> using silica nanoparticles. By controlling the sintering temperature (1130-1190°C) and incubation time (0-50 minutes), I could precisely tune:
-                </p>
-                <ul>
-                    <li><strong>Defect height:</strong> 20-80 nanometers (about 1/1000th the width of a human hair)</li>
-                    <li><strong>Defect density:</strong> 0-12 defects per square micrometer</li>
-                </ul>
-
-                <div class="article__image">
-                    <img src="../images/articles/polymer-wetting-dynamics/surface.webp" alt="Surface characterization showing nanoparticle arrangement">
-                    <p class="article__image-caption">Fabrication of nano-textured surface</p>
-                </div>
-
-                <div class="article__image">
-                    <img src="../images/articles/polymer-wetting-dynamics/afm.webp" alt="3D AFM topography of nano-textured surface">
-                    <p class="article__image-caption">3D AFM topography of nano-textured surface with different densities</p>
-                </div>
-
-                <div class="article__image">
-                    <img src="../images/articles/polymer-wetting-dynamics/surfaces_with_droplet.webp" alt="Fabricated nano-textured surfaces with silicone oil droplets">
-                    <p class="article__image-caption">Array of nano-textured surfaces showing droplet spreading experiments in progress</p>
-                </div>
-
-                <h3>2. Characterization with Atomic Force Microscopy (AFM)</h3>
-                <p>
-                    I characterized the surfaces using AFM, creating 3D maps of the nanoscale topography. This wasn't just about measuring roughness—it was about understanding exactly how the surface structure affects spreading.
-                </p>
-                <p><strong>Technical specs:</strong></p>
-                <ul>
-                    <li>Scan area: 10×10 μm²</li>
-                    <li>Resolution: 1024 samples/line</li>
-                    <li>Data extracted: defect height, density, and 3D profiles</li>
-                </ul>
-
-                <div class="article__image">
-                    <img src="../images/articles/polymer-wetting-dynamics/defect_profile.webp" alt="AFM profile of individual defects at different sintering temperatures">
-                    <p class="article__image-caption">Cross-sectional profiles of defects at different sintering temperatures showing evolution from spherical (1130°C) to flattened (1190°C) shapes</p>
-                </div>
-
-                <h3>3. Automated Analysis Pipeline</h3>
-                <p>
-                    The analysis required processing <strong>&gt;300 image sequences</strong>—each one capturing how a droplet spreads over time. Manual analysis wasn't practical at this scale.
-                </p>
-                <p>I built a Python pipeline that:</p>
-                <ul>
-                    <li>Automatically detects interference patterns in the droplet</li>
-                    <li>Extracts droplet radius and film width over time</li>
-                    <li>Fits the data to physical laws</li>
-                </ul>
-                <p><strong>Tools:</strong> NumPy, SciPy, scikit-image</p>
-
-                <div class="article__image">
-                    <img src="../images/articles/polymer-wetting-dynamics/droplet_average.webp" alt="Automated analysis workflow">
-                    <p class="article__image-caption">Droplet image analysis showing interference patterns and extracted features</p>
-                </div>
-
-                <h3>4. Multi-Scale Characterization</h3>
-                <p>
-                    To validate the surface fabrication, I measured nanoparticle diameter using two complementary techniques:
-                </p>
-                <ul>
-                    <li><strong>SAXS</strong> (Small-Angle X-ray Scattering) using a XEUSS 2.0 spectrometer</li>
-                    <li><strong>SANS</strong> (Small-Angle Neutron Scattering) at ILL with the SAM instrument</li>
-                </ul>
-                <p><strong>Result:</strong> 106.2 ± 8.5 nm diameter, consistent with the manufacturer's specification.</p>
-
-                <div class="article__image">
-                    <img src="../images/articles/polymer-wetting-dynamics/saxs_im.webp" alt="SAXS scattering pattern and analysis">
-                    <p class="article__image-caption">Small-Angle X-ray Scattering (SAXS) setup for nanoparticle size determination</p>
-                </div>
-            </section>
-
-            <hr>
-
-            <!-- Key Findings -->
-            <section>
-                <h2>Key Findings</h2>
-
-                <h3>Main Finding</h3>
-                <p><strong>The classical Tanner law still holds on nano-textured surfaces.</strong></p>
-                <p>
-                    Even with controlled nanoscale defects, droplets spread following the Tanner law:
-                </p>
-                <pre><code>radius ∝ time^(1/10)</code></pre>
-                <p>
-                    This result shows that nanoscale roughness—at least at the length scales tested here—doesn't fundamentally alter the spreading mechanism. The classical theory remains robust.
-                </p>
-
-                <h3>Secondary Finding</h3>
-                <p>
-                    The <strong>precursor film</strong>—a thin layer of liquid that spreads ahead of the main droplet—follows a diffusion law:
-                </p>
-                <pre><code>width ∝ √time</code></pre>
-                <p>
-                    This behavior had been predicted theoretically but not systematically measured on surfaces with controlled nanoscale texture. The data confirms the diffusive nature of the precursor film even in the presence of surface defects.
-                </p>
-
-                <div class="article__image">
-                    <img src="../images/articles/polymer-wetting-dynamics/master_curve.webp" alt="Experimental validation of Tanner law on nano-textured surfaces">
-                    <p class="article__image-caption">Master curve showing power-law scaling of droplet spreading dynamics</p>
-                </div>
-            </section>
-
-            <hr>
-
-            <!-- Scientific Significance -->
-            <section>
-                <h2>Scientific Significance</h2>
-
-                <h3>What This Adds to the Field</h3>
-                <p>
-                    This work provides systematic experimental validation that classical wetting theory—specifically the Tanner law—remains applicable on surfaces with controlled nanoscale roughness. Previous work lacked this combination of precise control over nanoscale features and statistical analysis across multiple measurements.
-                </p>
-                <p>
-                    Surfaces with micrometric roughness show hemiwicking behavior, and atomically smooth surfaces have validated precursor films. The gap: surfaces with defects in the 20-80 nm range—where defect height matches film thickness. The central question remained experimentally unaddressed: does a precursor film form when surface roughness is comparable to the film itself?
-                </p>
-
-                <h3>Technical Contributions</h3>
-                <p>
-                    The main methodological contribution was developing a reliable fabrication route for surfaces with tunable nanoscale defects (20-80 nm height, controlled density) combined with automated optical analysis. This approach enabled statistical analysis across hundreds of spreading events rather than relying on single measurements.
-                </p>
-                <p>
-                    The multi-technique validation (AFM for topography, SAXS/SANS for nanoparticle characterization, optical microscopy for dynamics) ensured the surface properties were precisely known before measuring wetting behavior.
-                </p>
-
-                <h3>Potential Applications</h3>
-                <p>
-                    Understanding how nanoscale surface texture affects spreading dynamics has implications for:
-                </p>
-                <ul>
-                    <li>Coating technologies where controlled spreading is critical</li>
-                    <li>Microfluidic device design with textured channels</li>
-                    <li>Inkjet printing and nanoprinting precision</li>
-                    <li>Oil recovery in porous geological formations</li>
-                    <li>Agricultural pesticide efficiency on leaf surfaces</li>
-                </ul>
-            </section>
-
-            <hr>
-
-            <!-- Technical Details -->
-            <section>
-                <h2>Technical Details</h2>
-
-                <details>
-                    <summary>Experimental Parameters (click to expand)</summary>
-
-                    <h4>Surface Preparation:</h4>
-                    <ul>
-                        <li>Substrate: Silicon wafers</li>
-                        <li>Nanoparticle deposition: soft lithography</li>
-                        <li>Sintering temperature range: 1130-1190°C</li>
-                        <li>Incubation time range: 0-50 minutes</li>
-                    </ul>
-
-                    <h4>Measurement Conditions:</h4>
-                    <ul>
-                        <li>Liquid: silicone oil</li>
-                        <li>Droplet volume: ~1 μL</li>
-                        <li>Imaging: Optical microscopy with interference pattern analysis</li>
-                        <li>Frame rate: Variable (optimized for each spreading regime)</li>
-                    </ul>
-
-                    <h4>Data Analysis:</h4>
-                    <ul>
-                        <li>Total wetting sequences analyzed: &gt;300</li>
-                        <li>Statistical analysis: Correlation between surface topography and spreading dynamics</li>
-                        <li>Physical laws validated: Tanner law (r ∝ t<sup>1/10</sup>), diffusion law (√t)</li>
-                    </ul>
-                </details>
-            </section>
-
-            <hr>
-
-            <!-- Resources -->
-            <section class="article__resources">
-                <h2>Resources</h2>
-                <ul>
-                    <li>📄 <strong>Full Thesis Report</strong> - <a href="../pdfs/polymer-wetting-dynamics.pdf" download>Download PDF (1.8 MB)</a></li>
-                    <li>💻 <strong>Analysis Code</strong> - <a href="https://gitlab.com/Undreak/llb" target="_blank" rel="noopener noreferrer">View on GitLab</a></li>
-                    <li>🔬 <strong>FAN 2024 Training</strong> - Institut Laue-Langevin, Grenoble</li>
-                </ul>
-            </section>
-
-            <hr>
-
-            <!-- Open Questions -->
-            <section>
-                <h2>Open Questions</h2>
-                <p>While this work validates classical wetting theory on nano-textured surfaces, several questions remain:</p>
-                <ul>
-                    <li>How do these results extend to larger defects (>100 nm) or different defect geometries?</li>
-                    <li>Where does Tanner's law break down? The tested range (20-80 nm height, 0-12 defects/µm²) all followed the same scaling. Larger defects or different geometries might show different behavior.</li>
-                    <li>What happens with more complex liquids (polymer solutions, suspensions) on these surfaces?</li>
-                    <li>Why do very small droplets (V &lt; 0.001 µL) disappear completely while the film keeps spreading? The observation is clear, but the threshold volume and the precise mechanism need quantification.</li>
-                    <li>Some surfaces showed unexpected batch-to-batch variations in oxide layer formation. This affected film visibility on the 1190°C surfaces but not spreading dynamics. Why?</li>
-                </ul>
-                <p>
-                    Future work could systematically vary defect geometry while maintaining height and density, or explore how chemical heterogeneity (defects with different surface chemistry) affects the spreading behavior.
-                </p>
-            </section>
-        </div>
-
-        <!-- Article Footer -->
-        <footer class="article__footer">
-            <p><em>This project was conducted at Laboratoire Léon Brillouin (CEA Saclay) from June to September 2024.</em></p>
-        </footer>
-
-        <!-- Back Link -->
-        <a href="../index.html#publications" class="article__back-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-            Back to Publications
-        </a>
-    </article>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="footer__text">
-                &copy; 2025 Alexandre De Cuyper. Built with curiosity and code.
+        <!-- The Problem -->
+        <section>
+            <h2>The Problem</h2>
+            <p>
+                When you spill water on a table, it spreads. The physics seems straightforward—until you look closely. At the moving edge of a spreading droplet, classical fluid mechanics predicts infinite energy dissipation. This is the Huh-Scriven paradox, and resolving it requires understanding what happens at the nanoscale.
             </p>
-        </div>
+            <p>
+                The solution involves a <strong>precursor film</strong>: a thin layer of liquid, just nanometers thick, that races ahead of the visible droplet edge. This film dissipates the energy that would otherwise blow up in our equations. On atomically smooth surfaces, we understand this well. But real surfaces are never atomically smooth.
+            </p>
+            <p>
+                Here's where it gets interesting. On surfaces with micrometer-scale roughness, a different phenomenon takes over: <strong>hemiwicking</strong>, where capillary forces drive liquid through surface features. The physics changes completely. But what happens in between—when surface defects are nanometers tall, comparable to the precursor film itself?
+            </p>
+
+            <blockquote>
+                <p>Does the classical spreading law still hold when surface roughness matches the precursor film thickness? Does a precursor film even form under these conditions?</p>
+            </blockquote>
+
+            <p>
+                This was unknown. I set out to answer these questions experimentally.
+            </p>
+
+            <div class="article__image">
+                <img src="../images/articles/polymer-wetting-dynamics/origin.webp" alt="Droplet spreading sequence on nano-textured surface">
+                <p class="article__image-caption">Microscope image (top view) of a droplet spreading on a smooth surface, showing Newton's rings interference pattern</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Why It's Hard -->
+        <section>
+            <h2>Why It's Hard</h2>
+            <p>
+                Three challenges made this problem experimentally inaccessible until now:
+            </p>
+
+            <p>
+                <strong>Fabrication:</strong> Creating surfaces with <em>controlled</em> nanoscale defects (20–80 nm tall) distributed uniformly over centimeter-scale areas. Electron beam lithography is too slow. Photolithography isn't precise enough. I needed a different approach.
+            </p>
+
+            <p>
+                <strong>Characterization:</strong> Measuring defect heights of tens of nanometers while also mapping their spatial distribution across large areas requires combining multiple techniques at different scales.
+            </p>
+
+            <p>
+                <strong>Dynamics:</strong> Tracking a spreading droplet whose radius follows a \(t^{1/10}\) power law means the interesting behavior spans hours to days. This demands automated analysis of hundreds of image sequences.
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- My Approach -->
+        <section>
+            <h2>My Approach</h2>
+
+            <h3>1. Engineering the Surfaces</h3>
+            <p>
+                I used soft lithography with charged silica nanoparticles (~100 nm diameter). The particles repel each other electrostatically, producing uniform distributions without clustering. By controlling two parameters—sintering temperature (1130–1190°C) and incubation time (0–50 min)—I tuned defect height and density independently.
+            </p>
+            <p>
+                This produced <strong>32 distinct surfaces</strong> spanning:
+            </p>
+            <ul>
+                <li>Heights from <strong>20 nm to 80 nm</strong></li>
+                <li>Densities from <strong>0 to 12 defects/μm²</strong></li>
+            </ul>
+            <p>
+                The sintering process also transforms defect geometry: at lower temperatures, defects remain spherical caps; at higher temperatures, they flatten into Gaussian-like profiles. This matters for the physics.
+            </p>
+
+            <div class="article__image">
+                <img src="../images/articles/polymer-wetting-dynamics/surface.webp" alt="Surface characterization showing nanoparticle arrangement">
+                <p class="article__image-caption">Fabrication of nano-textured surfaces via soft lithography and sintering</p>
+            </div>
+
+            <div class="article__image">
+                <img src="../images/articles/polymer-wetting-dynamics/surfaces_with_droplet.webp" alt="Fabricated nano-textured surfaces with silicone oil droplets">
+                <p class="article__image-caption">Array of nano-textured surfaces showing droplet spreading</p>
+            </div>
+            <h3>2. Multi-Scale Characterization</h3>
+            <p>
+                <strong>Nanoparticle sizing (SAXS/SANS):</strong> I measured the initial particle diameter as 106.2 ± 8.5 nm using small-angle X-ray scattering, confirmed by neutron scattering at ILL Grenoble. This establishes the baseline before sintering.
+            </p>
+
+            <div class="article__image">
+                <img src="../images/articles/polymer-wetting-dynamics/saxs_im.webp" alt="SAXS scattering pattern and analysis">
+                <p class="article__image-caption">Small-Angle X-ray Scattering (SAXS) setup for nanoparticle size determination</p>
+            </div>
+
+            <p>
+                <strong>Surface topography (AFM):</strong> I mapped each surface at 10 μm × 10 μm with 1024 samples/line resolution—high enough to resolve individual defect profiles while covering statistically meaningful areas. From these maps, I extracted height distributions, defect densities, and the roughness parameter \(r\) needed for theoretical predictions.
+            </p>
+
+            <div class="article__image">
+                <img src="../images/articles/polymer-wetting-dynamics/afm.webp" alt="3D AFM topography of nano-textured surface">
+                <p class="article__image-caption">3D AFM topography showing defect distribution at different densities</p>
+            </div>
+
+            <div class="article__image">
+                <img src="../images/articles/polymer-wetting-dynamics/defect_profile.webp" alt="AFM profile of individual defects at different sintering temperatures">
+                <p class="article__image-caption">Cross-sectional profiles showing evolution from spherical (1130°C) to flattened (1190°C) defect shapes</p>
+            </div>
+
+            <h3>3. Automated Optical Analysis</h3>
+            <p>
+                Tracking droplet spreading manually across hundreds of experiments wasn't feasible. I built a Python pipeline that:
+            </p>
+            <ul>
+                <li>Detects interference fringes (Newton's rings) in the spreading droplet</li>
+                <li>Extracts droplet radius from fringe positions</li>
+                <li>Measures precursor film width from intensity gradients</li>
+                <li>Calculates droplet volume from the reconstructed height profile</li>
+            </ul>
+            <p>
+                The interference pattern encodes the droplet's shape: each bright fringe corresponds to a height change of \(\lambda/2n \approx 174\) nm (for 488 nm light in silicone oil with \(n = 1.4\)).
+            </p>
+
+            <div class="article__image">
+                <img src="../images/articles/polymer-wetting-dynamics/droplet_average.webp" alt="Automated analysis workflow">
+                <p class="article__image-caption">Droplet image analysis showing interference patterns and extracted intensity profile</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Results -->
+        <section>
+            <h2>Results</h2>
+
+            <h3>The Central Finding</h3>
+            <p>
+                Classical theory predicts that a droplet spreading on a flat surface follows <strong>Tanner's law</strong>:
+            </p>
+            <p style="text-align: center;">
+                \[ r \sim \left(\frac{\gamma V^3 t}{\eta}\right)^{1/10} \]
+            </p>
+            <p>
+                where \(r\) is radius, \(V\) is volume, \(\gamma\) is surface tension, \(\eta\) is viscosity, and \(t\) is time. The exponent 1/10 emerges from balancing capillary driving forces against viscous dissipation—it's a signature of the underlying physics.
+            </p>
+            <p>
+                The expectation was that nanoscale defects might disrupt this. When defect height approaches film thickness, the liquid encounters obstacles comparable to its own depth. Theoretical work by Cormier et al. suggested that sufficiently thick films could shift the dynamics to a different regime (\(t^{1/2}\) scaling).
+            </p>
+            <p>
+                <strong>What I found: Tanner's law holds across all tested surfaces.</strong>
+            </p>
+            <p>
+                Defect heights from 20–80 nm, densities from 0–12 defects/μm², viscosities spanning three orders of magnitude—the data collapse onto a single master curve when properly rescaled:
+            </p>
+            <p style="text-align: center;">
+                \[ r \text{ vs. } t/\tau, \quad \text{where } \tau = \eta/(\gamma V^3) \]
+            </p>
+            <p>
+                This is significant. It means that nanoscale roughness, at least within these parameters, doesn't fundamentally alter the spreading mechanism. The classical framework remains valid.
+            </p>
+
+            <div class="article__image">
+                <img src="../images/articles/polymer-wetting-dynamics/master_curve.webp" alt="Experimental validation of Tanner law on nano-textured surfaces">
+                <p class="article__image-caption">Master curve of the radius of droplets on various nano-textured surfaces following the predicted \(t^{1/10}\) scaling</p>
+            </div>
+
+            <h3>The Precursor Film</h3>
+            <p>
+                On smooth surfaces, no visible film forms ahead of the droplet. On my nano-textured surfaces, a distinct film appears—and its dynamics follow a different law:
+            </p>
+            <p style="text-align: center;">
+                \[ W_f \sim \sqrt{D_1 t}, \quad \text{where } D_1 = \frac{2\gamma(r-1)h}{\eta} \]
+            </p>
+            <p>
+                Here \(W_f\) is film width, \(h\) is film height, and \(r\) is the roughness parameter from AFM measurements. This \(\sqrt{t}\) scaling is characteristic of diffusion-driven spreading—the hemiwicking regime.
+            </p>
+            <p>
+                The film is visible in optical microscopy as a gradient surrounding the droplet edge. Its width correlates with defect height: taller defects promote wider films. This makes physical sense—larger surface features create stronger capillary driving forces.
+            </p>
+
+            <div class="article__image">
+                <img src="../images/articles/polymer-wetting-dynamics/droplet_film_master.webp" alt="Experimental validation of Hemiwicking film on nano-textured surfaces">
+                <p class="article__image-caption">Master curve of the width of the film for droplets on various nano-textured surfaces following the predicted \(t^{1/2}\) scaling</p>
+            </div>
+
+
+            <h3>An Unexpected Observation</h3>
+            <p>
+                For very small droplets (\(V &lt; 0.001\) μL), I observed something the theory doesn't predict: the macroscopic droplet disappears entirely while the film continues spreading. The droplet acts as a reservoir that the film drains completely.
+            </p>
+            <p>
+                This sets a practical lower bound on droplet volume for these experiments. It also raises questions about volume conservation assumptions in the theoretical framework.
+            </p>
+            <div class="article__image">
+                <img src="../images/articles/polymer-wetting-dynamics/droplet_disapear.png" alt="Droplet disappearing after the film's depleted its reservoir">
+                     <p class="article_image_caption">Droplet disappearing after the film has depleted its reservoir</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- What This Means -->
+        <section>
+            <h2>What This Means</h2>
+
+            <h3>For the Field</h3>
+            <p>
+                This is the first systematic experimental study of wetting dynamics on surfaces with controlled nanometric roughness. Previous work examined either atomically smooth surfaces (validating precursor films) or micrometer-scale textures (characterizing hemiwicking). The nanoscale regime—where defect height matches film thickness—remained unexplored.
+            </p>
+            <p>
+                The key result is that Tanner's law is more robust than expected. This constrains theoretical models: any framework for wetting on rough surfaces must reduce to \(t^{1/10}\) scaling in this parameter range.
+            </p>
+
+            <h3>For Applications</h3>
+            <p>
+                Understanding when classical wetting theory applies—and when it breaks down—matters for:
+            </p>
+            <p>
+                <strong>Coating processes:</strong> If you're designing a coating that must spread uniformly over a textured substrate, knowing that Tanner's law holds at the nanoscale means you can use established models for process design. The texture won't introduce unexpected dynamics.
+            </p>
+            <p>
+                <strong>Microfluidics:</strong> Channel surfaces in microfluidic devices are rarely atomically smooth. This work suggests that moderate nanoscale roughness won't fundamentally alter capillary-driven flow, which simplifies device design.
+            </p>
+            <p>
+                <strong>Inkjet printing:</strong> Droplet spreading on paper or polymer substrates involves nanoscale surface features. The robustness of Tanner's law provides a predictive framework.
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Open Questions -->
+        <section>
+            <h2>Open Questions</h2>
+            <p>Several observations remain unexplained:</p>
+            <p>
+                <strong>Where does Tanner's law break down?</strong> My parameter range (20–80 nm height, 0–12 defects/μm²) showed consistent \(t^{1/10}\) scaling. Larger defects or different geometries might reveal transitions to other regimes.
+            </p>
+            <p>
+                <strong>What determines film thickness?</strong> I observed films optically but couldn't measure their thickness directly. Neutron or X-ray reflectivity could resolve this.
+            </p>
+            <p>
+                <strong>Why do small droplets vanish?</strong> The critical volume below which the droplet is entirely consumed by the film, and the mechanism driving this transition, need quantification.
+            </p>
+            <p>
+                <strong>What causes batch-to-batch variation in oxide layers?</strong> Some 1190°C surfaces showed unexpected differences in film visibility despite identical protocols. The spreading dynamics were unaffected, but the origin of this variability is unclear.
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Technical Details -->
+        <section>
+            <h2>Technical Details</h2>
+
+            <details>
+                <summary>Experimental Parameters (click to expand)</summary>
+
+                <h4>Surface Fabrication</h4>
+                <ul>
+                    <li>Substrate: Silicon wafers (Siegert Wafer)</li>
+                    <li>Nanoparticles: 100 nm silica, 0.02% v/v (Polyscience)</li>
+                    <li>PEI adhesion layer: 1 g/L, 1 hour incubation</li>
+                    <li>Sintering: 1130–1190°C for 2 hours, 600°C/h ramp rate</li>
+                    <li>Incubation times: 0, 3, 6, 8, 15, 30, 40, 50 minutes</li>
+                </ul>
+
+                <h4>Characterization</h4>
+                <ul>
+                    <li>SAXS: XEUSS 2.0 diffractometer, λ = 1.542 Å, 2488 mm sample-detector distance</li>
+                    <li>SANS: SAM instrument at ILL Grenoble</li>
+                    <li>AFM: Bruker FastScan, tapping mode, 10 μm × 10 μm scans, 1024 samples/line</li>
+                </ul>
+
+                <h4>Spreading Experiments</h4>
+                <ul>
+                    <li>Liquid: Polydimethylsiloxane (silicone oil), 100 and 100,000 cSt</li>
+                    <li>Droplet deposition: 0.25 mm stainless steel fiber</li>
+                    <li>Imaging: Leica DMi8 inverted microscope, 475 nm LED, 488 nm bandpass filter</li>
+                    <li>Analysis: Python 3.12 (scikit-image, NumPy, SciPy, pandas)</li>
+                </ul>
+
+                <h4>Key Measurements</h4>
+                <ul>
+                    <li>Nanoparticle diameter (SAXS): 106.2 ± 8.5 nm</li>
+                    <li>Defect heights: 20–80 nm (temperature-dependent)</li>
+                    <li>Defect densities: 0–12 defects/μm² (incubation time-dependent)</li>
+                    <li>Total spreading sequences analyzed: &gt;300</li>
+                </ul>
+            </details>
+        </section>
+
+        <hr>
+
+        <!-- Resources -->
+        <section class="article__resources">
+            <h2>Resources</h2>
+            <ul>
+                <li>📄 <strong>Full Thesis Report</strong> – <a href="../pdfs/polymer-wetting-dynamics.pdf" download>Download PDF (1.8 MB)</a></li>
+                <li>💻 <strong>Analysis Code</strong> – <a href="https://gitlab.com/Undreak/llb" target="_blank" rel="noopener noreferrer">View on GitLab</a></li>
+                <li>🔬 <strong>FAN 2024 Training</strong> – <a href="fan-2024-experience.html"> Institut Laue-Langevin, Grenoble </a></li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Article Footer -->
+    <footer class="article__footer">
+        <p><em>Research conducted at Laboratoire Léon Brillouin, CEA Saclay, under the supervision of Marion Grzelka.</em></p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="../js/theme.js"></script>
-    <script src="../js/toc.js"></script>
-    <script src="../js/lightbox.js"></script>
-    <script src="../js/article-mobile.js"></script>
+    <!-- Back Link -->
+    <a href="../index.html#publications" class="article__back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Back to Publications
+    </a>
+</article>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p class="footer__text">
+            &copy; 2025 Alexandre De Cuyper. Built with curiosity and code.
+        </p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../js/theme.js"></script>
+<script src="../js/toc.js"></script>
+<script src="../js/lightbox.js"></script>
+<script src="../js/article-mobile.js"></script>
 </body>
 </html>
