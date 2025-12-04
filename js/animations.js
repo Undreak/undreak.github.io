@@ -42,18 +42,47 @@ class AnimationManager {
     }
 
     setupParallax() {
-        // Subtle parallax effect on hero graphic
-        const heroGraphic = document.querySelector('.hero__graphic');
-        if (!heroGraphic) return;
+        // Enhanced parallax effect using CSS custom properties
+        // This allows CSS to handle transforms (compatible with animations)
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+
+        // Check for reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        // Set initial scroll value
+        hero.style.setProperty('--scroll-y', '0');
+
+        let ticking = false;
+
+        const updateScrollPosition = () => {
+            const scrolled = window.pageYOffset;
+            const viewportHeight = window.innerHeight;
+
+            // Only update when in hero viewport
+            if (scrolled < viewportHeight * 1.5) {
+                // Normalized scroll (0 to 1 as hero scrolls out)
+                const scrollProgress = Math.min(scrolled / viewportHeight, 1);
+                hero.style.setProperty('--scroll-y', scrollProgress.toFixed(3));
+
+                // Fade out hero content as it scrolls
+                const fadeProgress = Math.max(0, 1 - scrollProgress * 1.2);
+                hero.style.setProperty('--scroll-fade', fadeProgress.toFixed(3));
+            }
+
+            ticking = false;
+        };
 
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * 0.3;
-
-            if (scrolled < window.innerHeight) {
-                heroGraphic.style.transform = `translateY(${rate}px)`;
+            if (!ticking) {
+                requestAnimationFrame(updateScrollPosition);
+                ticking = true;
             }
         }, { passive: true });
+
+        // Initial call
+        updateScrollPosition();
     }
 
     setupSmoothScroll() {

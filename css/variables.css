@@ -30,6 +30,7 @@
     /* Typography */
     --font-primary: 'Crimson Pro', Georgia, 'Times New Roman', serif;
     --font-display: 'Playfair Display', Georgia, serif;
+    --font-display-hero: 'Fraunces', Georgia, serif;  /* Distinctive hero font */
     --font-mono: 'IBM Plex Mono', 'Monaco', 'Courier New', monospace;
 
     /* Font Sizes - Fluid Typography */
@@ -99,8 +100,8 @@
 
     /* Physics-inspired palette: adjusted for dark theme */
     --accent-primary: #FF4D5A;      /* Brighter red for dark bg */
-    --accent-secondary: #457B9D;    /* Brighter blue for dark bg */
-    --accent-tertiary: rgba(255, 184, 48, 0.4);     /* Brighter amber for dark bg */
+    --accent-secondary: #6BB3D9;    /* Brighter blue for dark bg */
+    --accent-tertiary: #FFB830;     /* Solid amber for dark bg - no transparency */
 
     /* Legacy accent */
     --accent: var(--accent-primary);

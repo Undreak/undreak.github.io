@@ -16,9 +16,41 @@ body {
     padding: 0 var(--container-padding);
 }
 
-/* Section Spacing */
+/* Section Spacing - Varied Rhythm */
+/* Default section padding */
 .section {
     padding: var(--section-padding) 0;
+}
+
+/*
+ * Section rhythm creates visual "chapters":
+ * - Tight: Related content flows together
+ * - Standard: Normal separation
+ * - Generous: Breathing room before call-to-action
+ */
+
+/* About follows Hero - moderate space (new chapter) */
+.about {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-8);
+}
+
+/* Research follows About - TIGHT (same narrative: who you are → what you do) */
+.research {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-10);
+}
+
+/* Skills - standard spacing, distinct section */
+.skills {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+}
+
+/* Contact - GENEROUS top padding (invitation to breathe before CTA) */
+.contact {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-12);
 }
 
 /* Section Titles */
@@ -81,11 +113,53 @@ body {
     .grid--4 {
         grid-template-columns: 1fr;
     }
+
+    /* Maintain rhythm proportions on tablet */
+    .about {
+        padding-top: var(--space-8);
+        padding-bottom: var(--space-6);
+    }
+
+    .research {
+        padding-top: var(--space-4);
+        padding-bottom: var(--space-8);
+    }
+
+    .skills {
+        padding-top: var(--space-8);
+        padding-bottom: var(--space-8);
+    }
+
+    .contact {
+        padding-top: var(--space-12);
+        padding-bottom: var(--space-10);
+    }
 }
 
 @media (max-width: 480px) {
     :root {
         --container-padding: var(--space-2);
         --section-padding: var(--space-6);
+    }
+
+    /* Tighter on mobile but preserve rhythm */
+    .about {
+        padding-top: var(--space-6);
+        padding-bottom: var(--space-4);
+    }
+
+    .research {
+        padding-top: var(--space-3);
+        padding-bottom: var(--space-6);
+    }
+
+    .skills {
+        padding-top: var(--space-6);
+        padding-bottom: var(--space-6);
+    }
+
+    .contact {
+        padding-top: var(--space-10);
+        padding-bottom: var(--space-8);
     }
 }

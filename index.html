@@ -94,7 +94,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
           rel="stylesheet">
 
     <!-- Styles -->
@@ -170,49 +170,56 @@
         <div class="hero__visual">
             <svg class="hero__graphic" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <!-- Gradients for depth -->
+                    <!-- Gradients for depth - using semantic physics colors -->
                     <linearGradient id="dropletGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color: var(--accent); stop-opacity: 0.9"/>
-                        <stop offset="100%" style="stop-color: var(--accent); stop-opacity: 0.4"/>
+                        <stop offset="0%" style="stop-color: var(--accent-primary); stop-opacity: 0.95"/>
+                        <stop offset="100%" style="stop-color: var(--accent-primary); stop-opacity: 0.5"/>
                     </linearGradient>
 
                     <linearGradient id="filmGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color: var(--accent); stop-opacity: 0"/>
-                        <stop offset="20%" style="stop-color: var(--accent); stop-opacity: 0.3"/>
-                        <stop offset="80%" style="stop-color: var(--accent); stop-opacity: 0.3"/>
-                        <stop offset="100%" style="stop-color: var(--accent); stop-opacity: 0"/>
+                        <stop offset="0%" style="stop-color: var(--accent-primary); stop-opacity: 0"/>
+                        <stop offset="20%" style="stop-color: var(--accent-primary); stop-opacity: 0.35"/>
+                        <stop offset="80%" style="stop-color: var(--accent-primary); stop-opacity: 0.35"/>
+                        <stop offset="100%" style="stop-color: var(--accent-primary); stop-opacity: 0"/>
                     </linearGradient>
 
                     <radialGradient id="particleGlow" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" style="stop-color: var(--accent); stop-opacity: 0.8"/>
-                        <stop offset="100%" style="stop-color: var(--accent); stop-opacity: 0"/>
+                        <stop offset="0%" style="stop-color: var(--accent-primary); stop-opacity: 0.9"/>
+                        <stop offset="100%" style="stop-color: var(--accent-primary); stop-opacity: 0"/>
                     </radialGradient>
 
-                    <!-- Scattering ring gradient -->
+                    <!-- Sample point glow - amber highlight -->
+                    <radialGradient id="sampleGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color: var(--accent-tertiary); stop-opacity: 1"/>
+                        <stop offset="40%" style="stop-color: var(--accent-tertiary); stop-opacity: 0.6"/>
+                        <stop offset="100%" style="stop-color: var(--accent-tertiary); stop-opacity: 0"/>
+                    </radialGradient>
+
+                    <!-- Scattering ring gradient - blue for diffraction -->
                     <radialGradient id="scatterRing" cx="50%" cy="50%" r="50%">
-                        <stop offset="85%" style="stop-color: var(--text-secondary); stop-opacity: 0"/>
-                        <stop offset="95%" style="stop-color: var(--text-secondary); stop-opacity: 0.3"/>
-                        <stop offset="100%" style="stop-color: var(--text-secondary); stop-opacity: 0"/>
+                        <stop offset="85%" style="stop-color: var(--accent-secondary); stop-opacity: 0"/>
+                        <stop offset="95%" style="stop-color: var(--accent-secondary); stop-opacity: 0.4"/>
+                        <stop offset="100%" style="stop-color: var(--accent-secondary); stop-opacity: 0"/>
                     </radialGradient>
                 </defs>
 
-                <!-- Background scattering pattern (SAXS-inspired concentric rings) -->
-                <g class="scattering-pattern" opacity="0.15">
-                    <circle cx="200" cy="160" r="140" stroke="var(--text-secondary)" stroke-width="1" fill="none"/>
-                    <circle cx="200" cy="160" r="110" stroke="var(--text-secondary)" stroke-width="1" fill="none"/>
-                    <circle cx="200" cy="160" r="80" stroke="var(--text-secondary)" stroke-width="1" fill="none"/>
-                    <circle cx="200" cy="160" r="50" stroke="var(--text-secondary)" stroke-width="1" fill="none"/>
-                    <circle cx="200" cy="160" r="20" stroke="var(--text-secondary)" stroke-width="1.5" fill="none"/>
+                <!-- Background scattering pattern (SAXS-inspired concentric rings) - BLUE for diffraction -->
+                <g class="scattering-pattern" opacity="0.25">
+                    <circle cx="200" cy="160" r="140" stroke="var(--accent-secondary)" stroke-width="1.5" fill="none"/>
+                    <circle cx="200" cy="160" r="110" stroke="var(--accent-secondary)" stroke-width="1.5" fill="none"/>
+                    <circle cx="200" cy="160" r="80" stroke="var(--accent-secondary)" stroke-width="1" fill="none"/>
+                    <circle cx="200" cy="160" r="50" stroke="var(--accent-secondary)" stroke-width="1" fill="none"/>
+                    <circle cx="200" cy="160" r="20" stroke="var(--accent-secondary)" stroke-width="2" fill="none"/>
                 </g>
 
-                <!-- Beam path (incident/scattered) -->
-                <g class="beam-geometry" opacity="0.2">
-                    <line x1="60" y1="60" x2="200" y2="160" stroke="var(--accent)" stroke-width="1.5"
+                <!-- Beam path (incident/scattered) - blue for light/neutron beam -->
+                <g class="beam-geometry" opacity="0.35">
+                    <line x1="60" y1="60" x2="200" y2="160" stroke="var(--accent-secondary)" stroke-width="1.5"
                           stroke-dasharray="4 4"/>
-                    <line x1="200" y1="160" x2="340" y2="80" stroke="var(--accent)" stroke-width="1.5"
+                    <line x1="200" y1="160" x2="340" y2="80" stroke="var(--accent-secondary)" stroke-width="1.5"
                           stroke-dasharray="4 4"/>
                     <!-- q vector arc -->
-                    <path d="M 160 120 Q 200 100 240 120" stroke="var(--accent)" stroke-width="1" fill="none"/>
+                    <path d="M 160 120 Q 200 100 240 120" stroke="var(--accent-secondary)" stroke-width="1" fill="none"/>
                 </g>
 
                 <!-- Nano-textured surface (bottom) -->
@@ -296,9 +303,10 @@
                     </text>
                 </g>
 
-                <!-- Central beam stop / sample point -->
-                <circle cx="200" cy="160" r="8" fill="var(--accent)" opacity="0.6" class="sample-point"/>
-                <circle cx="200" cy="160" r="4" fill="var(--accent)" class="sample-center"/>
+                <!-- Central beam stop / sample point - AMBER glow for highlight -->
+                <circle cx="200" cy="160" r="16" fill="url(#sampleGlow)" class="sample-glow"/>
+                <circle cx="200" cy="160" r="8" fill="var(--accent-tertiary)" opacity="0.8" class="sample-point"/>
+                <circle cx="200" cy="160" r="4" fill="var(--accent-tertiary)" class="sample-center"/>
             </svg>
 
 
@@ -965,6 +973,7 @@
 <script src="js/theme.js"></script>
 <script src="js/github.js"></script>
 <script src="js/animations.js"></script>
+<script src="js/hero-interactive.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
