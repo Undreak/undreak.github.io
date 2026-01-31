@@ -1,0 +1,219 @@
+{
+  "meta": {
+    "lang": "en",
+    "locale": "en_US",
+    "title": "Alexandre De Cuyper | Physics Researcher",
+    "description": "Alexandre De Cuyper - Physics Researcher specializing in soft matter, polymer physics, and scattering techniques",
+    "ogDescription": "Experimental physicist specializing in soft matter, polymer dynamics, and scattering techniques (SAXS/SANS). Master's in Physics of Soft Matter from Universit\u00e9 Paris Cit\u00e9."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "research": "Research",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact",
+    "toggleMenu": "Toggle menu",
+    "toggleTheme": "Toggle theme",
+    "switchLang": "Passer en fran\u00e7ais"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Alexandre De Cuyper",
+    "title": "Experimental Physicist",
+    "tagline": "Specializing in soft matter physics, polymer dynamics, and scattering techniques with computational modeling",
+    "cta": {
+      "contact": "Get in touch",
+      "research": "View research",
+      "cv": "Download CV"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "lead": "Experimental physicist with an international dual Master's degree in <strong>Physics of Soft Matter</strong> from Universit\u00e9 Paris Cit\u00e9 and <strong>Complex Materials</strong> from Universidad de La Coru\u00f1a, obtained through a collaborative Erasmus+ program.",
+    "paragraph1": "My research focuses on soft matter physics with a specialization in <strong>polymer dynamics</strong> and <strong>scattering techniques</strong> (SAXS/SANS, DLS). I combine rigorous experimental methods with computational modeling using Python and C/C++ to investigate complex phenomena at the nanoscale.",
+    "paragraph2": "Currently preparing for doctoral school entrance exams, I'm passionate about understanding the fundamental behavior of soft materials through both experiment and theory. Beyond physics, I maintain a broad intellectual curiosity spanning philosophy, history, and analytical thinking across disciplines.",
+    "education": {
+      "title": "Education",
+      "dualDegree": {
+        "note": "Dual Master's Degree, Erasmus+ \u2022 2023-2024",
+        "softMatter": "M2 Physics of Soft Matter",
+        "softMatterUni": "Universit\u00e9 Paris Cit\u00e9",
+        "complex": "M2 Complex Materials",
+        "complexUni": "Universidad de La Coru\u00f1a (Spain)"
+      },
+      "m1": {
+        "title": "M1 Fundamental Physics",
+        "info": "Universit\u00e9 Paris Cit\u00e9 \u2022 2020-2022"
+      },
+      "licence": {
+        "title": "Licence Physics",
+        "info": "Universit\u00e9 Paris Cit\u00e9 \u2022 2016-2020"
+      }
+    },
+    "languages": {
+      "title": "Languages",
+      "french": "French",
+      "frenchLevel": "Native",
+      "english": "English",
+      "englishLevel": "Fluent",
+      "japanese": "Japanese",
+      "japaneseLevel": "Intermediate (\u81ea\u7fd2)"
+    }
+  },
+  "research": {
+    "title": "Research & Publications",
+    "subtitle": "Experimental work, academic outputs, and professional development",
+    "thesis": {
+      "date": "June - Sept 2024",
+      "codeLink": "Code & Data (LLB)",
+      "featured": "Featured",
+      "type": "Master's Thesis",
+      "title": "Polymer Wetting Dynamics on Nano-textured Surfaces",
+      "venue": "Laboratoire L\u00e9on Brillouin, CEA Saclay",
+      "description": "Investigated polymer wetting behavior on nano-structured surfaces using optical microscopy, advanced scattering techniques (SAXS/SANS) and atomic force microscopy. Developed Python pipeline to analyze hundreds of image sequences."
+    },
+    "training": {
+      "date": "Summer 2024",
+      "type": "Training",
+      "title": "Formation Annuelle \u00e0 la Neutronique",
+      "venue": "Institut Laue-Langevin, Grenoble",
+      "description": "Completed intensive 3-day practical training organized by 2FDN in collaboration with ILL. Followed the soft matter & biophysics track with courses on SANS and time-of-flight/backscattering spectroscopy, followed by hands-on practicals and data analysis at Europe's leading neutron facility."
+    },
+    "spring2024": {
+      "date": "Feb - Apr 2024",
+      "type": "Research Projects",
+      "title": "Spring 2024 Technical Research Projects",
+      "venue": "Universidad de La Coru\u00f1a, Spain (Erasmus+)",
+      "description": "Five experimental physics projects conducted during Erasmus+ exchange, covering materials characterization, thermal analysis, laser spectroscopy, pressure-modulated calorimetry, and advanced statistical analysis techniques.",
+      "libs": {
+        "title": "Laser Spectroscopy (LIBS)",
+        "desc": "Spectral analysis of cosmetic samples and gel impurity detection using Laser Induced Breakdown Spectroscopy"
+      },
+      "visco": {
+        "title": "Viscoelasticity Analysis",
+        "desc": "A comprehensive analysis of 3D-printed PLA samples using Dynamic Mechanical Analysis (DMA) and Time-Temperature Superposition (TTS) for master curve construction."
+      },
+      "xrd": {
+        "title": "X-ray Diffraction",
+        "desc": "Statistical powder XRD analysis with ANOVA and peak fitting"
+      },
+      "perovskite": {
+        "title": "Perovskite Thermal",
+        "desc": "Differential Calorimetry Analysis of perovskite materials and heat capacity measurement using ASTM three-run method"
+      },
+      "mpdsc": {
+        "title": "Modulated Pressure DSC",
+        "desc": "A novel experimental approach for thermo-mechanical analysis of materials using pressure modulation in DSC experiments."
+      }
+    },
+    "archive": {
+      "indicator": "Archive",
+      "date": "2019",
+      "type": "L3 Internship",
+      "title": "Optical Nano-antennas",
+      "venue": "Institut de nanoscience de Paris, Sorbonne Universit\u00e9",
+      "description": "Studied light-matter interactions at the nanoscale during L3 internship. Applied electromagnetic scattering theory and developed computational simulations to model optical nano-antenna behavior."
+    },
+    "portal": {
+      "title": "Computational Projects",
+      "description": "Explore open-source computational physics projects, data analysis tools, and scientific software development work from GitHub and GitLab.",
+      "cta": "View All Projects"
+    }
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "experimental": {
+      "title": "Experimental Techniques",
+      "subtitle": "Core Competency",
+      "saxs": "SAXS/SANS",
+      "neutron": "Neutron Scattering",
+      "afm": "Atomic Force Microscopy",
+      "polymer": "Polymer Characterization"
+    },
+    "python": {
+      "title": "Python & Scientific Computing",
+      "python": "Python",
+      "level": "Advanced",
+      "scientific": "Scientific Computing"
+    },
+    "cpp": {
+      "title": "C/C++",
+      "cpp": "C/C++",
+      "level": "Proficient",
+      "performance": "Performance Computing"
+    },
+    "theoretical": {
+      "title": "Theoretical & Computational",
+      "subtitle": "Core Competency",
+      "scattering": "Electromagnetic Scattering Theory",
+      "statistical": "Statistical Physics",
+      "modeling": "Computational Modeling",
+      "data": "Data Analysis & Visualization"
+    },
+    "tools": {
+      "title": "Tools & Platforms"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "text": "I'm currently preparing for doctoral school entrance exams and exploring research opportunities in soft matter physics, polymer dynamics, and scattering techniques. Feel free to reach out for collaborations, discussions, or opportunities."
+  },
+  "footer": {
+    "copyright": "\u00a9 2025 Alexandre De Cuyper. Built with curiosity and code."
+  },
+  "projects": {
+    "title": "All Projects",
+    "subtitle": "Complete collection of my GitHub and GitLab repositories",
+    "search": "Search projects...",
+    "searchLabel": "Search projects",
+    "source": "Source:",
+    "all": "All",
+    "sortBy": "Sort by:",
+    "recentlyUpdated": "Recently Updated",
+    "mostStars": "Most Stars",
+    "nameAZ": "Name (A-Z)",
+    "language": "Language:",
+    "allLanguages": "All Languages",
+    "loading": "Loading all projects from GitHub and GitLab...",
+    "noProjects": "No projects found matching your criteria.",
+    "project": "project",
+    "projectsPlural": "projects",
+    "noDescription": "No description available",
+    "error": {
+      "title": "Unable to load projects",
+      "visitDirect": "Visit my GitHub or GitLab directly.",
+      "githubRateLimit": "GitHub API rate limit exceeded.",
+      "tryAgainIn": "Try again in {minutes} minute(s).",
+      "tryAgainLater": "Please try again later.",
+      "githubError": "GitHub API error: {status}",
+      "githubTimeout": "GitHub request timed out. Please check your connection.",
+      "gitlabRateLimit": "GitLab API rate limit exceeded. Please try again later.",
+      "gitlabError": "GitLab API error: {status}",
+      "gitlabTimeout": "GitLab request timed out. Please check your connection.",
+      "noProjects": "No projects found"
+    }
+  },
+  "form": {
+    "notConfigured": "\u26a0\ufe0f Contact form is not yet configured. Please use the email link above.",
+    "rateLimit": "\u23f1\ufe0f Please wait a minute before sending another message.",
+    "fillRequired": "\u274c Please fill in all required fields.",
+    "invalidEmail": "\u274c Please enter a valid email address.",
+    "messageTooShort": "\u274c Message is too short. Please provide more details.",
+    "messageTooLong": "\u274c Message is too long. Please keep it under 5000 characters.",
+    "sending": "Sending...",
+    "success": "\u2713 Message sent successfully! I'll get back to you soon.",
+    "timeout": "\u23f1\ufe0f Request timed out. Please try again.",
+    "error": "\u2717 Failed to send message. Please try again or email me directly."
+  },
+  "lightbox": {
+    "close": "Close lightbox",
+    "previous": "Previous image",
+    "next": "Next image"
+  },
+  "articles": {
+    "home": "Home",
+    "publications": "Publications",
+    "readInOtherLang": "Lire en fran\u00e7ais"
+  }
+}

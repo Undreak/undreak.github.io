@@ -27,6 +27,21 @@ class AllProjectsManager {
         this.init();
     }
 
+    /**
+     * Get translated message with fallback
+     */
+    t(key, fallback, replacements = {}) {
+        if (window.i18n && window.i18n.t) {
+            return window.i18n.t(key, replacements) || fallback;
+        }
+        // Apply replacements to fallback
+        let result = fallback;
+        Object.keys(replacements).forEach(placeholder => {
+            result = result.replace(`{${placeholder}}`, replacements[placeholder]);
+        });
+        return result;
+    }
+
     // URL validation to prevent open redirect vulnerabilities
     isValidURL(url) {
         if (!url) return null;
@@ -105,19 +120,19 @@ class AllProjectsManager {
 
             if (response.status === 403) {
                 const resetTime = response.headers.get('X-RateLimit-Reset');
-                let message = 'GitHub API rate limit exceeded.';
+                let message = this.t('projects.error.githubRateLimit', 'GitHub API rate limit exceeded.');
                 if (resetTime) {
                     const resetDate = new Date(parseInt(resetTime) * 1000);
                     const minutesUntilReset = Math.ceil((resetDate - new Date()) / 60000);
-                    message += ` Try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? 's' : ''}.`;
+                    message += ' ' + this.t('projects.error.tryAgainIn', `Try again in ${minutesUntilReset} minute(s).`, { minutes: minutesUntilReset });
                 } else {
-                    message += ' Please try again later.';
+                    message += ' ' + this.t('projects.error.tryAgainLater', 'Please try again later.');
                 }
                 throw new Error(message);
             }
 
             if (!response.ok) {
-                throw new Error(`GitHub API error: ${response.status}`);
+                throw new Error(this.t('projects.error.githubError', `GitHub API error: ${response.status}`, { status: response.status }));
             }
 
             const repos = await response.json();
@@ -139,7 +154,7 @@ class AllProjectsManager {
                 }));
         } catch (error) {
             if (error.name === 'AbortError') {
-                throw new Error('GitHub request timed out. Please check your connection.');
+                throw new Error(this.t('projects.error.githubTimeout', 'GitHub request timed out. Please check your connection.'));
             }
             throw error;
         } finally {
@@ -160,11 +175,11 @@ class AllProjectsManager {
             clearTimeout(timeoutId);
 
             if (response.status === 429) {
-                throw new Error('GitLab API rate limit exceeded. Please try again later.');
+                throw new Error(this.t('projects.error.gitlabRateLimit', 'GitLab API rate limit exceeded. Please try again later.'));
             }
 
             if (!response.ok) {
-                throw new Error(`GitLab API error: ${response.status}`);
+                throw new Error(this.t('projects.error.gitlabError', `GitLab API error: ${response.status}`, { status: response.status }));
             }
 
             const projects = await response.json();
@@ -185,7 +200,7 @@ class AllProjectsManager {
                 }));
         } catch (error) {
             if (error.name === 'AbortError') {
-                throw new Error('GitLab request timed out. Please check your connection.');
+                throw new Error(this.t('projects.error.gitlabTimeout', 'GitLab request timed out. Please check your connection.'));
             }
             throw error;
         } finally {
@@ -310,7 +325,7 @@ class AllProjectsManager {
 
     createProjectCard(repo) {
         const topics = repo.topics || [];
-        const description = this.sanitizeText(repo.description) || 'No description available';
+        const description = this.sanitizeText(repo.description) || this.t('projects.noDescription', 'No description available');
         const name = this.sanitizeText(repo.name);
         const language = this.sanitizeText(repo.language);
         const sourceIcon = repo.source === 'github' ? this.getGitHubIcon() : this.getGitLabIcon();
@@ -382,17 +397,30 @@ class AllProjectsManager {
         const gitlab = this.filteredProjects.filter(p => p.source === 'gitlab').length;
         const total = this.filteredProjects.length;
 
-        this.stats.innerHTML = `
-            <span class="stat-badge">
-                <strong>${total}</strong> ${total === 1 ? 'project' : 'projects'}
-            </span>
-            <span class="stat-badge stat-badge--github">
-                ${github} GitHub
-            </span>
-            <span class="stat-badge stat-badge--gitlab">
-                ${gitlab} GitLab
-            </span>
-        `;
+        const projectWord = total === 1
+            ? this.t('projects.project', 'project')
+            : this.t('projects.projectsPlural', 'projects');
+
+        // Build stats safely using DOM methods
+        this.stats.textContent = '';
+
+        const totalBadge = document.createElement('span');
+        totalBadge.className = 'stat-badge';
+        const strong = document.createElement('strong');
+        strong.textContent = total;
+        totalBadge.appendChild(strong);
+        totalBadge.appendChild(document.createTextNode(' ' + projectWord));
+        this.stats.appendChild(totalBadge);
+
+        const githubBadge = document.createElement('span');
+        githubBadge.className = 'stat-badge stat-badge--github';
+        githubBadge.textContent = github + ' GitHub';
+        this.stats.appendChild(githubBadge);
+
+        const gitlabBadge = document.createElement('span');
+        gitlabBadge.className = 'stat-badge stat-badge--gitlab';
+        gitlabBadge.textContent = gitlab + ' GitLab';
+        this.stats.appendChild(gitlabBadge);
     }
 
     getGitHubIcon() {
@@ -415,14 +443,44 @@ class AllProjectsManager {
 
     showError(error) {
         this.hideLoading();
-        this.grid.innerHTML = `
-            <div class="error-message">
-                <h3>Unable to load projects</h3>
-                <p>${this.sanitizeText(error.message)}</p>
-                <p>Visit my <a href="https://github.com/${this.githubUsername}" target="_blank" rel="noopener noreferrer">GitHub</a> or
-                   <a href="https://gitlab.com/${this.gitlabUsername}" target="_blank" rel="noopener noreferrer">GitLab</a> directly.</p>
-            </div>
-        `;
+
+        // Build error message safely using DOM methods
+        this.grid.textContent = '';
+
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+
+        const title = document.createElement('h3');
+        title.textContent = this.t('projects.error.title', 'Unable to load projects');
+        errorDiv.appendChild(title);
+
+        const message = document.createElement('p');
+        message.textContent = this.sanitizeText(error.message);
+        errorDiv.appendChild(message);
+
+        const linksPara = document.createElement('p');
+        linksPara.textContent = this.t('projects.error.visitDirect', 'Visit my GitHub or GitLab directly.').split('GitHub')[0];
+
+        const githubLink = document.createElement('a');
+        githubLink.href = `https://github.com/${this.githubUsername}`;
+        githubLink.target = '_blank';
+        githubLink.rel = 'noopener noreferrer';
+        githubLink.textContent = 'GitHub';
+        linksPara.appendChild(githubLink);
+
+        linksPara.appendChild(document.createTextNode(' or '));
+
+        const gitlabLink = document.createElement('a');
+        gitlabLink.href = `https://gitlab.com/${this.gitlabUsername}`;
+        gitlabLink.target = '_blank';
+        gitlabLink.rel = 'noopener noreferrer';
+        gitlabLink.textContent = 'GitLab';
+        linksPara.appendChild(gitlabLink);
+
+        linksPara.appendChild(document.createTextNode(' directly.'));
+        errorDiv.appendChild(linksPara);
+
+        this.grid.appendChild(errorDiv);
     }
 }
 

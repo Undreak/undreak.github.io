@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Annuelle à la Neutronique 2024 | Alexandre De Cuyper</title>
+    <meta name="description" content="Trois jours de formation à la diffusion de neutrons à l'Institut Laue-Langevin à Grenoble">
+
+    <!-- Open Graph / Social sharing -->
+    <meta property="og:title" content="Formation Annuelle à la Neutronique 2024">
+    <meta property="og:description" content="Trois jours de formation à la diffusion de neutrons à l'Institut Laue-Langevin">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="en" href="https://undreak.github.io/articles/fan-2024-experience.html">
+    <link rel="alternate" hreflang="fr" href="https://undreak.github.io/articles/fr/fan-2024-experience.html">
+    <link rel="alternate" hreflang="x-default" href="https://undreak.github.io/articles/fan-2024-experience.html">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/article.css">
+    <link rel="stylesheet" href="../../css/lightbox.css">
+    <link rel="stylesheet" href="../../css/toc.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+
+    <!-- FOUC prevention: detect language before render -->
+    <script>
+        (function(){
+            var l=localStorage.getItem('language');
+            if(!l){l=navigator.language.split('-')[0];if(l!=='en'&&l!=='fr')l='en';}
+            document.documentElement.lang=l;
+            document.documentElement.dataset.lang=l;
+        })();
+    </script>
+    <style>
+        /* Hide i18n elements until translations load */
+        html:not([data-i18n-loaded]) [data-i18n] { visibility: hidden; }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="nav" role="navigation">
+    <div class="nav__container">
+        <a href="../../index.html" class="nav__logo" aria-label="Accueil">ADC</a>
+        <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false" data-i18n-aria="nav.toggleMenu">
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+        </button>
+        <div class="nav__menu">
+            <a href="../../index.html#about" class="nav__link" data-i18n="nav.about">À propos</a>
+            <a href="../../index.html#research" class="nav__link" data-i18n="nav.research">Recherche</a>
+            <a href="../../index.html#publications" class="nav__link">Publications</a>
+            <a href="../../index.html#skills" class="nav__link" data-i18n="nav.skills">Compétences</a>
+            <a href="../../index.html#projects" class="nav__link" data-i18n="nav.projects">Projets</a>
+            <a href="../../index.html#contact" class="nav__link" data-i18n="nav.contact">Contact</a>
+            <button class="theme-toggle" aria-label="Changer de thème" data-i18n-aria="nav.toggleTheme">
+                <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <button class="lang-toggle" aria-label="Switch to English">EN</button>
+        </div>
+    </div>
+</nav>
+
+<!-- Article -->
+<article class="article">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="../../index.html" data-i18n="articles.home">Accueil</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+        <a href="../../index.html#publications" data-i18n="articles.publications">Publications</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+        <span>Expérience FAN 2024</span>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article__header">
+        <h1 class="article__title">Formation Annuelle à la Neutronique 2024</h1>
+        <p class="article__subtitle">Trois jours de formation à la diffusion de neutrons à l'Institut Laue-Langevin</p>
+
+        <div class="article__meta">
+                <span class="article__type-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                    Journal personnel
+                </span>
+            <span class="article__meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    25–27 juin 2024
+                </span>
+            <span class="article__meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Grenoble, France
+                </span>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <div class="article__content">
+        <!-- Getting There -->
+        <section>
+            <h2>Y arriver</h2>
+            <p>
+                En juin 2024, j'ai participé à la Formation Annuelle à la Neutronique (FAN) organisée par la 2FDN et l'ILL à Grenoble. Le programme est généralement destiné aux doctorants et chercheurs permanents. Je commençais mon mémoire de Master au CEA Saclay — le seul étudiant de Master accepté cette année-là.
+            </p>
+            <p>
+                J'ai suivi le parcours matière molle & biophysique, axé sur la SANS et les techniques de spectroscopie. J'ai apporté des nanoparticules de silice de mon travail de mémoire, espérant vérifier directement leur taille.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/fan-2024-experience/arrival-grenoble.webp" alt="Arrivée à la gare de Grenoble">
+                <p class="article__image-caption">Arrivée à Grenoble pour la formation FAN 2024</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Day 1 -->
+        <section>
+            <h2>Jour 1 : Introduction et théorie</h2>
+
+            <p>
+                La matinée a couvert les méthodes de production de neutrons (réacteurs et sources de spallation), les propriétés de base des neutrons, et pourquoi les neutrons sont utiles pour la recherche sur la matière condensée. L'avantage clé est que les neutrons interagissent avec les noyaux atomiques plutôt qu'avec les nuages électroniques, ce qui permet de distinguer les isotopes — particulièrement l'hydrogène et le deutérium. Cela les rend précieux pour les études de matière molle où la substitution isotopique peut mettre en évidence des composants spécifiques.
+            </p>
+
+            <p>
+                Après le cours, nous avons visité les installations de l'ILL. L'échelle était frappante. Des dizaines d'instruments répartis sur plusieurs bâtiments, chacun conçu pour des mesures spécifiques — diffractomètres, spectromètres, instruments de diffusion aux petits angles. Le réacteur est au centre, envoyant des neutrons par des guides vers toutes les différentes lignes de faisceau.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/fan-2024-experience/ill-facility.webp" alt="Installation du réacteur de l'Institut Laue-Langevin">
+                <p class="article__image-caption">L'installation de recherche neutronique de l'Institut Laue-Langevin à Grenoble</p>
+            </div>
+
+            <p>
+                L'après-midi s'est divisé en parcours. Je suis allé en matière molle. Fabrice Cousin a présenté la théorie de la SANS : comment l'intensité de diffusion en fonction du transfert de moment donne des informations structurales via les transformées de Fourier. Les mathématiques étaient accessibles.
+            </p>
+
+            <p>
+                La session de spectroscopie qui a suivi était plus difficile à suivre. La salle était chaude — pas de climatisation en été — et les dérivations allaient vite. Mais l'idée principale est passée : mesurer le changement d'énergie des neutrons diffusés pour sonder la dynamique moléculaire.
+            </p>
+
+            <p>
+                Le dîner ce soir-là a aidé. Parler aux autres participants — doctorants et chercheurs permanents, tous là pour apprendre quelque chose en dehors de leur expertise habituelle — a rendu l'écart d'expérience moins important que ce que j'avais craint.
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Day 2 -->
+        <section>
+            <h2>Jour 2 : Travaux pratiques SANS</h2>
+
+            <p>
+                Le deuxième jour était le TP de SANS sur l'instrument SAM, encadré par Nicolas Martin et Fabrice Cousin.
+            </p>
+
+            <p>
+                J'avais apporté des nanoparticules de silice de mon travail de mémoire — les mêmes que j'utilisais pour fabriquer des surfaces nano-texturées au CEA Saclay. Le fabricant spécifiait un diamètre de 100 nm, mais je ne l'avais jamais vérifié avec des neutrons.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/fan-2024-experience/sam-instrument.webp" alt="Instrument de diffusion de neutrons aux petits angles SAM">
+                <p class="article__image-caption">L'instrument SAM (Small Angle Multi-detector) à l'ILL</p>
+            </div>
+
+            <p>
+                Nous avons chargé les échantillons dans des cellules en quartz (le quartz a une faible absorption de neutrons, contrairement au verre borosilicaté utilisé pour les rayons X) et les avons montés dans le porte-échantillon. La mesure elle-même était rapide : régler la distance du détecteur, configurer le temps d'acquisition et démarrer. En quelques minutes, le motif de diffusion est apparu à l'écran — confirmation que tout était correctement configuré.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/fan-2024-experience/sample-holder.webp" alt="Gros plan du porte-échantillon SANS">
+                <p class="article__image-caption">Porte-échantillon prêt pour la mesure SANS</p>
+            </div>
+
+            <p>
+                Nous avons programmé l'instrument pour passer en revue les échantillons de tout le monde pendant la nuit. Chaque participant avait apporté quelque chose de différent : micelles de polymères, bicouches, mes nanoparticules. Au matin, nous aurions des données à analyser.
+            </p>
+            <p>
+                Tous les échantillons n'étaient pas idéaux. Un participant avait oublié de deutérer son échantillon, ce qui signifiait un mauvais contraste entre les composants. Un autre échantillon s'est révélé instable sous le faisceau de neutrons. Nous les avons chargés quand même — nous verrions à quoi ça ressemble dans les données.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/fan-2024-experience/instrument-running.webp" alt="Instrument SANS pendant la mesure">
+                <p class="article__image-caption">L'instrument en fonctionnement pendant l'acquisition de données</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Day 3 -->
+        <section>
+            <h2>Jour 3 : Analyse de données</h2>
+
+            <p>
+                Jeudi matin était consacré à l'analyse de données. Nous avons travaillé sur les étapes de traitement : soustraire le bruit de fond, corriger l'efficacité du détecteur, normaliser par la transmission, ajuster des modèles structuraux.
+            </p>
+
+            <p>
+                Regarder Fabrice analyser différents échantillons était instructif. Certains montraient des oscillations de facteur de forme propres. D'autres avaient de la diffusion multiple à cause d'une concentration élevée, nécessitant un raccordement soigneux entre les configurations de détecteur. Chaque système demandait des corrections différentes : soustraction du bruit de fond incohérent, gestion de la diffusion multiple, traitement des échantillons qui se comportaient mal sous le faisceau.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/fan-2024-experience/sans-data.webp" alt="Motif de diffusion SANS">
+                <p class="article__image-caption">Données brutes de diffusion SANS des nanoparticules de silice</p>
+            </div>
+
+            <p>
+                Puis il a ajusté mes données de nanoparticules avec un modèle de sphère.
+            </p>
+
+            <p>
+                Résultat : <strong>106 nm ± 8 nm</strong>.
+            </p>
+
+            <p>
+                La spécification du fabricant était 100 nm. Mes mesures SAXS au CEA Saclay avaient donné 106,2 ± 8,5 nm. Deux techniques indépendantes, même réponse. Cela validait ce que j'avais supposé pour mon mémoire — une confirmation utile même si pas strictement nécessaire.
+            </p>
+            <p>
+                Les deux échantillons problématiques du Jour 2 se sont comportés comme prévu — c'est-à-dire mal. L'échantillon non deutéré ne montrait presque aucun contraste ; celui qui sédimentait donnait une diffusion incohérente. Personne n'avait prévu cela comme moment pédagogique, mais ça a fonctionné comme tel : la préparation et la stabilité des échantillons comptent avant même de commencer une mesure.
+            </p>
+
+            <p>
+                J'avais un train pour Paris cet après-midi-là, donc nous n'avons couvert que les bases. Pas idéal, mais suffisant pour voir le flux de travail complet de la mesure au résultat.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/fan-2024-experience/sans-plot.webp" alt="Analyse de données SANS et ajustement de modèle">
+                <p class="article__image-caption">Ajustement d'un modèle sphérique aux données SANS expérimentales montrant la détermination de la taille des particules</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Takeaways -->
+        <section>
+            <h2>Ce que j'en retiens</h2>
+
+            <p>
+                La formation a relié théorie, mesure et analyse sur un instrument en fonctionnement. C'est plus difficile à obtenir à partir d'articles seuls.
+            </p>
+
+            <p>
+                J'ai maintenant une idée plus claire de quand la SANS est le bon outil — particulièrement pour les systèmes où le contraste isotopique compte — et quand la SAXS suffit. La spectroscopie était plus difficile à assimiler dans le temps imparti, mais je comprends ce qu'elle mesure et peux lire la littérature de façon plus critique.
+            </p>
+
+            <p>
+                Être le plus jeune participant comptait moins que ce que j'avais craint. Tout le monde apprenait quelque chose en dehors de son travail habituel. Trois jours ce n'est pas long, mais cela m'a montré à quoi ressemble le travail dans une grande infrastructure.
+            </p>
+
+            <p>
+                Je veux y retourner un jour — avec ma propre demande de temps de faisceau.
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Acknowledgments -->
+        <section class="article__resources">
+            <h2>Remerciements</h2>
+            <ul>
+                <li>📚 <strong>2FDN & ILL</strong> – Pour l'organisation du programme FAN</li>
+                <li>👨‍🏫 <strong>Fabrice Cousin & Nicolas Martin</strong> – Pour nous avoir guidés à travers la mesure et l'analyse SANS</li>
+                <li>👥 <strong>Les autres participants</strong> – Pour les conversations et pour avoir fait se sentir bienvenu un étudiant de Master</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Article Footer -->
+    <footer class="article__footer">
+        <p><em>25–27 juin 2024 • Institut Laue-Langevin, Grenoble</em></p>
+    </footer>
+
+    <!-- Back Link -->
+    <a href="../../index.html#publications" class="article__back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Retour aux Publications
+    </a>
+</article>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p class="footer__text" data-i18n="footer.copyright">
+            &copy; 2025 Alexandre De Cuyper. Conçu avec curiosité et code.
+        </p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"
+        integrity="sha384-sGXNIHpdJSEfTkXLnvHLLQNgJVCBh+FvzGmIHKHPD+lVELKZjVKkPvGHxVz0kVhk"
+        crossorigin="anonymous"></script>
+<script src="../../js/i18n.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../js/toc.js"></script>
+<script src="../../js/lightbox.js"></script>
+<script src="../../js/article-mobile.js"></script>
+</body>
+</html>

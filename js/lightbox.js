@@ -6,6 +6,16 @@
     let images = [];
     let lightboxElement = null;
 
+    /**
+     * Get translated message with fallback
+     */
+    function t(key, fallback) {
+        if (window.i18n && window.i18n.t) {
+            return window.i18n.t(key) || fallback;
+        }
+        return fallback;
+    }
+
     // Initialize lightbox on DOM load
     function init() {
         // Create lightbox HTML
@@ -28,33 +38,74 @@
         document.addEventListener('keydown', handleKeyboard);
     }
 
+    // Create SVG element helper
+    function createSVG(paths) {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('stroke-width', '2');
+        paths.forEach(pathData => {
+            const el = document.createElementNS('http://www.w3.org/2000/svg', pathData.tag);
+            Object.keys(pathData.attrs).forEach(attr => {
+                el.setAttribute(attr, pathData.attrs[attr]);
+            });
+            svg.appendChild(el);
+        });
+        return svg;
+    }
+
     // Create lightbox HTML structure
     function createLightbox() {
         const lightbox = document.createElement('div');
         lightbox.className = 'lightbox';
-        lightbox.innerHTML = `
-            <div class="lightbox__content">
-                <img class="lightbox__image" src="" alt="">
-            </div>
-            <button class="lightbox__close" aria-label="Close lightbox">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
-            <button class="lightbox__nav lightbox__nav--next" aria-label="Next image">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </button>
-            <div class="lightbox__counter"></div>
-            <div class="lightbox__caption"></div>
-        `;
+
+        // Build lightbox structure using DOM methods for security
+        const content = document.createElement('div');
+        content.className = 'lightbox__content';
+        const img = document.createElement('img');
+        img.className = 'lightbox__image';
+        img.src = '';
+        img.alt = '';
+        content.appendChild(img);
+        lightbox.appendChild(content);
+
+        // Close button
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'lightbox__close';
+        closeBtn.setAttribute('aria-label', t('lightbox.close', 'Close lightbox'));
+        closeBtn.appendChild(createSVG([
+            { tag: 'line', attrs: { x1: '18', y1: '6', x2: '6', y2: '18' } },
+            { tag: 'line', attrs: { x1: '6', y1: '6', x2: '18', y2: '18' } }
+        ]));
+        lightbox.appendChild(closeBtn);
+
+        // Previous button
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'lightbox__nav lightbox__nav--prev';
+        prevBtn.setAttribute('aria-label', t('lightbox.previous', 'Previous image'));
+        prevBtn.appendChild(createSVG([
+            { tag: 'polyline', attrs: { points: '15 18 9 12 15 6' } }
+        ]));
+        lightbox.appendChild(prevBtn);
+
+        // Next button
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'lightbox__nav lightbox__nav--next';
+        nextBtn.setAttribute('aria-label', t('lightbox.next', 'Next image'));
+        nextBtn.appendChild(createSVG([
+            { tag: 'polyline', attrs: { points: '9 18 15 12 9 6' } }
+        ]));
+        lightbox.appendChild(nextBtn);
+
+        // Counter and caption
+        const counter = document.createElement('div');
+        counter.className = 'lightbox__counter';
+        lightbox.appendChild(counter);
+
+        const caption = document.createElement('div');
+        caption.className = 'lightbox__caption';
+        lightbox.appendChild(caption);
 
         document.body.appendChild(lightbox);
         lightboxElement = lightbox;
