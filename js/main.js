@@ -170,18 +170,28 @@ class FormManager {
         }
     }
 
+    /**
+     * Get translated message with fallback
+     */
+    t(key, fallback) {
+        if (window.i18n && window.i18n.t) {
+            return window.i18n.t(key) || fallback;
+        }
+        return fallback;
+    }
+
     async handleSubmit(e) {
         e.preventDefault();
 
         // Check if form is configured
         if (this.form.action.includes('YOUR_FORM_ID')) {
-            this.showStatus('⚠️ Contact form is not yet configured. Please use the email link above.', 'error');
+            this.showStatus(this.t('form.notConfigured', '⚠️ Contact form is not yet configured. Please use the email link above.'), 'error');
             return;
         }
 
         // Rate limiting
         if (!this.canSubmit()) {
-            this.showStatus('⏱️ Please wait a minute before sending another message.', 'error');
+            this.showStatus(this.t('form.rateLimit', '⏱️ Please wait a minute before sending another message.'), 'error');
             return;
         }
 
@@ -205,26 +215,26 @@ class FormManager {
         });
 
         if (!isValid) {
-            this.showStatus('❌ Please fill in all required fields.', 'error');
+            this.showStatus(this.t('form.fillRequired', '❌ Please fill in all required fields.'), 'error');
             return;
         }
 
         // Validate email format
         if (!this.isValidEmail(emailField.value)) {
-            this.showStatus('❌ Please enter a valid email address.', 'error');
+            this.showStatus(this.t('form.invalidEmail', '❌ Please enter a valid email address.'), 'error');
             emailField.style.borderColor = 'var(--accent)';
             return;
         }
 
         // Check message length
         if (messageField.value.length < 10) {
-            this.showStatus('❌ Message is too short. Please provide more details.', 'error');
+            this.showStatus(this.t('form.messageTooShort', '❌ Message is too short. Please provide more details.'), 'error');
             messageField.style.borderColor = 'var(--accent)';
             return;
         }
 
         if (messageField.value.length > 5000) {
-            this.showStatus('❌ Message is too long. Please keep it under 5000 characters.', 'error');
+            this.showStatus(this.t('form.messageTooLong', '❌ Message is too long. Please keep it under 5000 characters.'), 'error');
             messageField.style.borderColor = 'var(--accent)';
             return;
         }
@@ -233,7 +243,7 @@ class FormManager {
         const submitBtn = this.form.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.textContent = this.t('form.sending', 'Sending...');
 
         try {
             const formData = new FormData(this.form);
@@ -247,7 +257,7 @@ class FormManager {
             });
 
             if (response.ok) {
-                this.showStatus('✓ Message sent successfully! I\'ll get back to you soon.', 'success');
+                this.showStatus(this.t('form.success', '✓ Message sent successfully! I\'ll get back to you soon.'), 'success');
                 this.form.reset();
                 // Set rate limit timestamp
                 localStorage.setItem('lastFormSubmit', Date.now().toString());
@@ -257,9 +267,9 @@ class FormManager {
             }
         } catch (error) {
             if (error.name === 'TimeoutError') {
-                this.showStatus('⏱️ Request timed out. Please try again.', 'error');
+                this.showStatus(this.t('form.timeout', '⏱️ Request timed out. Please try again.'), 'error');
             } else {
-                this.showStatus('✗ Failed to send message. Please try again or email me directly.', 'error');
+                this.showStatus(this.t('form.error', '✗ Failed to send message. Please try again or email me directly.'), 'error');
             }
         } finally {
             submitBtn.disabled = false;

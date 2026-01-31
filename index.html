@@ -30,6 +30,11 @@
     <meta property="og:site_name" content="Alexandre De Cuyper">
     <meta property="og:locale" content="en_US">
 
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="en" href="https://undreak.github.io/">
+    <link rel="alternate" hreflang="fr" href="https://undreak.github.io/">
+    <link rel="alternate" hreflang="x-default" href="https://undreak.github.io/">
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Alexandre De Cuyper | Physics Researcher">
@@ -106,24 +111,38 @@
     <link rel="stylesheet" href="css/hero-animations.css">
     <link rel="stylesheet" href="css/bento-skills.css">
     <link rel="stylesheet" href="css/technique-icons.css">
+
+    <!-- FOUC prevention: detect language before render -->
+    <script>
+        (function(){
+            var l=localStorage.getItem('language');
+            if(!l){l=navigator.language.split('-')[0];if(l!=='en'&&l!=='fr')l='en';}
+            document.documentElement.lang=l;
+            document.documentElement.dataset.lang=l;
+        })();
+    </script>
+    <style>
+        /* Hide i18n elements until translations load */
+        html:not([data-i18n-loaded]) [data-i18n] { visibility: hidden; }
+    </style>
 </head>
 <body>
 <!-- Navigation -->
 <nav class="nav" role="navigation">
     <div class="nav__container">
         <a href="#" class="nav__logo" aria-label="Home">ADC</a>
-        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" data-i18n-aria="nav.toggleMenu">
             <span class="nav__toggle-line"></span>
             <span class="nav__toggle-line"></span>
             <span class="nav__toggle-line"></span>
         </button>
         <div class="nav__menu">
-            <a href="#about" class="nav__link">About</a>
-            <a href="#research" class="nav__link">Research</a>
-            <a href="#skills" class="nav__link">Skills</a>
-            <a href="#projects" class="nav__link">Projects</a>
-            <a href="#contact" class="nav__link">Contact</a>
-            <button class="theme-toggle" aria-label="Toggle theme">
+            <a href="#about" class="nav__link" data-i18n="nav.about">About</a>
+            <a href="#research" class="nav__link" data-i18n="nav.research">Research</a>
+            <a href="#skills" class="nav__link" data-i18n="nav.skills">Skills</a>
+            <a href="#projects" class="nav__link" data-i18n="nav.projects">Projects</a>
+            <a href="#contact" class="nav__link" data-i18n="nav.contact">Contact</a>
+            <button class="theme-toggle" aria-label="Toggle theme" data-i18n-aria="nav.toggleTheme">
                 <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="5"/>
@@ -141,6 +160,7 @@
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                 </svg>
             </button>
+            <button class="lang-toggle" aria-label="Switch to French">FR</button>
         </div>
     </div>
 </nav>
@@ -149,10 +169,10 @@
 <header class="hero" id="hero">
     <div class="hero__container">
         <div class="hero__content">
-            <p class="hero__greeting">Hello, I'm</p>
+            <p class="hero__greeting" data-i18n="hero.greeting">Hello, I'm</p>
             <h1 class="hero__name">Alexandre<br>De Cuyper</h1>
-            <p class="hero__title">Experimental Physicist</p>
-            <p class="hero__tagline">Specializing in soft matter physics, polymer dynamics, and scattering techniques
+            <p class="hero__title" data-i18n="hero.title">Experimental Physicist</p>
+            <p class="hero__tagline" data-i18n="hero.tagline">Specializing in soft matter physics, polymer dynamics, and scattering techniques
                 with computational modeling</p>
             <div class="hero__skills">
                 <span class="skill-badge">SAXS/SANS</span>
@@ -162,9 +182,9 @@
                 <span class="skill-badge">AFM</span>
             </div>
             <div class="hero__cta">
-                <a href="#contact" class="btn btn--primary">Get in touch</a>
-                <a href="#research" class="btn btn--secondary">View research</a>
-                <a href="pdfs/cv.pdf" class="btn btn--outline" download>Download CV</a>
+                <a href="#contact" class="btn btn--primary" data-i18n="hero.cta.contact">Get in touch</a>
+                <a href="#research" class="btn btn--secondary" data-i18n="hero.cta.research">View research</a>
+                <a href="pdfs/cv.pdf" class="btn btn--outline" download data-i18n="hero.cta.cv">Download CV</a>
             </div>
         </div>
         <div class="hero__visual">
@@ -317,23 +337,23 @@
 <!-- About Section -->
 <section class="section about" id="about">
     <div class="container">
-        <h2 class="section__title">About Me</h2>
+        <h2 class="section__title" data-i18n="about.title">About Me</h2>
         <div class="about__grid">
             <div class="about__content">
-                <p class="about__text about__text--lead">
+                <p class="about__text about__text--lead" data-i18n="about.lead">
                     Experimental physicist with an international dual Master's degree in <strong>Physics of Soft
                     Matter</strong>
                     from Université Paris Cité and <strong>Complex Materials</strong> from Universidad de La Coruña,
                     obtained through a collaborative Erasmus+ program.
                 </p>
-                <p class="about__text">
+                <p class="about__text" data-i18n="about.paragraph1">
                     My research focuses on soft matter physics with a specialization in <strong>polymer
                     dynamics</strong>
                     and <strong>scattering techniques</strong> (SAXS/SANS, DLS). I combine rigorous experimental
                     methods with computational modeling using Python and C/C++ to investigate complex phenomena at the
                     nanoscale.
                 </p>
-                <p class="about__text">
+                <p class="about__text" data-i18n="about.paragraph2">
                     Currently preparing for doctoral school entrance exams, I'm passionate about understanding the
                     fundamental behavior of soft materials through both experiment and theory. Beyond physics, I
                     maintain
@@ -343,34 +363,34 @@
             </div>
             <div class="about__info">
                 <div class="info-card">
-                    <h3 class="info-card__title">Education</h3>
+                    <h3 class="info-card__title" data-i18n="about.education.title">Education</h3>
                     <div class="info-card__item info-card__item--dual-degree">
-                        <span class="info-card__note">Dual Master's Degree, Erasmus+ • 2023-2024</span>
-                        <strong>M2 Physics of Soft Matter</strong>
-                        <span>Université Paris Cité</span>
-                        <strong>M2 Complex Materials</strong>
+                        <span class="info-card__note" data-i18n="about.education.dualDegree.note">Dual Master's Degree, Erasmus+ • 2023-2024</span>
+                        <strong data-i18n="about.education.dualDegree.softMatter">M2 Physics of Soft Matter</strong>
+                        <span data-i18n="about.education.dualDegree.softMatterUni">Université Paris Cité</span>
+                        <strong data-i18n="about.education.dualDegree.complex">M2 Complex Materials</strong>
 
-                        <span>Universidad de La Coruña (Spain)</span>
+                        <span data-i18n="about.education.dualDegree.complexUni">Universidad de La Coruña (Spain)</span>
                     </div>
                     <div class="info-card__item">
-                        <strong>M1 Fundamental Physics</strong>
-                        <span>Université Paris Cité • 2020-2022</span>
+                        <strong data-i18n="about.education.m1.title">M1 Fundamental Physics</strong>
+                        <span data-i18n="about.education.m1.info">Université Paris Cité • 2020-2022</span>
                     </div>
                     <div class="info-card__item">
-                        <strong>Licence Physics</strong>
-                        <span>Université Paris Cité • 2016-2020</span>
+                        <strong data-i18n="about.education.licence.title">Licence Physics</strong>
+                        <span data-i18n="about.education.licence.info">Université Paris Cité • 2016-2020</span>
                     </div>
                 </div>
                 <div class="info-card">
-                    <h3 class="info-card__title">Languages</h3>
+                    <h3 class="info-card__title" data-i18n="about.languages.title">Languages</h3>
                     <div class="info-card__item">
-                        <strong>French</strong> <span>Native</span>
+                        <strong data-i18n="about.languages.french">French</strong> <span data-i18n="about.languages.frenchLevel">Native</span>
                     </div>
                     <div class="info-card__item">
-                        <strong>English</strong> <span>Fluent</span>
+                        <strong data-i18n="about.languages.english">English</strong> <span data-i18n="about.languages.englishLevel">Fluent</span>
                     </div>
                     <div class="info-card__item">
-                        <strong>Japanese</strong> <span>Intermediate (自習)</span>
+                        <strong data-i18n="about.languages.japanese">Japanese</strong> <span data-i18n="about.languages.japaneseLevel">Intermediate (自習)</span>
                     </div>
                 </div>
             </div>
@@ -381,8 +401,8 @@
 
 <section class="section research" id="research">
     <div class="container">
-        <h2 class="section__title">Research & Publications</h2>
-        <p class="section__subtitle">Experimental work, academic outputs, and professional development</p>
+        <h2 class="section__title" data-i18n="research.title">Research & Publications</h2>
+        <p class="section__subtitle" data-i18n="research.subtitle">Experimental work, academic outputs, and professional development</p>
 
         <div class="card-timeline">
             <!-- Master's Thesis - 2024 -->
@@ -396,7 +416,7 @@
 
                     <div class="publication-card__header">
                         <div class="publication-card__header-left">
-                            <span class="research-card__date-badge">June - Sept 2024</span>
+                            <span class="research-card__date-badge" data-i18n="research.thesis.date">June - Sept 2024</span>
                             <a href="https://gitlab.com/Undreak/llb"
                                class="code-badge"
                                target="_blank"
@@ -406,14 +426,14 @@
                                 <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
                                     <path d="M23.955 13.587l-1.342-4.135-2.664-8.189a.455.455 0 0 0-.867 0L16.418 9.45H7.582L4.919 1.263a.455.455 0 0 0-.867 0L1.388 9.452.045 13.587a.924.924 0 0 0 .331 1.023L12 23.054l11.624-8.443a.924.924 0 0 0 .331-1.024"/>
                                 </svg>
-                                Code & Data (LLB)
+                                <span data-i18n="research.thesis.codeLink">Code & Data (LLB)</span>
                             </a>
                             <!-- ADD THIS: Featured badge -->
                             <span class="thesis-featured-badge">
                                         <svg viewBox="0 0 24 24" fill="currentColor"> <polygon
                                                 points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
                                     </svg>
-                                    Featured
+                                    <span data-i18n="research.thesis.featured">Featured</span>
                                 </span>
                         </div>
                         <div class="publication-card__type">
@@ -422,12 +442,12 @@
                                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
                                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
                             </svg>
-                            <span>Master's Thesis</span>
+                            <span data-i18n="research.thesis.type">Master's Thesis</span>
                         </div>
                     </div>
-                    <h3 class="publication-card__title">Polymer Wetting Dynamics on Nano-textured Surfaces</h3>
-                    <p class="publication-card__venue">Laboratoire Léon Brillouin, CEA Saclay</p>
-                    <p class="publication-card__description">
+                    <h3 class="publication-card__title" data-i18n="research.thesis.title">Polymer Wetting Dynamics on Nano-textured Surfaces</h3>
+                    <p class="publication-card__venue" data-i18n="research.thesis.venue">Laboratoire Léon Brillouin, CEA Saclay</p>
+                    <p class="publication-card__description" data-i18n="research.thesis.description">
                         Investigated polymer wetting behavior on nano-structured surfaces using optical microscopy, advanced scattering
                         techniques (SAXS/SANS) and atomic force microscopy. Developed Python pipeline
                         to analyze hundreds of image sequences.
@@ -456,19 +476,19 @@
                 <!-- Content section -->
                 <div class="training-content">
                     <div class="publication-card__header">
-                        <span class="research-card__date-badge">Summer 2024</span>
+                        <span class="research-card__date-badge" data-i18n="research.training.date">Summer 2024</span>
                         <div class="publication-card__type">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
                                 <rect x="2" y="3" width="20" height="14" rx="2"/>
                                 <line x1="8" y1="21" x2="16" y2="21"/>
                                 <line x1="12" y1="17" x2="12" y2="21"/>
                             </svg>
-                            <span>Training</span>
+                            <span data-i18n="research.training.type">Training</span>
                         </div>
                     </div>
-                    <h3 class="publication-card__title">Formation Annuelle à la Neutronique</h3>
-                    <p class="publication-card__venue">Institut Laue-Langevin, Grenoble</p>
-                    <p class="publication-card__description">
+                    <h3 class="publication-card__title" data-i18n="research.training.title">Formation Annuelle à la Neutronique</h3>
+                    <p class="publication-card__venue" data-i18n="research.training.venue">Institut Laue-Langevin, Grenoble</p>
+                    <p class="publication-card__description" data-i18n="research.training.description">
                         Completed intensive 3-day practical training organized by 2FDN in collaboration with ILL.
                         Followed the soft matter & biophysics track with courses on SANS and time-of-flight/backscattering
                         spectroscopy, followed by hands-on practicals and data analysis at Europe's leading neutron facility.
@@ -489,7 +509,7 @@
 
                 <div class="card-timeline__card">
                     <div class="publication-card__header">
-                        <span class="research-card__date-badge">Feb - Apr 2024</span>
+                        <span class="research-card__date-badge" data-i18n="research.spring2024.date">Feb - Apr 2024</span>
                         <div class="publication-card__type">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
                                  height="20">
@@ -497,12 +517,12 @@
                                 <line x1="8" y1="21" x2="16" y2="21"/>
                                 <line x1="12" y1="17" x2="12" y2="21"/>
                             </svg>
-                            <span>Research Projects</span>
+                            <span data-i18n="research.spring2024.type">Research Projects</span>
                         </div>
                     </div>
-                    <h3 class="publication-card__title">Spring 2024 Technical Research Projects</h3>
-                    <p class="publication-card__venue">Universidad de La Coruña, Spain (Erasmus+)</p>
-                    <p class="publication-card__description">
+                    <h3 class="publication-card__title" data-i18n="research.spring2024.title">Spring 2024 Technical Research Projects</h3>
+                    <p class="publication-card__venue" data-i18n="research.spring2024.venue">Universidad de La Coruña, Spain (Erasmus+)</p>
+                    <p class="publication-card__description" data-i18n="research.spring2024.description">
                         Five experimental physics projects conducted during Erasmus+ exchange, covering materials
                         characterization, thermal analysis, laser spectroscopy, pressure-modulated calorimetry,
                         and advanced statistical analysis techniques.
@@ -527,8 +547,8 @@
                                 <line x1="38" y1="30" x2="42" y2="34" opacity="0.5"/>
                                 <line x1="42" y1="30" x2="46" y2="34" opacity="0.5"/>
                             </svg>
-                            <h4 class="technique-card__title">Laser Spectroscopy (LIBS)</h4>
-                            <p class="technique-card__desc">Spectral analysis of cosmetic samples and gel impurity
+                            <h4 class="technique-card__title" data-i18n="research.spring2024.libs.title">Laser Spectroscopy (LIBS)</h4>
+                            <p class="technique-card__desc" data-i18n="research.spring2024.libs.desc">Spectral analysis of cosmetic samples and gel impurity
                                 detection using Laser Induced Breakdown Spectroscopy</p>
                             <div class="technique-card__tags">
                                 <span class="technique-card__tag">Python</span>
@@ -557,8 +577,8 @@
                                 <rect x="20" y="34" width="8" height="6" rx="1" opacity="0.5"/>
                                 <line x1="24" y1="30" x2="24" y2="34" opacity="0.5"/>
                             </svg>
-                            <h4 class="technique-card__title">Viscoelasticity Analysis</h4>
-                            <p class="technique-card__desc">A comprehensive analysis of 3D-printed PLA samples using
+                            <h4 class="technique-card__title" data-i18n="research.spring2024.visco.title">Viscoelasticity Analysis</h4>
+                            <p class="technique-card__desc" data-i18n="research.spring2024.visco.desc">A comprehensive analysis of 3D-printed PLA samples using
                                 Dynamic Mechanical Analysis (DMA) and Time-Temperature Superposition (TTS) for master
                                 curve construction.</p>
                             <div class="technique-card__tags">
@@ -595,8 +615,8 @@
                                 <path d="M4 8 L14 16" stroke-dasharray="2 2" opacity="0.6"/>
                                 <path d="M34 16 L44 8" stroke-dasharray="2 2" opacity="0.6"/>
                             </svg>
-                            <h4 class="technique-card__title">X-ray Diffraction</h4>
-                            <p class="technique-card__desc">Statistical powder XRD analysis with ANOVA and peak
+                            <h4 class="technique-card__title" data-i18n="research.spring2024.xrd.title">X-ray Diffraction</h4>
+                            <p class="technique-card__desc" data-i18n="research.spring2024.xrd.desc">Statistical powder XRD analysis with ANOVA and peak
                                 fitting</p>
                             <div class="technique-card__tags">
                                 <span class="technique-card__tag">R</span>
@@ -630,8 +650,8 @@
                                 <circle cx="12" cy="24" r="2"/>
                                 <circle cx="36" cy="24" r="2"/>
                             </svg>
-                            <h4 class="technique-card__title">Perovskite Thermal</h4>
-                            <p class="technique-card__desc">Differential Calorimetry Analysis of perovskite materials
+                            <h4 class="technique-card__title" data-i18n="research.spring2024.perovskite.title">Perovskite Thermal</h4>
+                            <p class="technique-card__desc" data-i18n="research.spring2024.perovskite.desc">Differential Calorimetry Analysis of perovskite materials
                                 and heat capacity measurement using ASTM three-run method</p>
                             <div class="technique-card__tags">
                                 <span class="technique-card__tag">Python</span>
@@ -661,8 +681,8 @@
                                 <polygon points="24,42 21,38 27,38" fill="currentColor"/>
                                 <ellipse cx="24" cy="24" rx="6" ry="2" opacity="0.4"/>
                             </svg>
-                            <h4 class="technique-card__title">Modulated Pressure DSC</h4>
-                            <p class="technique-card__desc">A novel experimental approach for thermo-mechanical analysis
+                            <h4 class="technique-card__title" data-i18n="research.spring2024.mpdsc.title">Modulated Pressure DSC</h4>
+                            <p class="technique-card__desc" data-i18n="research.spring2024.mpdsc.desc">A novel experimental approach for thermo-mechanical analysis
                                 of materials using pressure modulation in DSC experiments.</p>
                             <div class="technique-card__tags">
                                 <span class="technique-card__tag">Python</span>
@@ -685,22 +705,22 @@
                 <div class="card-timeline__marker"></div>
                 <div class="card-timeline__card card-timeline__card--archival">
                     <!-- Optional: archival indicator -->
-                    <span class="archival-indicator">Archive</span>
+                    <span class="archival-indicator" data-i18n="research.archive.indicator">Archive</span>
 
                     <div class="publication-card__header">
-                        <span class="research-card__date-badge">2019</span>
+                        <span class="research-card__date-badge" data-i18n="research.archive.date">2019</span>
                         <div class="publication-card__type">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
                                  height="20">
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                                 <circle cx="12" cy="7" r="4"/>
                             </svg>
-                            <span>L3 Internship</span>
+                            <span data-i18n="research.archive.type">L3 Internship</span>
                         </div>
                     </div>
-                    <h3 class="publication-card__title">Optical Nano-antennas</h3>
-                    <p class="publication-card__venue">Institut de nanoscience de Paris, Sorbonne Université</p>
-                    <p class="publication-card__description">
+                    <h3 class="publication-card__title" data-i18n="research.archive.title">Optical Nano-antennas</h3>
+                    <p class="publication-card__venue" data-i18n="research.archive.venue">Institut de nanoscience de Paris, Sorbonne Université</p>
+                    <p class="publication-card__description" data-i18n="research.archive.description">
                         Studied light-matter interactions at the nanoscale during L3 internship. Applied electromagnetic
                         scattering theory and developed computational simulations to model optical nano-antenna
                         behavior.
@@ -730,13 +750,13 @@
                             </svg>
                         </div>
                         <div class="portal-card__text">
-                            <h3 class="portal-card__title">Computational Projects</h3>
-                            <p class="portal-card__description">
+                            <h3 class="portal-card__title" data-i18n="research.portal.title">Computational Projects</h3>
+                            <p class="portal-card__description" data-i18n="research.portal.description">
                                 Explore open-source computational physics projects, data analysis tools,
                                 and scientific software development work from GitHub and GitLab.
                             </p>
                             <span class="portal-card__cta">
-                                    View All Projects
+                                    <span data-i18n="research.portal.cta">View All Projects</span>
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M5 12h14M12 5l7 7-7 7"/>
                                     </svg>
@@ -752,7 +772,7 @@
 <!-- Skills Section -->
 <section class="section skills" id="skills">
     <div class="container">
-        <h2 class="section__title">Skills & Expertise</h2>
+        <h2 class="section__title" data-i18n="skills.title">Skills & Expertise</h2>
         <div class="skills__bento-grid">
             <!-- Large: Experimental Techniques -->
             <div class="bento-box bento-box--experimental">
@@ -767,22 +787,22 @@
                             </svg>
                         </div>
                         <div class="bento-box__title-wrapper">
-                            <h3 class="bento-box__title">Experimental Techniques</h3>
-                            <p class="bento-box__subtitle">Core Competency</p>
+                            <h3 class="bento-box__title" data-i18n="skills.experimental.title">Experimental Techniques</h3>
+                            <p class="bento-box__subtitle" data-i18n="skills.experimental.subtitle">Core Competency</p>
                         </div>
                     </div>
                     <div class="bento-box__skills">
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">SAXS/SANS</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.experimental.saxs">SAXS/SANS</span>
                         </div>
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">Neutron Scattering</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.experimental.neutron">Neutron Scattering</span>
                         </div>
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">Atomic Force Microscopy</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.experimental.afm">Atomic Force Microscopy</span>
                         </div>
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">Polymer Characterization</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.experimental.polymer">Polymer Characterization</span>
                         </div>
                     </div>
                 </div>
@@ -800,16 +820,16 @@
                             </svg>
                         </div>
                         <div class="bento-box__title-wrapper">
-                            <h3 class="bento-box__title">Python & Scientific Computing</h3>
+                            <h3 class="bento-box__title" data-i18n="skills.python.title">Python & Scientific Computing</h3>
                         </div>
                     </div>
                     <div class="bento-box__skills">
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">Python</span>
-                            <span class="bento-skill-item__level">Advanced</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.python.python">Python</span>
+                            <span class="bento-skill-item__level" data-i18n="skills.python.level">Advanced</span>
                         </div>
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">Scientific Computing</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.python.scientific">Scientific Computing</span>
                         </div>
                     </div>
                 </div>
@@ -828,16 +848,16 @@
                             </svg>
                         </div>
                         <div class="bento-box__title-wrapper">
-                            <h3 class="bento-box__title">C/C++</h3>
+                            <h3 class="bento-box__title" data-i18n="skills.cpp.title">C/C++</h3>
                         </div>
                     </div>
                     <div class="bento-box__skills">
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">C/C++</span>
-                            <span class="bento-skill-item__level">Proficient</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.cpp.cpp">C/C++</span>
+                            <span class="bento-skill-item__level" data-i18n="skills.cpp.level">Proficient</span>
                         </div>
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">Performance Computing</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.cpp.performance">Performance Computing</span>
                         </div>
                     </div>
                 </div>
@@ -856,22 +876,22 @@
                             </svg>
                         </div>
                         <div class="bento-box__title-wrapper">
-                            <h3 class="bento-box__title">Theoretical & Computational</h3>
-                            <p class="bento-box__subtitle">Core Competency</p>
+                            <h3 class="bento-box__title" data-i18n="skills.theoretical.title">Theoretical & Computational</h3>
+                            <p class="bento-box__subtitle" data-i18n="skills.theoretical.subtitle">Core Competency</p>
                         </div>
                     </div>
                     <div class="bento-box__skills">
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">Electromagnetic Scattering Theory</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.theoretical.scattering">Electromagnetic Scattering Theory</span>
                         </div>
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">Statistical Physics</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.theoretical.statistical">Statistical Physics</span>
                         </div>
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">Computational Modeling</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.theoretical.modeling">Computational Modeling</span>
                         </div>
                         <div class="bento-skill-item">
-                            <span class="bento-skill-item__name">Data Analysis & Visualization</span>
+                            <span class="bento-skill-item__name" data-i18n="skills.theoretical.data">Data Analysis & Visualization</span>
                         </div>
                     </div>
                 </div>
@@ -889,7 +909,7 @@
                             </svg>
                         </div>
                         <div class="bento-box__title-wrapper">
-                            <h3 class="bento-box__title">Tools & Platforms</h3>
+                            <h3 class="bento-box__title" data-i18n="skills.tools.title">Tools & Platforms</h3>
                         </div>
                     </div>
                     <div class="bento-box__skills">
@@ -911,8 +931,8 @@
 <section class="section contact" id="contact">
     <div class="container">
         <div class="contact__content">
-            <h2 class="section__title">Get in Touch</h2>
-            <p class="contact__text">
+            <h2 class="section__title" data-i18n="contact.title">Get in Touch</h2>
+            <p class="contact__text" data-i18n="contact.text">
                 I'm currently preparing for doctoral school entrance exams and exploring research opportunities
                 in soft matter physics, polymer dynamics, and scattering techniques. Feel free to reach out for
                 collaborations, discussions, or opportunities.
@@ -923,19 +943,19 @@
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                         <polyline points="22,6 12,13 2,6"/>
                     </svg>
-                    <span>alexandre.decuyper@icloud.com</span>
+                    <span>Mail</span>
                 </a>
                 <a href="https://github.com/Undreak" class="contact__link" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
                     </svg>
-                    <span>github.com/Undreak</span>
+                    <span>GitHub</span>
                 </a>
                 <a href="https://gitlab.com/Undreak" class="contact__link" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M23.955 13.587l-1.342-4.135-2.664-8.189a.455.455 0 0 0-.867 0L16.418 9.45H7.582L4.919 1.263a.455.455 0 0 0-.867 0L1.388 9.452.045 13.587a.924.924 0 0 0 .331 1.023L12 23.054l11.624-8.443a.924.924 0 0 0 .331-1.024"/>
                     </svg>
-                    <span>gitlab.com/Undreak</span>
+                    <span>GitLab</span>
                 </a>
                 <a href="https://www.linkedin.com/in/alexandre-decuyper" class="contact__link" target="_blank"
                    rel="noopener noreferrer">
@@ -952,7 +972,7 @@
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
-        <p class="footer__text">
+        <p class="footer__text" data-i18n="footer.copyright">
             &copy; 2025 Alexandre De Cuyper. Built with curiosity and code.
         </p>
     </div>
@@ -970,6 +990,7 @@
         integrity="sha384-sGXNIHpdJSEfTkXLnvHLLQNgJVCBh+FvzGmIHKHPD+lVELKZjVKkPvGHxVz0kVhk"
         crossorigin="anonymous"></script>
 <!-- onerror="this.onerror=null;this.src='js/vendor/purify.min.js';this.removeAttribute('integrity')"> -->
+<script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/github.js"></script>
 <script src="js/animations.js"></script>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,12 @@
     <meta property="og:title" content="All Projects | Alexandre De Cuyper">
     <meta property="og:description" content="Complete collection of GitHub and GitLab repositories - computational physics, data analysis, and research projects.">
     <meta property="og:site_name" content="Alexandre De Cuyper">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="en" href="https://undreak.github.io/projects.html">
+    <link rel="alternate" hreflang="fr" href="https://undreak.github.io/projects.html">
+    <link rel="alternate" hreflang="x-default" href="https://undreak.github.io/projects.html">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
@@ -43,24 +49,38 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/projects-page.css">
+
+    <!-- FOUC prevention: detect language before render -->
+    <script>
+        (function(){
+            var l=localStorage.getItem('language');
+            if(!l){l=navigator.language.split('-')[0];if(l!=='en'&&l!=='fr')l='en';}
+            document.documentElement.lang=l;
+            document.documentElement.dataset.lang=l;
+        })();
+    </script>
+    <style>
+        /* Hide i18n elements until translations load */
+        html:not([data-i18n-loaded]) [data-i18n] { visibility: hidden; }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav" role="navigation">
         <div class="nav__container">
             <a href="index.html" class="nav__logo" aria-label="Home">Alexandre De Cuyper</a>
-            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" data-i18n-aria="nav.toggleMenu">
                 <span class="nav__toggle-line"></span>
                 <span class="nav__toggle-line"></span>
                 <span class="nav__toggle-line"></span>
             </button>
             <div class="nav__menu">
-                <a href="index.html#about" class="nav__link">About</a>
-                <a href="index.html#research" class="nav__link">Research</a>
-                <a href="index.html#skills" class="nav__link">Skills</a>
-                <a href="projects.html" class="nav__link is-active">Projects</a>
-                <a href="index.html#contact" class="nav__link">Contact</a>
-                <button class="theme-toggle" aria-label="Toggle theme">
+                <a href="index.html#about" class="nav__link" data-i18n="nav.about">About</a>
+                <a href="index.html#research" class="nav__link" data-i18n="nav.research">Research</a>
+                <a href="index.html#skills" class="nav__link" data-i18n="nav.skills">Skills</a>
+                <a href="projects.html" class="nav__link is-active" data-i18n="nav.projects">Projects</a>
+                <a href="index.html#contact" class="nav__link" data-i18n="nav.contact">Contact</a>
+                <button class="theme-toggle" aria-label="Toggle theme" data-i18n-aria="nav.toggleTheme">
                     <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="5"/>
                         <line x1="12" y1="1" x2="12" y2="3"/>
@@ -76,6 +96,7 @@
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                     </svg>
                 </button>
+                <button class="lang-toggle" aria-label="Switch to French">FR</button>
             </div>
         </div>
     </nav>
@@ -85,8 +106,8 @@
         <div class="container">
             <!-- Header -->
             <header class="projects-page__header">
-                <h1 class="projects-page__title">All Projects</h1>
-                <p class="projects-page__subtitle">Complete collection of my GitHub and GitLab repositories</p>
+                <h1 class="projects-page__title" data-i18n="projects.title">All Projects</h1>
+                <p class="projects-page__subtitle" data-i18n="projects.subtitle">Complete collection of my GitHub and GitLab repositories</p>
             </header>
 
             <!-- Controls -->
@@ -101,33 +122,35 @@
                            id="search-input"
                            class="search-box__input"
                            placeholder="Search projects..."
-                           aria-label="Search projects">
+                           aria-label="Search projects"
+                           data-i18n-placeholder="projects.search"
+                           data-i18n-aria="projects.searchLabel">
                 </div>
 
                 <!-- Filters -->
                 <div class="filters">
                     <div class="filter-group">
-                        <label class="filter-label">Source:</label>
+                        <label class="filter-label" data-i18n="projects.source">Source:</label>
                         <div class="filter-buttons" id="source-filter">
-                            <button class="filter-btn is-active" data-source="all">All</button>
+                            <button class="filter-btn is-active" data-source="all" data-i18n="projects.all">All</button>
                             <button class="filter-btn" data-source="github">GitHub</button>
                             <button class="filter-btn" data-source="gitlab">GitLab</button>
                         </div>
                     </div>
 
                     <div class="filter-group">
-                        <label class="filter-label">Sort by:</label>
+                        <label class="filter-label" data-i18n="projects.sortBy">Sort by:</label>
                         <select id="sort-select" class="filter-select">
-                            <option value="updated">Recently Updated</option>
-                            <option value="stars">Most Stars</option>
-                            <option value="name">Name (A-Z)</option>
+                            <option value="updated" data-i18n="projects.recentlyUpdated">Recently Updated</option>
+                            <option value="stars" data-i18n="projects.mostStars">Most Stars</option>
+                            <option value="name" data-i18n="projects.nameAZ">Name (A-Z)</option>
                         </select>
                     </div>
 
                     <div class="filter-group hidden" id="language-filter-container">
-                        <label class="filter-label">Language:</label>
+                        <label class="filter-label" data-i18n="projects.language">Language:</label>
                         <select id="language-filter" class="filter-select">
-                            <option value="all">All Languages</option>
+                            <option value="all" data-i18n="projects.allLanguages">All Languages</option>
                         </select>
                     </div>
                 </div>
@@ -141,7 +164,7 @@
             <!-- Loading -->
             <div class="projects-page__loading" id="loading">
                 <div class="loading-spinner"></div>
-                <p>Loading all projects from GitHub and GitLab...</p>
+                <p data-i18n="projects.loading">Loading all projects from GitHub and GitLab...</p>
             </div>
 
             <!-- Projects Grid -->
@@ -151,7 +174,7 @@
 
             <!-- Empty State -->
             <div class="projects-page__empty hidden" id="empty-state">
-                <p>No projects found matching your criteria.</p>
+                <p data-i18n="projects.noProjects">No projects found matching your criteria.</p>
             </div>
         </div>
     </main>
@@ -159,7 +182,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="footer__text">
+            <p class="footer__text" data-i18n="footer.copyright">
                 &copy; 2025 Alexandre De Cuyper. Built with curiosity and code.
             </p>
         </div>
@@ -177,6 +200,7 @@
             integrity="sha384-sGXNIHpdJSEfTkXLnvHLLQNgJVCBh+FvzGmIHKHPD+lVELKZjVKkPvGHxVz0kVhk"
             crossorigin="anonymous"></script>
             <!-- onerror="this.onerror=null;this.src='js/vendor/purify.min.js';this.removeAttribute('integrity')"> -->
+    <script src="js/i18n.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/projects-page.js"></script>
     <script src="js/main.js"></script>

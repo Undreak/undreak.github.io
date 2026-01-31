@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamique de mouillage sur surfaces nano-texturées | Alexandre De Cuyper</title>
+    <meta name="description" content="Étude systématique de l'étalement de liquides sur des surfaces à texture nanométrique - Recherche de mémoire de Master au CEA Saclay">
+
+    <!-- Open Graph / Social sharing -->
+    <meta property="og:title" content="Dynamique de mouillage sur surfaces nano-texturées">
+    <meta property="og:description" content="Comment les lois classiques du mouillage s'appliquent-elles quand les surfaces ont des défauts nanométriques ? Une histoire de recherche au CEA Saclay.">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="en" href="https://undreak.github.io/articles/polymer-wetting-dynamics.html">
+    <link rel="alternate" hreflang="fr" href="https://undreak.github.io/articles/fr/polymer-wetting-dynamics.html">
+    <link rel="alternate" hreflang="x-default" href="https://undreak.github.io/articles/polymer-wetting-dynamics.html">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/article.css">
+    <link rel="stylesheet" href="../../css/lightbox.css">
+    <link rel="stylesheet" href="../../css/toc.css">
+
+    <!-- MathJax for equations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+
+    <!-- FOUC prevention: detect language before render -->
+    <script>
+        (function(){
+            var l=localStorage.getItem('language');
+            if(!l){l=navigator.language.split('-')[0];if(l!=='en'&&l!=='fr')l='en';}
+            document.documentElement.lang=l;
+            document.documentElement.dataset.lang=l;
+        })();
+    </script>
+    <style>
+        /* Hide i18n elements until translations load */
+        html:not([data-i18n-loaded]) [data-i18n] { visibility: hidden; }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="nav" role="navigation">
+    <div class="nav__container">
+        <a href="../../index.html" class="nav__logo" aria-label="Accueil">ADC</a>
+        <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false" data-i18n-aria="nav.toggleMenu">
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+        </button>
+        <div class="nav__menu">
+            <a href="../../index.html#about" class="nav__link" data-i18n="nav.about">À propos</a>
+            <a href="../../index.html#research" class="nav__link" data-i18n="nav.research">Recherche</a>
+            <a href="../../index.html#publications" class="nav__link">Publications</a>
+            <a href="../../index.html#skills" class="nav__link" data-i18n="nav.skills">Compétences</a>
+            <a href="../../index.html#projects" class="nav__link" data-i18n="nav.projects">Projets</a>
+            <a href="../../index.html#contact" class="nav__link" data-i18n="nav.contact">Contact</a>
+            <button class="theme-toggle" aria-label="Changer de thème" data-i18n-aria="nav.toggleTheme">
+                <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <button class="lang-toggle" aria-label="Switch to English">EN</button>
+        </div>
+    </div>
+</nav>
+
+<!-- Article -->
+<article class="article">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="../../index.html" data-i18n="articles.home">Accueil</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+        <a href="../../index.html#publications" data-i18n="articles.publications">Publications</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+        <span>Dynamique de mouillage</span>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article__header">
+        <h1 class="article__title">Dynamique de mouillage sur surfaces nano-texturées</h1>
+        <p class="article__subtitle">Étude systématique de l'étalement de liquides sur des surfaces à ingénierie de précision à l'échelle nanométrique</p>
+
+        <div class="article__meta">
+                <span class="article__type-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                    Mémoire de Master
+                </span>
+            <span class="article__meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    Juin – Septembre 2024
+                </span>
+            <span class="article__meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    CEA Saclay
+                </span>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <div class="article__content">
+        <!-- Overview Section -->
+        <section>
+            <h2>Aperçu</h2>
+            <div class="article__info-box">
+                <p><strong>Durée :</strong> Juin – Septembre 2024</p>
+                <p><strong>Lieu :</strong> Laboratoire Léon Brillouin, CEA Saclay</p>
+                <p><strong>Encadrante :</strong> Marion Grzelka</p>
+                <p><strong>Domaine :</strong> Physique de la Matière Molle & Science des Surfaces</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- The Problem -->
+        <section>
+            <h2>Le problème</h2>
+            <p>
+                Quand vous renversez de l'eau sur une table, elle s'étale. La physique semble simple — jusqu'à ce qu'on regarde de près. Au bord mobile d'une goutte qui s'étale, la mécanique des fluides classique prédit une dissipation d'énergie infinie. C'est le paradoxe de Huh-Scriven, et le résoudre nécessite de comprendre ce qui se passe à l'échelle nanométrique.
+            </p>
+            <p>
+                La solution implique un <strong>film précurseur</strong> : une fine couche de liquide, de seulement quelques nanomètres d'épaisseur, qui avance devant le bord visible de la goutte. Ce film dissipe l'énergie qui autrement divergerait dans nos équations. Sur les surfaces atomiquement lisses, on comprend bien ce phénomène. Mais les vraies surfaces ne sont jamais atomiquement lisses.
+            </p>
+            <p>
+                C'est là que ça devient intéressant. Sur les surfaces avec une rugosité micrométrique, un phénomène différent prend le relais : l'<strong>hémicapillarité</strong>, où les forces capillaires entraînent le liquide à travers les structures de surface. La physique change complètement. Mais que se passe-t-il entre les deux — quand les défauts de surface font quelques nanomètres de haut, comparables au film précurseur lui-même ?
+            </p>
+
+            <blockquote>
+                <p>La loi d'étalement classique tient-elle encore quand la rugosité de surface correspond à l'épaisseur du film précurseur ? Un film précurseur se forme-t-il même dans ces conditions ?</p>
+            </blockquote>
+
+            <p>
+                C'était inconnu. J'ai entrepris de répondre à ces questions expérimentalement.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/polymer-wetting-dynamics/origin.webp" alt="Séquence d'étalement de goutte sur surface nano-texturée">
+                <p class="article__image-caption">Image au microscope (vue de dessus) d'une goutte s'étalant sur une surface lisse, montrant le motif d'interférence des anneaux de Newton</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Why It's Hard -->
+        <section>
+            <h2>Pourquoi c'est difficile</h2>
+            <p>
+                Trois défis rendaient ce problème expérimentalement inaccessible jusqu'à présent :
+            </p>
+
+            <p>
+                <strong>Fabrication :</strong> Créer des surfaces avec des défauts nanométriques <em>contrôlés</em> (20–80 nm de haut) distribués uniformément sur des zones centimétriques. La lithographie par faisceau d'électrons est trop lente. La photolithographie n'est pas assez précise. J'avais besoin d'une approche différente.
+            </p>
+
+            <p>
+                <strong>Caractérisation :</strong> Mesurer des hauteurs de défauts de quelques dizaines de nanomètres tout en cartographiant leur distribution spatiale sur de grandes zones nécessite de combiner plusieurs techniques à différentes échelles.
+            </p>
+
+            <p>
+                <strong>Dynamique :</strong> Suivre une goutte qui s'étale dont le rayon suit une loi de puissance en \(t^{1/10}\) signifie que le comportement intéressant s'étend sur des heures voire des jours. Cela demande une analyse automatisée de centaines de séquences d'images.
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- My Approach -->
+        <section>
+            <h2>Mon approche</h2>
+
+            <h3>1. Ingénierie des surfaces</h3>
+            <p>
+                J'ai utilisé la lithographie douce avec des nanoparticules de silice chargées (~100 nm de diamètre). Les particules se repoussent électrostatiquement, produisant des distributions uniformes sans agrégation. En contrôlant deux paramètres — la température de frittage (1130–1190°C) et le temps d'incubation (0–50 min) — j'ai ajusté indépendamment la hauteur et la densité des défauts.
+            </p>
+            <p>
+                Cela a produit <strong>32 surfaces distinctes</strong> couvrant :
+            </p>
+            <ul>
+                <li>Des hauteurs de <strong>20 nm à 80 nm</strong></li>
+                <li>Des densités de <strong>0 à 12 défauts/μm²</strong></li>
+            </ul>
+            <p>
+                Le processus de frittage transforme également la géométrie des défauts : à basse température, les défauts restent des calottes sphériques ; à haute température, ils s'aplatissent en profils de type gaussien. Cela compte pour la physique.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/polymer-wetting-dynamics/surface.webp" alt="Caractérisation de surface montrant l'arrangement des nanoparticules">
+                <p class="article__image-caption">Fabrication de surfaces nano-texturées par lithographie douce et frittage</p>
+            </div>
+
+            <div class="article__image">
+                <img src="../../images/articles/polymer-wetting-dynamics/surfaces_with_droplet.webp" alt="Surfaces nano-texturées fabriquées avec gouttes d'huile de silicone">
+                <p class="article__image-caption">Réseau de surfaces nano-texturées montrant l'étalement de gouttes</p>
+            </div>
+            <h3>2. Caractérisation multi-échelle</h3>
+            <p>
+                <strong>Taille des nanoparticules (SAXS/SANS) :</strong> J'ai mesuré le diamètre initial des particules à 106,2 ± 8,5 nm par diffusion des rayons X aux petits angles, confirmé par diffusion de neutrons à l'ILL Grenoble. Cela établit la référence avant frittage.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/polymer-wetting-dynamics/saxs_im.webp" alt="Motif de diffusion SAXS et analyse">
+                <p class="article__image-caption">Montage de diffusion des rayons X aux petits angles (SAXS) pour la détermination de la taille des particules</p>
+            </div>
+
+            <p>
+                <strong>Topographie de surface (AFM) :</strong> J'ai cartographié chaque surface sur 10 μm × 10 μm avec une résolution de 1024 échantillons/ligne — suffisamment haute pour résoudre les profils individuels des défauts tout en couvrant des zones statistiquement significatives. De ces cartes, j'ai extrait les distributions de hauteur, les densités de défauts et le paramètre de rugosité \(r\) nécessaire aux prédictions théoriques.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/polymer-wetting-dynamics/afm.webp" alt="Topographie AFM 3D de surface nano-texturée">
+                <p class="article__image-caption">Topographie AFM 3D montrant la distribution des défauts à différentes densités</p>
+            </div>
+
+            <div class="article__image">
+                <img src="../../images/articles/polymer-wetting-dynamics/defect_profile.webp" alt="Profil AFM de défauts individuels à différentes températures de frittage">
+                <p class="article__image-caption">Profils en coupe montrant l'évolution de formes sphériques (1130°C) à aplaties (1190°C)</p>
+            </div>
+
+            <h3>3. Analyse optique automatisée</h3>
+            <p>
+                Suivre manuellement l'étalement des gouttes sur des centaines d'expériences n'était pas faisable. J'ai construit un pipeline Python qui :
+            </p>
+            <ul>
+                <li>Détecte les franges d'interférence (anneaux de Newton) dans la goutte qui s'étale</li>
+                <li>Extrait le rayon de la goutte des positions des franges</li>
+                <li>Mesure la largeur du film précurseur à partir des gradients d'intensité</li>
+                <li>Calcule le volume de la goutte à partir du profil de hauteur reconstruit</li>
+            </ul>
+            <p>
+                Le motif d'interférence encode la forme de la goutte : chaque frange brillante correspond à un changement de hauteur de \(\lambda/2n \approx 174\) nm (pour une lumière à 488 nm dans l'huile de silicone avec \(n = 1,4\)).
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/polymer-wetting-dynamics/droplet_average.webp" alt="Flux de travail d'analyse automatisée">
+                <p class="article__image-caption">Analyse d'image de goutte montrant les motifs d'interférence et le profil d'intensité extrait</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Results -->
+        <section>
+            <h2>Résultats</h2>
+
+            <h3>Le résultat central</h3>
+            <p>
+                La théorie classique prédit qu'une goutte s'étalant sur une surface plane suit la <strong>loi de Tanner</strong> :
+            </p>
+            <p style="text-align: center;">
+                \[ r \sim \left(\frac{\gamma V^3 t}{\eta}\right)^{1/10} \]
+            </p>
+            <p>
+                où \(r\) est le rayon, \(V\) est le volume, \(\gamma\) est la tension de surface, \(\eta\) est la viscosité, et \(t\) est le temps. L'exposant 1/10 émerge de l'équilibre entre les forces capillaires motrices et la dissipation visqueuse — c'est une signature de la physique sous-jacente.
+            </p>
+            <p>
+                L'attente était que les défauts nanométriques pourraient perturber cela. Quand la hauteur des défauts approche l'épaisseur du film, le liquide rencontre des obstacles comparables à sa propre profondeur. Les travaux théoriques de Cormier et al. suggéraient que des films suffisamment épais pourraient faire basculer la dynamique vers un régime différent (loi en \(t^{1/2}\)).
+            </p>
+            <p>
+                <strong>Ce que j'ai trouvé : la loi de Tanner est valide sur toutes les surfaces testées.</strong>
+            </p>
+            <p>
+                Hauteurs de défauts de 20 à 80 nm, densités de 0 à 12 défauts/μm², viscosités couvrant trois ordres de grandeur — les données se regroupent sur une seule courbe maîtresse quand elles sont correctement renormalisées :
+            </p>
+            <p style="text-align: center;">
+                \[ r \text{ vs. } t/\tau, \quad \text{où } \tau = \eta/(\gamma V^3) \]
+            </p>
+            <p>
+                C'est significatif. Cela signifie que la rugosité nanométrique, au moins dans ces paramètres, n'altère pas fondamentalement le mécanisme d'étalement. Le cadre classique reste valide.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/polymer-wetting-dynamics/master_curve.webp" alt="Validation expérimentale de la loi de Tanner sur surfaces nano-texturées">
+                <p class="article__image-caption">Courbe maîtresse du rayon de gouttes sur diverses surfaces nano-texturées suivant la loi prédite en \(t^{1/10}\)</p>
+            </div>
+
+            <h3>Le film précurseur</h3>
+            <p>
+                Sur les surfaces lisses, aucun film visible ne se forme devant la goutte. Sur mes surfaces nano-texturées, un film distinct apparaît — et sa dynamique suit une loi différente :
+            </p>
+            <p style="text-align: center;">
+                \[ W_f \sim \sqrt{D_1 t}, \quad \text{où } D_1 = \frac{2\gamma(r-1)h}{\eta} \]
+            </p>
+            <p>
+                Ici \(W_f\) est la largeur du film, \(h\) est la hauteur du film, et \(r\) est le paramètre de rugosité des mesures AFM. Cette loi en \(\sqrt{t}\) est caractéristique d'un étalement piloté par diffusion — le régime d'hémicapillarité.
+            </p>
+            <p>
+                Le film est visible en microscopie optique comme un gradient entourant le bord de la goutte. Sa largeur est corrélée à la hauteur des défauts : des défauts plus grands favorisent des films plus larges. Cela a du sens physiquement — des structures de surface plus grandes créent des forces capillaires motrices plus fortes.
+            </p>
+
+            <div class="article__image">
+                <img src="../../images/articles/polymer-wetting-dynamics/droplet_film_master.webp" alt="Validation expérimentale du film d'hémicapillarité sur surfaces nano-texturées">
+                <p class="article__image-caption">Courbe maîtresse de la largeur du film pour des gouttes sur diverses surfaces nano-texturées suivant la loi prédite en \(t^{1/2}\)</p>
+            </div>
+
+
+            <h3>Une observation inattendue</h3>
+            <p>
+                Pour les très petites gouttes (\(V < 0.001\) μL), j'ai observé quelque chose que la théorie ne prédit pas : la goutte macroscopique disparaît entièrement tandis que le film continue de s'étaler. La goutte agit comme un réservoir que le film draine complètement.
+            </p>
+            <p>
+                Cela fixe une limite inférieure pratique sur le volume de goutte pour ces expériences. Cela soulève aussi des questions sur les hypothèses de conservation du volume dans le cadre théorique.
+            </p>
+            <div class="article__image">
+                <img src="../../images/articles/polymer-wetting-dynamics/droplet_disapear.png" alt="Goutte disparaissant après que le film a épuisé son réservoir">
+                     <p class="article_image_caption">Goutte disparaissant après que le film a épuisé son réservoir</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- What This Means -->
+        <section>
+            <h2>Ce que cela signifie</h2>
+
+            <h3>Pour le domaine</h3>
+            <p>
+                C'est la première étude expérimentale systématique de la dynamique de mouillage sur des surfaces avec une rugosité nanométrique contrôlée. Les travaux précédents examinaient soit des surfaces atomiquement lisses (validant les films précurseurs) soit des textures micrométriques (caractérisant l'hémicapillarité). Le régime nanométrique — où la hauteur des défauts correspond à l'épaisseur du film — restait inexploré.
+            </p>
+            <p>
+                Le résultat clé est que la loi de Tanner est plus robuste qu'attendu. Cela contraint les modèles théoriques : tout cadre pour le mouillage sur surfaces rugueuses doit se réduire à une loi en \(t^{1/10}\) dans cette gamme de paramètres.
+            </p>
+
+            <h3>Pour les applications</h3>
+            <p>
+                Comprendre quand la théorie classique du mouillage s'applique — et quand elle échoue — importe pour :
+            </p>
+            <p>
+                <strong>Procédés de revêtement :</strong> Si vous concevez un revêtement qui doit s'étaler uniformément sur un substrat texturé, savoir que la loi de Tanner tient à l'échelle nanométrique signifie que vous pouvez utiliser les modèles établis pour la conception du procédé. La texture n'introduira pas de dynamique inattendue.
+            </p>
+            <p>
+                <strong>Microfluidique :</strong> Les surfaces de canaux dans les dispositifs microfluidiques sont rarement atomiquement lisses. Ce travail suggère qu'une rugosité nanométrique modérée n'altérera pas fondamentalement l'écoulement piloté par capillarité, ce qui simplifie la conception des dispositifs.
+            </p>
+            <p>
+                <strong>Impression jet d'encre :</strong> L'étalement de gouttes sur papier ou substrats polymères implique des structures de surface nanométriques. La robustesse de la loi de Tanner fournit un cadre prédictif.
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Open Questions -->
+        <section>
+            <h2>Questions ouvertes</h2>
+            <p>Plusieurs observations restent inexpliquées :</p>
+            <p>
+                <strong>Où la loi de Tanner échoue-t-elle ?</strong> Ma gamme de paramètres (hauteur 20–80 nm, densité 0–12 défauts/μm²) a montré une loi en \(t^{1/10}\) cohérente. Des défauts plus grands ou des géométries différentes pourraient révéler des transitions vers d'autres régimes.
+            </p>
+            <p>
+                <strong>Qu'est-ce qui détermine l'épaisseur du film ?</strong> J'ai observé les films optiquement mais n'ai pas pu mesurer leur épaisseur directement. La réflectivité de neutrons ou de rayons X pourrait résoudre cela.
+            </p>
+            <p>
+                <strong>Pourquoi les petites gouttes disparaissent-elles ?</strong> Le volume critique en dessous duquel la goutte est entièrement consommée par le film, et le mécanisme pilotant cette transition, nécessitent une quantification.
+            </p>
+            <p>
+                <strong>Qu'est-ce qui cause la variation d'un lot à l'autre dans les couches d'oxyde ?</strong> Certaines surfaces à 1190°C ont montré des différences inattendues dans la visibilité du film malgré des protocoles identiques. La dynamique d'étalement n'était pas affectée, mais l'origine de cette variabilité n'est pas claire.
+            </p>
+        </section>
+
+        <hr>
+
+        <!-- Technical Details -->
+        <section>
+            <h2>Détails techniques</h2>
+
+            <details>
+                <summary>Paramètres expérimentaux (cliquer pour développer)</summary>
+
+                <h4>Fabrication des surfaces</h4>
+                <ul>
+                    <li>Substrat : Wafers de silicium (Siegert Wafer)</li>
+                    <li>Nanoparticules : 100 nm silice, 0,02% v/v (Polyscience)</li>
+                    <li>Couche d'adhésion PEI : 1 g/L, 1 heure d'incubation</li>
+                    <li>Frittage : 1130–1190°C pendant 2 heures, rampe de 600°C/h</li>
+                    <li>Temps d'incubation : 0, 3, 6, 8, 15, 30, 40, 50 minutes</li>
+                </ul>
+
+                <h4>Caractérisation</h4>
+                <ul>
+                    <li>SAXS : diffractomètre XEUSS 2.0, λ = 1,542 Å, distance échantillon-détecteur 2488 mm</li>
+                    <li>SANS : instrument SAM à l'ILL Grenoble</li>
+                    <li>AFM : Bruker FastScan, mode tapping, scans 10 μm × 10 μm, 1024 échantillons/ligne</li>
+                </ul>
+
+                <h4>Expériences d'étalement</h4>
+                <ul>
+                    <li>Liquide : Polydiméthylsiloxane (huile de silicone), 100 et 100 000 cSt</li>
+                    <li>Dépôt de goutte : fibre en acier inoxydable de 0,25 mm</li>
+                    <li>Imagerie : microscope inversé Leica DMi8, LED 475 nm, filtre passe-bande 488 nm</li>
+                    <li>Analyse : Python 3.12 (scikit-image, NumPy, SciPy, pandas)</li>
+                </ul>
+
+                <h4>Mesures clés</h4>
+                <ul>
+                    <li>Diamètre des nanoparticules (SAXS) : 106,2 ± 8,5 nm</li>
+                    <li>Hauteurs des défauts : 20–80 nm (dépendant de la température)</li>
+                    <li>Densités des défauts : 0–12 défauts/μm² (dépendant du temps d'incubation)</li>
+                    <li>Total de séquences d'étalement analysées : >300</li>
+                </ul>
+            </details>
+        </section>
+
+        <hr>
+
+        <!-- Resources -->
+        <section class="article__resources">
+            <h2>Ressources</h2>
+            <ul>
+                <li>📄 <strong>Rapport de mémoire complet</strong> – <a href="../../pdfs/polymer-wetting-dynamics.pdf" download>Télécharger le PDF (1,8 Mo)</a></li>
+                <li>💻 <strong>Code d'analyse</strong> – <a href="https://gitlab.com/Undreak/llb" target="_blank" rel="noopener noreferrer">Voir sur GitLab</a></li>
+                <li>🔬 <strong>Formation FAN 2024</strong> – <a href="fan-2024-experience.html">Institut Laue-Langevin, Grenoble</a></li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Article Footer -->
+    <footer class="article__footer">
+        <p><em>Recherche réalisée au Laboratoire Léon Brillouin, CEA Saclay, sous la direction de Marion Grzelka.</em></p>
+    </footer>
+
+    <!-- Back Link -->
+    <a href="../../index.html#publications" class="article__back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Retour aux Publications
+    </a>
+</article>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p class="footer__text" data-i18n="footer.copyright">
+            &copy; 2025 Alexandre De Cuyper. Conçu avec curiosité et code.
+        </p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"
+        integrity="sha384-sGXNIHpdJSEfTkXLnvHLLQNgJVCBh+FvzGmIHKHPD+lVELKZjVKkPvGHxVz0kVhk"
+        crossorigin="anonymous"></script>
+<script src="../../js/i18n.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../js/toc.js"></script>
+<script src="../../js/lightbox.js"></script>
+<script src="../../js/article-mobile.js"></script>
+</body>
+</html>
