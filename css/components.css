@@ -171,6 +171,11 @@
     color: var(--text-secondary);
 }
 
+/* Text alignment utility */
+.text-center {
+    text-align: center;
+}
+
 /* Hidden utility */
 .hidden {
     display: none !important;
@@ -189,38 +194,13 @@
     border-width: 0;
 }
 
-/* Form Notice - Security hardening */
-.form-notice {
-    background: var(--bg-elevated);
-    border: 2px solid var(--accent);
-    border-radius: var(--radius-md);
-    padding: var(--space-4);
-    margin-bottom: var(--space-4);
-}
-
-.form-notice p {
-    margin: 0;
-    color: var(--text-secondary);
-}
-
-/* Disabled form state */
-.form--disabled {
-    opacity: 0.6;
-    pointer-events: none;
-}
-
-/* Honeypot field - anti-spam */
-.honeypot {
-    display: none;
-    position: absolute;
-    left: -9999px;
-}
-
 /* Scroll animations - CSP-compliant */
 .section {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    /* Safari: prevent opaque layer painting in stacking contexts */
+    -webkit-transform-style: preserve-3d;
 }
 
 .section.is-visible {

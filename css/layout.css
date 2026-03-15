@@ -1,11 +1,18 @@
-/* Layout System */
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: var(--font-primary);
     font-size: var(--text-base);
     color: var(--text-primary);
-    background-color: var(--bg-primary);
-    transition: background-color var(--transition-base), color var(--transition-base);
+    background: var(--bg-primary);
+    transition: color var(--transition-base);
+}
+
+main {
+    position: relative;
+    z-index: 2;
 }
 
 /* Container */
@@ -20,6 +27,7 @@ body {
 /* Default section padding */
 .section {
     padding: var(--section-padding) 0;
+    position: relative;
 }
 
 /*

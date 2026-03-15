@@ -1,0 +1,93 @@
+/**
+ * Hero Mesh Gradient
+ * ==================
+ * Animated ambient gradient using the physics palette.
+ * Two soft blobs (warm + cool) drift slowly behind hero content.
+ */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero__container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Mesh gradient layer */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse 60% 50% at 25% 50%,
+            rgba(241, 162, 8, 0.10),
+            rgba(230, 57, 70, 0.05) 40%,
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 50% 60% at 75% 45%,
+            rgba(91, 159, 204, 0.08),
+            transparent 65%
+        ),
+        radial-gradient(
+            ellipse 40% 40% at 50% 80%,
+            rgba(230, 57, 70, 0.04),
+            transparent 60%
+        );
+    animation: heroGlow 25s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(3%, -2%) scale(1.03);
+    }
+    66% {
+        transform: translate(-2%, 3%) scale(0.97);
+    }
+    100% {
+        transform: translate(1%, -1%) scale(1.01);
+    }
+}
+
+/* Dark theme: boost opacity for visibility against dark bg */
+[data-theme="dark"] .hero::before {
+    background:
+        radial-gradient(
+            ellipse 60% 50% at 25% 50%,
+            rgba(255, 184, 48, 0.14),
+            rgba(255, 77, 90, 0.06) 40%,
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 50% 60% at 75% 45%,
+            rgba(107, 179, 217, 0.12),
+            transparent 65%
+        ),
+        radial-gradient(
+            ellipse 40% 40% at 50% 80%,
+            rgba(255, 77, 90, 0.05),
+            transparent 60%
+        );
+}
+
+/* Mobile: slightly softer */
+@media (max-width: 768px) {
+    .hero::before {
+        opacity: 0.8;
+    }
+}
+
+/* Reduced motion: show gradient statically */
+@media (prefers-reduced-motion: reduce) {
+    .hero::before {
+        animation: none;
+    }
+}

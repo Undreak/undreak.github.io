@@ -111,186 +111,6 @@ class NavigationManager {
     }
 }
 
-// Form validation and submission for contact form
-class FormManager {
-    constructor() {
-        this.form = document.getElementById('contact-form');
-        this.status = document.getElementById('form-status');
-        this.init();
-    }
-
-    init() {
-        if (this.form) {
-            this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-        }
-    }
-
-    // Sanitize input to prevent XSS
-    sanitizeInput(input) {
-        // Use DOMPurify if available, otherwise fallback to textContent method
-        if (typeof DOMPurify !== 'undefined') {
-            return DOMPurify.sanitize(input, { ALLOWED_TAGS: [] });
-        }
-        // Fallback for edge cases where DOMPurify might not be loaded
-        const div = document.createElement('div');
-        div.textContent = input;
-        return div.innerHTML;
-    }
-
-    // Validate email format
-    isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-    // Rate limiting check (prevent spam)
-    canSubmit() {
-        try {
-            const lastSubmit = localStorage.getItem('lastFormSubmit');
-            if (lastSubmit) {
-                const timestamp = parseInt(lastSubmit, 10);
-
-                // Validate timestamp is reasonable (not NaN, not negative, not future)
-                if (isNaN(timestamp) || timestamp < 0 || timestamp > Date.now()) {
-                    console.warn('Invalid timestamp in localStorage, removing');
-                    localStorage.removeItem('lastFormSubmit');
-                    return true;
-                }
-
-                const timeSinceLastSubmit = Date.now() - timestamp;
-                const ONE_MINUTE = 60000;
-                if (timeSinceLastSubmit < ONE_MINUTE) {
-                    return false;
-                }
-            }
-            return true;
-        } catch (error) {
-            console.error('Error checking rate limit:', error);
-            return true; // Fail open to not block legitimate users
-        }
-    }
-
-    /**
-     * Get translated message with fallback
-     */
-    t(key, fallback) {
-        if (window.i18n && window.i18n.t) {
-            return window.i18n.t(key) || fallback;
-        }
-        return fallback;
-    }
-
-    async handleSubmit(e) {
-        e.preventDefault();
-
-        // Check if form is configured
-        if (this.form.action.includes('YOUR_FORM_ID')) {
-            this.showStatus(this.t('form.notConfigured', '⚠️ Contact form is not yet configured. Please use the email link above.'), 'error');
-            return;
-        }
-
-        // Rate limiting
-        if (!this.canSubmit()) {
-            this.showStatus(this.t('form.rateLimit', '⏱️ Please wait a minute before sending another message.'), 'error');
-            return;
-        }
-
-        // Get field values
-        const nameField = this.form.querySelector('[name="name"]');
-        const emailField = this.form.querySelector('[name="email"]');
-        const subjectField = this.form.querySelector('[name="subject"]');
-        const messageField = this.form.querySelector('[name="message"]');
-
-        // Validate required fields
-        const requiredFields = [nameField, emailField, subjectField, messageField];
-        let isValid = true;
-
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                isValid = false;
-                field.style.borderColor = 'var(--accent)';
-            } else {
-                field.style.borderColor = '';
-            }
-        });
-
-        if (!isValid) {
-            this.showStatus(this.t('form.fillRequired', '❌ Please fill in all required fields.'), 'error');
-            return;
-        }
-
-        // Validate email format
-        if (!this.isValidEmail(emailField.value)) {
-            this.showStatus(this.t('form.invalidEmail', '❌ Please enter a valid email address.'), 'error');
-            emailField.style.borderColor = 'var(--accent)';
-            return;
-        }
-
-        // Check message length
-        if (messageField.value.length < 10) {
-            this.showStatus(this.t('form.messageTooShort', '❌ Message is too short. Please provide more details.'), 'error');
-            messageField.style.borderColor = 'var(--accent)';
-            return;
-        }
-
-        if (messageField.value.length > 5000) {
-            this.showStatus(this.t('form.messageTooLong', '❌ Message is too long. Please keep it under 5000 characters.'), 'error');
-            messageField.style.borderColor = 'var(--accent)';
-            return;
-        }
-
-        // Disable submit button
-        const submitBtn = this.form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = this.t('form.sending', 'Sending...');
-
-        try {
-            const formData = new FormData(this.form);
-            const response = await fetch(this.form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                },
-                signal: AbortSignal.timeout(15000) // 15 second timeout
-            });
-
-            if (response.ok) {
-                this.showStatus(this.t('form.success', '✓ Message sent successfully! I\'ll get back to you soon.'), 'success');
-                this.form.reset();
-                // Set rate limit timestamp
-                localStorage.setItem('lastFormSubmit', Date.now().toString());
-            } else {
-                const errorData = await response.json().catch(() => ({}));
-                throw new Error(errorData.error || 'Failed to send message');
-            }
-        } catch (error) {
-            if (error.name === 'TimeoutError') {
-                this.showStatus(this.t('form.timeout', '⏱️ Request timed out. Please try again.'), 'error');
-            } else {
-                this.showStatus(this.t('form.error', '✗ Failed to send message. Please try again or email me directly.'), 'error');
-            }
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-        }
-    }
-
-    showStatus(message, type) {
-        this.status.textContent = message;
-        this.status.className = `form-status ${type}`;
-
-        // Auto-hide success messages after 5 seconds
-        if (type === 'success') {
-            setTimeout(() => {
-                this.status.className = 'form-status';
-                this.status.textContent = '';
-            }, 5000);
-        }
-    }
-}
-
 // Performance: Lazy load images when they enter viewport
 class LazyLoader {
     constructor() {
@@ -322,59 +142,6 @@ class LazyLoader {
     }
 }
 
-// Lab Papers Stack Manager
-class LabPapersStack {
-    constructor() {
-        this.stacks = document.querySelectorAll('.lab-papers-stack');
-        this.init();
-    }
-
-    init() {
-        this.stacks.forEach(stack => {
-            const label = stack.querySelector('.lab-papers-stack__label');
-            const papers = stack.querySelectorAll('.lab-paper');
-
-            if (!label) return;
-
-            // Label click expands the full grid
-            label.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.expandStack(stack);
-            });
-
-            // Keyboard support for label
-            label.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.expandStack(stack);
-                }
-            });
-
-            // Prevent papers from triggering expansion
-            papers.forEach(paper => {
-                paper.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    // Papers are just for viewing on hover, not clicking
-                });
-            });
-
-            // Make label focusable
-            label.setAttribute('tabindex', '0');
-            label.setAttribute('role', 'button');
-            label.setAttribute('aria-label', 'Click to view all 5 research projects');
-        });
-    }
-
-    expandStack(stack) {
-        stack.setAttribute('data-expanded', 'true');
-
-        // Smooth scroll animation
-        setTimeout(() => {
-            stack.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 100);
-    }
-}
-
 // Clickable Cards Handler (for cards with nested links)
 class ClickableCards {
     constructor() {
@@ -402,21 +169,14 @@ class ClickableCards {
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new NavigationManager();
-    new FormManager();
     new LazyLoader();
-    new LabPapersStack();
     new ClickableCards();
 
     // Add loading complete class to body
     document.body.classList.add('loaded');
 
     // Log initialization (only in development)
-    const DEBUG = false;
-    if (DEBUG) {
-        console.log('🎨 Portfolio initialized successfully!');
-        console.log('Built with: HTML5, CSS3, Vanilla JavaScript');
-        console.log('Design: Swiss Modernism + Brutalist elements');
-    }
+
 });
 
 // Service Worker registration (optional - for PWA features)
@@ -425,8 +185,10 @@ if ('serviceWorker' in navigator) {
     /*
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
-            .then(registration => console.log('ServiceWorker registered'))
-            .catch(error => console.log('ServiceWorker registration failed:', error));
+            .then(registration => { // ServiceWorker registered
+             })
+            .catch (error => { // ServiceWorker registration failed
+             });
     });
     */
 }
