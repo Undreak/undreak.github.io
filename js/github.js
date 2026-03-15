@@ -9,7 +9,7 @@ class ProjectsManager {
         this.API_TIMEOUT = 10000; // 10 seconds
 
         if (!this.container) {
-            console.error('ProjectsManager: Container element not found!');
+            // Not on the projects page or section, fail gracefully
             return;
         }
         if (!this.loading) {
