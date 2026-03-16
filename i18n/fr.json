@@ -62,11 +62,11 @@
     }
   },
   "research": {
-    "title": "Recherche & Publications",
+    "title": "Recherche et publications",
     "subtitle": "Travaux exp\u00e9rimentaux, productions acad\u00e9miques et d\u00e9veloppement professionnel",
     "thesis": {
       "date": "Juin - Sept 2024",
-      "codeLink": "Code & Donn\u00e9es (LLB)",
+      "codeLink": "Code et donn\u00e9es (LLB)",
       "featured": "Mis en avant",
       "type": "M\u00e9moire de Master",
       "title": "Dynamique de mouillage de polym\u00e8res sur surfaces nano-textur\u00e9es",
@@ -78,7 +78,7 @@
       "type": "Formation",
       "title": "Formation Annuelle \u00e0 la Neutronique",
       "venue": "Institut Laue-Langevin, Grenoble",
-      "description": "Formation pratique intensive de 3 jours organis\u00e9e par la 2FDN en collaboration avec l'ILL. Parcours mati\u00e8re molle & biophysique avec cours sur la SANS et la spectroscopie temps de vol/r\u00e9trodiffusion, suivis de travaux pratiques et d'analyse de donn\u00e9es au principal centre europ\u00e9en de neutrons."
+      "description": "Formation pratique intensive de 3 jours organis\u00e9e par la 2FDN en collaboration avec l'ILL. Parcours mati\u00e8re molle et biophysique avec cours sur la SANS et la spectroscopie temps de vol/r\u00e9trodiffusion, suivis de travaux pratiques et d'analyse de donn\u00e9es au principal centre europ\u00e9en de neutrons."
     },
     "spring2024": {
       "date": "F\u00e9v - Avr 2024",
@@ -122,7 +122,7 @@
     }
   },
   "skills": {
-    "title": "Comp\u00e9tences & Expertise",
+    "title": "Comp\u00e9tences et expertise",
     "experimental": {
       "title": "Techniques Exp\u00e9rimentales",
       "subtitle": "Comp\u00e9tence cl\u00e9",
@@ -132,7 +132,7 @@
       "polymer": "Caract\u00e9risation des Polym\u00e8res"
     },
     "python": {
-      "title": "Python & Calcul Scientifique",
+      "title": "Python et calcul scientifique",
       "python": "Python",
       "level": "Avanc\u00e9",
       "scientific": "Calcul Scientifique"
@@ -144,15 +144,15 @@
       "performance": "Calcul Haute Performance"
     },
     "theoretical": {
-      "title": "Th\u00e9orique & Num\u00e9rique",
+      "title": "Th\u00e9orique et num\u00e9rique",
       "subtitle": "Comp\u00e9tence cl\u00e9",
       "scattering": "Th\u00e9orie de Diffusion \u00c9lectromagn\u00e9tique",
       "statistical": "Physique Statistique",
       "modeling": "Mod\u00e9lisation Num\u00e9rique",
-      "data": "Analyse & Visualisation de Donn\u00e9es"
+      "data": "Analyse et visualisation de donn\u00e9es"
     },
     "tools": {
-      "title": "Outils & Plateformes"
+      "title": "Outils et plateformes"
     }
   },
   "contact": {
@@ -167,13 +167,13 @@
     "subtitle": "Collection compl\u00e8te de mes d\u00e9p\u00f4ts GitHub et GitLab",
     "search": "Rechercher des projets...",
     "searchLabel": "Rechercher des projets",
-    "source": "Source :",
+    "source": "Source\u00a0:",
     "all": "Tous",
-    "sortBy": "Trier par :",
+    "sortBy": "Trier par\u00a0:",
     "recentlyUpdated": "R\u00e9cemment mis \u00e0 jour",
     "mostStars": "Plus d'\u00e9toiles",
     "nameAZ": "Nom (A-Z)",
-    "language": "Langage :",
+    "language": "Langage\u00a0:",
     "allLanguages": "Tous les langages",
     "loading": "Chargement des projets depuis GitHub et GitLab...",
     "noProjects": "Aucun projet ne correspond \u00e0 vos crit\u00e8res.",
@@ -186,10 +186,10 @@
       "githubRateLimit": "Limite de l'API GitHub atteinte.",
       "tryAgainIn": "R\u00e9essayez dans {minutes} minute(s).",
       "tryAgainLater": "Veuillez r\u00e9essayer plus tard.",
-      "githubError": "Erreur de l'API GitHub : {status}",
+      "githubError": "Erreur de l'API GitHub\u00a0: {status}",
       "githubTimeout": "D\u00e9lai d'attente GitHub d\u00e9pass\u00e9. V\u00e9rifiez votre connexion.",
       "gitlabRateLimit": "Limite de l'API GitLab atteinte. Veuillez r\u00e9essayer plus tard.",
-      "gitlabError": "Erreur de l'API GitLab : {status}",
+      "gitlabError": "Erreur de l'API GitLab\u00a0: {status}",
       "gitlabTimeout": "D\u00e9lai d'attente GitLab d\u00e9pass\u00e9. V\u00e9rifiez votre connexion.",
       "noProjects": "Aucun projet trouv\u00e9"
     }
@@ -202,7 +202,7 @@
     "messageTooShort": "\u274c Le message est trop court. Veuillez fournir plus de d\u00e9tails.",
     "messageTooLong": "\u274c Le message est trop long. Veuillez le limiter \u00e0 5000 caract\u00e8res.",
     "sending": "Envoi en cours...",
-    "success": "\u2713 Message envoy\u00e9 avec succ\u00e8s ! Je vous r\u00e9pondrai bient\u00f4t.",
+    "success": "\u2713 Message envoy\u00e9 avec succ\u00e8s\u202f! Je vous r\u00e9pondrai bient\u00f4t.",
     "timeout": "\u23f1\ufe0f D\u00e9lai d'attente d\u00e9pass\u00e9. Veuillez r\u00e9essayer.",
     "error": "\u2717 \u00c9chec de l'envoi. Veuillez r\u00e9essayer ou m'envoyer un email directement."
   },
