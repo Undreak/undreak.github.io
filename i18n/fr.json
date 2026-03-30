@@ -126,22 +126,24 @@
     "experimental": {
       "title": "Techniques Exp\u00e9rimentales",
       "subtitle": "Comp\u00e9tence cl\u00e9",
-      "saxs": "SAXS/SANS",
-      "neutron": "Diffusion de Neutrons",
+      "scattering": "Diffusion X / Neutrons",
       "afm": "Microscopie \u00e0 Force Atomique",
-      "polymer": "Caract\u00e9risation des Polym\u00e8res"
+      "spincoating": "Spin Coating",
+      "lithography": "Lithographie Douce"
     },
     "python": {
       "title": "Python et calcul scientifique",
-      "python": "Python",
-      "level": "Avanc\u00e9",
-      "scientific": "Calcul Scientifique"
+      "numpy": "NumPy / SciPy",
+      "matplotlib": "Matplotlib",
+      "skimage": "scikit-image",
+      "tensorflow": "TensorFlow"
     },
     "cpp": {
       "title": "C/C++",
-      "cpp": "C/C++",
-      "level": "Comp\u00e9tent",
-      "performance": "Calcul Haute Performance"
+      "eigen": "Eigen",
+      "cmake": "CMake",
+      "sfml": "SFML",
+      "openmp": "OpenMP"
     },
     "theoretical": {
       "title": "Th\u00e9orique et num\u00e9rique",
@@ -160,7 +162,7 @@
     "text": "Je pr\u00e9pare actuellement les concours d'entr\u00e9e en \u00e9cole doctorale et explore les opportunit\u00e9s de recherche en physique de la mati\u00e8re molle, dynamique des polym\u00e8res et techniques de diffusion. N'h\u00e9sitez pas \u00e0 me contacter pour des collaborations, discussions ou opportunit\u00e9s."
   },
   "footer": {
-    "copyright": "\u00a9 2025 Alexandre De Cuyper. Con\u00e7u avec curiosit\u00e9 et code."
+    "copyright": "\u00a9 2026 Alexandre De Cuyper. Con\u00e7u avec curiosit\u00e9 et code."
   },
   "projects": {
     "title": "Tous les Projets",

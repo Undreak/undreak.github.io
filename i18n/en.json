@@ -126,22 +126,24 @@
     "experimental": {
       "title": "Experimental Techniques",
       "subtitle": "Core Competency",
-      "saxs": "SAXS/SANS",
-      "neutron": "Neutron Scattering",
+      "scattering": "X-ray / Neutron Scattering",
       "afm": "Atomic Force Microscopy",
-      "polymer": "Polymer Characterization"
+      "spincoating": "Spin Coating",
+      "lithography": "Soft Lithography"
     },
     "python": {
       "title": "Python & Scientific Computing",
-      "python": "Python",
-      "level": "Advanced",
-      "scientific": "Scientific Computing"
+      "numpy": "NumPy / SciPy",
+      "matplotlib": "Matplotlib",
+      "skimage": "scikit-image",
+      "tensorflow": "TensorFlow"
     },
     "cpp": {
       "title": "C/C++",
-      "cpp": "C/C++",
-      "level": "Proficient",
-      "performance": "Performance Computing"
+      "eigen": "Eigen",
+      "cmake": "CMake",
+      "sfml": "SFML",
+      "openmp": "OpenMP"
     },
     "theoretical": {
       "title": "Theoretical & Computational",
@@ -160,7 +162,7 @@
     "text": "I'm currently preparing for doctoral school entrance exams and exploring research opportunities in soft matter physics, polymer dynamics, and scattering techniques. Feel free to reach out for collaborations, discussions, or opportunities."
   },
   "footer": {
-    "copyright": "\u00a9 2025 Alexandre De Cuyper. Built with curiosity and code."
+    "copyright": "\u00a9 2026 Alexandre De Cuyper. Built with curiosity and code."
   },
   "projects": {
     "title": "All Projects",
