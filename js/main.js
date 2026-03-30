@@ -58,31 +58,12 @@ class NavigationManager {
     }
 
     setupScrollBehavior() {
-        let lastScroll = 0;
-        const scrollThreshold = 100;
-
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-
-            // Add shadow to nav on scroll
-            if (currentScroll > 50) {
+            if (window.pageYOffset > 50) {
                 this.nav.style.boxShadow = 'var(--shadow-sm)';
             } else {
                 this.nav.style.boxShadow = 'none';
             }
-
-            // Hide/show nav on scroll (optional - disabled by default)
-            /*
-            if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
-                // Scrolling down
-                this.nav.style.transform = 'translateY(-100%)';
-            } else {
-                // Scrolling up
-                this.nav.style.transform = 'translateY(0)';
-            }
-            */
-
-            lastScroll = currentScroll;
         }, { passive: true });
     }
 
@@ -179,16 +160,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// Service Worker registration (optional - for PWA features)
-if ('serviceWorker' in navigator) {
-    // Uncomment to enable service worker
-    /*
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => { // ServiceWorker registered
-             })
-            .catch (error => { // ServiceWorker registration failed
-             });
-    });
-    */
-}
