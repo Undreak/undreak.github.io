@@ -29,8 +29,8 @@
 
     /* Typography */
     --font-primary: 'Crimson Pro', Georgia, 'Times New Roman', serif;
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-display-hero: 'Fraunces', Georgia, serif;  /* Distinctive hero font */
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-display-hero: 'Fraunces', Georgia, serif;
     --font-mono: 'IBM Plex Mono', 'Monaco', 'Courier New', monospace;
 
     /* Font Sizes - Fluid Typography */

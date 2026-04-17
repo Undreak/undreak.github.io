@@ -2,8 +2,8 @@
   "meta": {
     "lang": "fr",
     "locale": "fr_FR",
-    "title": "Alexandre De Cuyper | Chercheur en Physique",
-    "description": "Alexandre De Cuyper - Chercheur en physique sp\u00e9cialis\u00e9 en mati\u00e8re molle, physique des polym\u00e8res et techniques de diffusion",
+    "title": "Alexandre De Cuyper | Physicien Exp\u00e9rimentateur",
+    "description": "Alexandre De Cuyper - Physicien exp\u00e9rimentateur sp\u00e9cialis\u00e9 en mati\u00e8re molle, physique des polym\u00e8res et techniques de diffusion",
     "ogDescription": "Physicien exp\u00e9rimentateur sp\u00e9cialis\u00e9 en mati\u00e8re molle, dynamique des polym\u00e8res et techniques de diffusion (SAXS/SANS). Master en Physique de la Mati\u00e8re Molle de l'Universit\u00e9 Paris Cit\u00e9."
   },
   "nav": {
@@ -18,10 +18,9 @@
     "switchLang": "Switch to English"
   },
   "hero": {
-    "greeting": "Bonjour, je suis",
     "name": "Alexandre De Cuyper",
     "title": "Physicien Exp\u00e9rimentateur",
-    "tagline": "Sp\u00e9cialis\u00e9 en physique de la mati\u00e8re molle, dynamique des polym\u00e8res et techniques de diffusion avec mod\u00e9lisation num\u00e9rique",
+    "tagline": "Sp\u00e9cialis\u00e9 en physique de la mati\u00e8re molle, dynamique des polym\u00e8res et techniques de diffusion",
     "cta": {
       "contact": "Me contacter",
       "research": "Voir mes recherches",
@@ -32,22 +31,22 @@
     "title": "\u00c0 propos de moi",
     "lead": "Physicien exp\u00e9rimentateur titulaire d'un double Master international en <strong>Physique de la Mati\u00e8re Molle</strong> de l'Universit\u00e9 Paris Cit\u00e9 et en <strong>Mat\u00e9riaux Complexes</strong> de l'Universidad de La Coru\u00f1a, obtenu dans le cadre d'un programme collaboratif Erasmus+.",
     "paragraph1": "Mes recherches portent sur la physique de la mati\u00e8re molle avec une sp\u00e9cialisation en <strong>dynamique des polym\u00e8res</strong> et en <strong>techniques de diffusion</strong> (SAXS/SANS, DLS). Je combine des m\u00e9thodes exp\u00e9rimentales rigoureuses avec la mod\u00e9lisation num\u00e9rique en Python et C/C++ pour \u00e9tudier des ph\u00e9nom\u00e8nes complexes \u00e0 l'\u00e9chelle nanom\u00e9trique.",
-    "paragraph2": "Actuellement en pr\u00e9paration des concours d'entr\u00e9e en \u00e9cole doctorale, je suis passionn\u00e9 par la compr\u00e9hension du comportement fondamental des mat\u00e9riaux mous, tant par l'exp\u00e9rience que par la th\u00e9orie. Au-del\u00e0 de la physique, je cultive une large curiosit\u00e9 intellectuelle couvrant la philosophie, l'histoire et la r\u00e9flexion analytique interdisciplinaire.",
+    "paragraph2": "Je pr\u00e9pare actuellement mes candidatures en th\u00e8se et cherche \u00e0 comprendre le comportement fondamental des mat\u00e9riaux mous, tant par l'exp\u00e9rience que par la th\u00e9orie.",
     "education": {
       "title": "Formation",
       "dualDegree": {
         "note": "Double dipl\u00f4me de Master, Erasmus+ \u2022 2023-2024",
-        "softMatter": "M2 Physique de la Mati\u00e8re Molle",
+        "softMatter": "M2 Physique de la mati\u00e8re molle",
         "softMatterUni": "Universit\u00e9 Paris Cit\u00e9",
-        "complex": "M2 Mat\u00e9riaux Complexes",
+        "complex": "M2 Mat\u00e9riaux complexes",
         "complexUni": "Universidad de La Coru\u00f1a (Espagne)"
       },
       "m1": {
-        "title": "M1 Physique Fondamentale",
+        "title": "M1 Physique fondamentale",
         "info": "Universit\u00e9 Paris Cit\u00e9 \u2022 2020-2022"
       },
       "licence": {
-        "title": "Licence de Physique",
+        "title": "Licence de physique",
         "info": "Universit\u00e9 Paris Cit\u00e9 \u2022 2016-2020"
       }
     },
@@ -68,55 +67,55 @@
       "date": "Juin - Sept 2024",
       "codeLink": "Code et donn\u00e9es (LLB)",
       "featured": "Mis en avant",
-      "type": "M\u00e9moire de Master",
+      "type": "M\u00e9moire de master",
       "title": "Dynamique de mouillage de polym\u00e8res sur surfaces nano-textur\u00e9es",
       "venue": "Laboratoire L\u00e9on Brillouin, CEA Saclay",
-      "description": "\u00c9tude du comportement de mouillage de polym\u00e8res sur des surfaces nano-structur\u00e9es par microscopie optique, techniques de diffusion avanc\u00e9es (SAXS/SANS) et microscopie \u00e0 force atomique. D\u00e9veloppement d'un pipeline Python pour l'analyse de centaines de s\u00e9quences d'images."
+      "description": "\u00c9tude du comportement de mouillage de polym\u00e8res sur des surfaces nano-structur\u00e9es par microscopie optique, techniques de diffusion (SAXS/SANS) et microscopie \u00e0 force atomique. D\u00e9veloppement d'un pipeline Python pour l'analyse de centaines de s\u00e9quences d'images."
     },
     "training": {
       "date": "\u00c9t\u00e9 2024",
       "type": "Formation",
       "title": "Formation Annuelle \u00e0 la Neutronique",
       "venue": "Institut Laue-Langevin, Grenoble",
-      "description": "Formation pratique intensive de 3 jours organis\u00e9e par la 2FDN en collaboration avec l'ILL. Parcours mati\u00e8re molle et biophysique avec cours sur la SANS et la spectroscopie temps de vol/r\u00e9trodiffusion, suivis de travaux pratiques et d'analyse de donn\u00e9es au principal centre europ\u00e9en de neutrons."
+      "description": "Formation pratique intensive de 3 jours organis\u00e9e par la F\u00e9d\u00e9ration Fran\u00e7aise de la Diffusion Neutronique (2FDN) en collaboration avec l'Institut Laue-Langevin (ILL). Parcours mati\u00e8re molle et biophysique\u202f: cours sur la SANS et la spectroscopie temps de vol/r\u00e9trodiffusion, suivis de travaux pratiques et d'analyse de donn\u00e9es \u00e0 la principale source europ\u00e9enne de neutrons."
     },
     "spring2024": {
       "date": "F\u00e9v - Avr 2024",
-      "type": "Projets de Recherche",
-      "title": "Projets de Recherche Techniques - Printemps 2024",
+      "type": "Projets de recherche",
+      "title": "Projets de recherche techniques \u2014 printemps 2024",
       "venue": "Universidad de La Coru\u00f1a, Espagne (Erasmus+)",
-      "description": "Cinq projets de physique exp\u00e9rimentale r\u00e9alis\u00e9s lors de l'\u00e9change Erasmus+, couvrant la caract\u00e9risation des mat\u00e9riaux, l'analyse thermique, la spectroscopie laser, la calorim\u00e9trie \u00e0 pression modul\u00e9e et les techniques d'analyse statistique avanc\u00e9es.",
+      "description": "Cinq projets de physique exp\u00e9rimentale r\u00e9alis\u00e9s lors de l'\u00e9change Erasmus+, couvrant la caract\u00e9risation des mat\u00e9riaux, l'analyse thermique, la spectroscopie laser, la calorim\u00e9trie \u00e0 pression modul\u00e9e et les techniques d'analyse statistique.",
       "libs": {
-        "title": "Spectroscopie Laser (LIBS)",
+        "title": "Spectroscopie laser (LIBS)",
         "desc": "Analyse spectrale d'\u00e9chantillons cosm\u00e9tiques et d\u00e9tection d'impuret\u00e9s dans les gels par spectroscopie de plasma induit par laser"
       },
       "visco": {
-        "title": "Analyse de Visco\u00e9lasticit\u00e9",
-        "desc": "Analyse compl\u00e8te d'\u00e9chantillons de PLA imprim\u00e9s en 3D par Analyse M\u00e9canique Dynamique (DMA) et Superposition Temps-Temp\u00e9rature (TTS) pour la construction de courbes ma\u00eetresses."
+        "title": "Analyse de visco\u00e9lasticit\u00e9",
+        "desc": "Analyse compl\u00e8te d'\u00e9chantillons de PLA imprim\u00e9s en 3D par analyse m\u00e9canique dynamique (DMA) et superposition temps-temp\u00e9rature (TTS) pour construire les courbes ma\u00eetresses."
       },
       "xrd": {
-        "title": "Diffraction des Rayons X",
+        "title": "Diffraction des rayons X",
         "desc": "Analyse statistique de diffraction de poudres par ANOVA et ajustement de pics"
       },
       "perovskite": {
-        "title": "Thermique des P\u00e9rovskites",
-        "desc": "Analyse par Calorim\u00e9trie Diff\u00e9rentielle de mat\u00e9riaux p\u00e9rovskites et mesure de capacit\u00e9 thermique par la m\u00e9thode ASTM \u00e0 trois passages"
+        "title": "Thermique des p\u00e9rovskites",
+        "desc": "Analyse de mat\u00e9riaux p\u00e9rovskites par calorim\u00e9trie diff\u00e9rentielle \u00e0 balayage (DSC) et mesure de capacit\u00e9 thermique par la m\u00e9thode ASTM \u00e0 trois passages."
       },
       "mpdsc": {
-        "title": "DSC \u00e0 Pression Modul\u00e9e",
-        "desc": "Approche exp\u00e9rimentale novatrice pour l'analyse thermo-m\u00e9canique des mat\u00e9riaux par modulation de pression dans les exp\u00e9riences DSC."
+        "title": "DSC \u00e0 pression modul\u00e9e",
+        "desc": "Analyse thermo-m\u00e9canique de mat\u00e9riaux par modulation de pression dans des exp\u00e9riences DSC."
       }
     },
     "archive": {
       "indicator": "Archives",
       "date": "2019",
       "type": "Stage L3",
-      "title": "Nano-antennes Optiques",
+      "title": "Nano-antennes optiques",
       "venue": "Institut de nanoscience de Paris, Sorbonne Universit\u00e9",
-      "description": "\u00c9tude des interactions lumi\u00e8re-mati\u00e8re \u00e0 l'\u00e9chelle nanom\u00e9trique lors du stage de L3. Application de la th\u00e9orie de diffusion \u00e9lectromagn\u00e9tique et d\u00e9veloppement de simulations num\u00e9riques pour mod\u00e9liser le comportement des nano-antennes optiques."
+      "description": "\u00c9tude des interactions lumi\u00e8re-mati\u00e8re \u00e0 l'\u00e9chelle nanom\u00e9trique lors du stage de L3. Application de la th\u00e9orie de la diffusion \u00e9lectromagn\u00e9tique et d\u00e9veloppement de simulations num\u00e9riques pour mod\u00e9liser le comportement des nano-antennes optiques."
     },
     "portal": {
-      "title": "Projets Informatiques",
+      "title": "Projets informatiques",
       "description": "D\u00e9couvrez mes projets open source en physique num\u00e9rique, outils d'analyse de donn\u00e9es et travaux de d\u00e9veloppement logiciel scientifique sur GitHub et GitLab.",
       "cta": "Voir tous les projets"
     }
@@ -124,12 +123,12 @@
   "skills": {
     "title": "Comp\u00e9tences et expertise",
     "experimental": {
-      "title": "Techniques Exp\u00e9rimentales",
+      "title": "Techniques exp\u00e9rimentales",
       "subtitle": "Comp\u00e9tence cl\u00e9",
       "scattering": "Diffusion X / Neutrons",
-      "afm": "Microscopie \u00e0 Force Atomique",
-      "spincoating": "Spin Coating",
-      "lithography": "Lithographie Douce"
+      "afm": "Microscopie \u00e0 force atomique",
+      "spincoating": "Spin coating",
+      "lithography": "Lithographie douce"
     },
     "python": {
       "title": "Python et calcul scientifique",
@@ -148,9 +147,9 @@
     "theoretical": {
       "title": "Th\u00e9orique et num\u00e9rique",
       "subtitle": "Comp\u00e9tence cl\u00e9",
-      "scattering": "Th\u00e9orie de Diffusion \u00c9lectromagn\u00e9tique",
-      "statistical": "Physique Statistique",
-      "modeling": "Mod\u00e9lisation Num\u00e9rique",
+      "scattering": "Th\u00e9orie de la diffusion \u00e9lectromagn\u00e9tique",
+      "statistical": "Physique statistique",
+      "modeling": "Mod\u00e9lisation num\u00e9rique",
       "data": "Analyse et visualisation de donn\u00e9es"
     },
     "tools": {
@@ -159,13 +158,13 @@
   },
   "contact": {
     "title": "Me contacter",
-    "text": "Je pr\u00e9pare actuellement les concours d'entr\u00e9e en \u00e9cole doctorale et explore les opportunit\u00e9s de recherche en physique de la mati\u00e8re molle, dynamique des polym\u00e8res et techniques de diffusion. N'h\u00e9sitez pas \u00e0 me contacter pour des collaborations, discussions ou opportunit\u00e9s."
+    "text": "Je pr\u00e9pare actuellement mes candidatures en th\u00e8se et explore les opportunit\u00e9s de recherche en physique de la mati\u00e8re molle, dynamique des polym\u00e8res et techniques de diffusion. N'h\u00e9sitez pas \u00e0 me contacter pour des collaborations, discussions ou opportunit\u00e9s."
   },
   "footer": {
     "copyright": "\u00a9 2026 Alexandre De Cuyper. Con\u00e7u avec curiosit\u00e9 et code."
   },
   "projects": {
-    "title": "Tous les Projets",
+    "title": "Tous les projets",
     "subtitle": "Collection compl\u00e8te de mes d\u00e9p\u00f4ts GitHub et GitLab",
     "search": "Rechercher des projets...",
     "searchLabel": "Rechercher des projets",

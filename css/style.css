@@ -186,12 +186,6 @@ body::before {
     z-index: 2;
 }
 
-.hero__greeting {
-    font-size: var(--text-lg);
-    color: var(--text-secondary);
-    margin-bottom: var(--space-2);
-}
-
 .hero__name {
     font-family: var(--font-display-hero);
     font-size: var(--text-4xl);
@@ -248,6 +242,32 @@ body::before {
     display: flex;
     gap: var(--space-3);
     flex-wrap: wrap;
+    align-items: center;
+}
+
+.hero__cta-link {
+    font-size: var(--text-base);
+    font-weight: var(--weight-medium);
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: var(--space-1) var(--space-2);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+}
+
+.hero__cta-link::after {
+    content: '\2192';
+    transition: transform var(--transition-fast);
+}
+
+.hero__cta-link:hover {
+    color: var(--accent);
+}
+
+.hero__cta-link:hover::after {
+    transform: translateX(3px);
 }
 
 .hero__visual {

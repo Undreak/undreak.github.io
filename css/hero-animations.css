@@ -32,10 +32,6 @@
 /* cubic-bezier(0.34, 1.56, 0.64, 1) = subtle overshoot, mimics inertia */
 
 /* Apply staggered entrance animations to hero elements */
-.hero__greeting {
-    animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
-}
-
 .hero__name {
     animation: fadeInUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s both;
 }
@@ -402,7 +398,6 @@
 
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-    .hero__greeting,
     .hero__name,
     .hero__title,
     .hero__tagline,
