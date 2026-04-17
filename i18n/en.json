@@ -18,10 +18,9 @@
     "switchLang": "Passer en fran\u00e7ais"
   },
   "hero": {
-    "greeting": "Hello, I'm",
     "name": "Alexandre De Cuyper",
     "title": "Experimental Physicist",
-    "tagline": "Specializing in soft matter physics, polymer dynamics, and scattering techniques with computational modeling",
+    "tagline": "Specializing in soft matter physics, polymer dynamics, and scattering techniques",
     "cta": {
       "contact": "Get in touch",
       "research": "View research",
@@ -32,7 +31,7 @@
     "title": "About Me",
     "lead": "Experimental physicist with an international dual Master's degree in <strong>Physics of Soft Matter</strong> from Universit\u00e9 Paris Cit\u00e9 and <strong>Complex Materials</strong> from Universidad de La Coru\u00f1a, obtained through a collaborative Erasmus+ program.",
     "paragraph1": "My research focuses on soft matter physics with a specialization in <strong>polymer dynamics</strong> and <strong>scattering techniques</strong> (SAXS/SANS, DLS). I combine rigorous experimental methods with computational modeling using Python and C/C++ to investigate complex phenomena at the nanoscale.",
-    "paragraph2": "Currently preparing for doctoral school entrance exams, I'm passionate about understanding the fundamental behavior of soft materials through both experiment and theory. Beyond physics, I maintain a broad intellectual curiosity spanning philosophy, history, and analytical thinking across disciplines.",
+    "paragraph2": "Currently preparing doctoral school applications, I aim to understand the fundamental behavior of soft materials through both experiment and theory.",
     "education": {
       "title": "Education",
       "dualDegree": {
@@ -71,14 +70,14 @@
       "type": "Master's Thesis",
       "title": "Polymer Wetting Dynamics on Nano-textured Surfaces",
       "venue": "Laboratoire L\u00e9on Brillouin, CEA Saclay",
-      "description": "Investigated polymer wetting behavior on nano-structured surfaces using optical microscopy, advanced scattering techniques (SAXS/SANS) and atomic force microscopy. Developed Python pipeline to analyze hundreds of image sequences."
+      "description": "Investigated polymer wetting behavior on nano-structured surfaces using optical microscopy, scattering techniques (SAXS/SANS) and atomic force microscopy. Developed Python pipeline to analyze hundreds of image sequences."
     },
     "training": {
       "date": "Summer 2024",
       "type": "Training",
       "title": "Formation Annuelle \u00e0 la Neutronique",
       "venue": "Institut Laue-Langevin, Grenoble",
-      "description": "Completed intensive 3-day practical training organized by 2FDN in collaboration with ILL. Followed the soft matter & biophysics track with courses on SANS and time-of-flight/backscattering spectroscopy, followed by hands-on practicals and data analysis at Europe's leading neutron facility."
+      "description": "Completed intensive 3-day practical training organized by the French Federation of Neutron Diffusion (2FDN) in collaboration with the Institut Laue-Langevin (ILL). Followed the soft matter & biophysics track: courses on SANS and time-of-flight/backscattering spectroscopy, followed by hands-on practicals and data analysis at Europe's leading neutron source."
     },
     "spring2024": {
       "date": "Feb - Apr 2024",
@@ -92,7 +91,7 @@
       },
       "visco": {
         "title": "Viscoelasticity Analysis",
-        "desc": "A comprehensive analysis of 3D-printed PLA samples using Dynamic Mechanical Analysis (DMA) and Time-Temperature Superposition (TTS) for master curve construction."
+        "desc": "Comprehensive analysis of 3D-printed PLA samples using Dynamic Mechanical Analysis (DMA) and Time-Temperature Superposition (TTS) to construct master curves."
       },
       "xrd": {
         "title": "X-ray Diffraction",
@@ -104,7 +103,7 @@
       },
       "mpdsc": {
         "title": "Modulated Pressure DSC",
-        "desc": "A novel experimental approach for thermo-mechanical analysis of materials using pressure modulation in DSC experiments."
+        "desc": "Thermo-mechanical analysis of materials using pressure modulation in DSC experiments."
       }
     },
     "archive": {
@@ -159,7 +158,7 @@
   },
   "contact": {
     "title": "Get in Touch",
-    "text": "I'm currently preparing for doctoral school entrance exams and exploring research opportunities in soft matter physics, polymer dynamics, and scattering techniques. Feel free to reach out for collaborations, discussions, or opportunities."
+    "text": "I'm currently preparing doctoral school applications and exploring research opportunities in soft matter physics, polymer dynamics, and scattering techniques. Feel free to reach out for collaborations, discussions, or opportunities."
   },
   "footer": {
     "copyright": "\u00a9 2026 Alexandre De Cuyper. Built with curiosity and code."
