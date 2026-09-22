@@ -115,14 +115,7 @@
     <link rel="stylesheet" href="css/section-backgrounds.css">
 
     <!-- FOUC prevention: detect language before render -->
-    <script>
-        (function(){
-            var l=localStorage.getItem('language');
-            if(!l){l=navigator.language.split('-')[0];if(l!=='en'&&l!=='fr')l='en';}
-            document.documentElement.lang=l;
-            document.documentElement.dataset.lang=l;
-        })();
-    </script>
+    <script src="js/lang-init.js"></script>
     <style>
         /* Hide i18n elements until translations load */
         html:not([data-i18n-loaded]) [data-i18n] { visibility: hidden; }
@@ -418,7 +411,7 @@
 
         <section class="section research" id="research">
             <div class="container">
-                <h2 class="section__title" data-i18n="research.title">Research & Publications</h2>
+                <h2 class="section__title" data-i18n="research.title">Research</h2>
                 <p class="section__subtitle" data-i18n="research.subtitle">Experimental work, academic outputs, and professional development</p>
 
                 <div class="card-timeline">
@@ -436,7 +429,6 @@
                                     <span class="research-card__date-badge" data-i18n="research.thesis.date">June - Sept 2024</span>
                                     <a href="https://gitlab.com/Undreak/llb" class="code-badge" target="_blank"
                                         rel="noopener noreferrer"
-                                        onclick="event.stopPropagation();"
                                         aria-label="View code repository on GitLab">
                                         <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
                                             <path
@@ -444,14 +436,6 @@
                                         </svg>
                                         <span data-i18n="research.thesis.codeLink">Code & Data (LLB)</span>
                                     </a>
-                                    <!-- ADD THIS: Featured badge -->
-                                    <span class="thesis-featured-badge">
-                                        <svg viewBox="0 0 24 24" fill="currentColor">
-                                            <polygon
-                                                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-                                        </svg>
-                                        <span data-i18n="research.thesis.featured">Featured</span>
-                                    </span>
                                 </div>
                                 <div class="publication-card__type">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -462,7 +446,7 @@
                                     <span data-i18n="research.thesis.type">Master's Thesis</span>
                                 </div>
                             </div>
-                            <h3 class="publication-card__title" data-i18n="research.thesis.title">Polymer Wetting Dynamics on Nano-textured Surfaces</h3>
+                            <h3 class="publication-card__title"><a href="articles/polymer-wetting-dynamics.html" class="publication-card__link" data-i18n="research.thesis.title">Polymer Wetting Dynamics on Nano-textured Surfaces</a></h3>
                             <p class="publication-card__venue" data-i18n="research.thesis.venue">Laboratoire Léon Brillouin, CEA Saclay</p>
                             <p class="publication-card__description" data-i18n="research.thesis.description">
                                 Investigated polymer wetting behavior on nano-structured surfaces using optical
@@ -505,7 +489,7 @@
                                             <span data-i18n="research.training.type">Training</span>
                                         </div>
                                     </div>
-                                    <h3 class="publication-card__title" data-i18n="research.training.title">Formation Annuelle à la Neutronique</h3>
+                                    <h3 class="publication-card__title"><a href="articles/fan-2024-experience.html" class="publication-card__link" data-i18n="research.training.title">Formation Annuelle à la Neutronique</a></h3>
                                     <p class="publication-card__venue" data-i18n="research.training.venue">Institut Laue-Langevin, Grenoble</p>
                                     <p class="publication-card__description" data-i18n="research.training.description">
                                         Completed intensive 3-day practical training organized by the French Federation of
@@ -775,8 +759,8 @@
                                 <div class="portal-card__text">
                                     <h3 class="portal-card__title" data-i18n="research.portal.title">Computational Projects</h3>
                                     <p class="portal-card__description" data-i18n="research.portal.description">
-                                        Explore open-source computational physics projects, data analysis tools,
-                                        and scientific software development work from GitHub and GitLab.
+                                        Simulation and analysis code, including a heterodyne DLS simulation of
+                                        self-propelled nanoparticles and a 2D smoothed particle hydrodynamics solver.
                                     </p>
                                     <span class="portal-card__cta">
                                         <span data-i18n="research.portal.cta">View All Projects</span>
@@ -1017,7 +1001,7 @@
     <footer class="footer">
         <div class="container">
             <p class="footer__text" data-i18n="footer.copyright">
-                &copy; 2026 Alexandre De Cuyper. Built with curiosity and code.
+                &copy; 2026 Alexandre De Cuyper
             </p>
         </div>
     </footer>
@@ -1031,7 +1015,7 @@
     3. Uncomment the onerror handler below
 -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"
-        integrity="sha384-sGXNIHpdJSEfTkXLnvHLLQNgJVCBh+FvzGmIHKHPD+lVELKZjVKkPvGHxVz0kVhk"
+        integrity="sha384-vdScihEZCfbPnBQf+lc7LgXUdJVYyhC3yWHUW5C5P5GpHRqVnaM6HJELJxT6IqwM"
         crossorigin="anonymous"></script>
     <!-- onerror="this.onerror=null;this.src='js/vendor/purify.min.js';this.removeAttribute('integrity')"> -->
     <script src="js/i18n.js"></script>

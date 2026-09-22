@@ -33,21 +33,13 @@
     <link rel="stylesheet" href="../../css/toc.css">
 
     <!-- MathJax for equations -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 
     <!-- FOUC prevention: detect language before render -->
-    <script>
-        (function(){
-            var l=localStorage.getItem('language');
-            if(!l){l=navigator.language.split('-')[0];if(l!=='en'&&l!=='fr')l='en';}
-            document.documentElement.lang=l;
-            document.documentElement.dataset.lang=l;
-        })();
-    </script>
+    <script src="../../js/lang-init.js"></script>
     <style>
         /* Hide i18n elements until translations load */
         html:not([data-i18n-loaded]) [data-i18n] { visibility: hidden; }
@@ -66,9 +58,8 @@
         <div class="nav__menu">
             <a href="../../index.html#about" class="nav__link" data-i18n="nav.about">À propos</a>
             <a href="../../index.html#research" class="nav__link" data-i18n="nav.research">Recherche</a>
-            <a href="../../index.html#publications" class="nav__link">Publications</a>
             <a href="../../index.html#skills" class="nav__link" data-i18n="nav.skills">Compétences</a>
-            <a href="../../index.html#projects" class="nav__link" data-i18n="nav.projects">Projets</a>
+            <a href="../../projects.html" class="nav__link" data-i18n="nav.projects">Projets</a>
             <a href="../../index.html#contact" class="nav__link" data-i18n="nav.contact">Contact</a>
             <button class="theme-toggle" aria-label="Changer de thème" data-i18n-aria="nav.toggleTheme">
                 <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -99,7 +90,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
-        <a href="../../index.html#publications" data-i18n="articles.publications">Publications</a>
+        <a href="../../index.html#research" data-i18n="articles.publications">Recherche</a>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
@@ -157,13 +148,13 @@
         <section>
             <h2>Le problème</h2>
             <p>
-                Quand vous renversez de l'eau sur une table, elle s'étale. La physique semble simple, jusqu'à ce qu'on regarde de près. Au bord mobile d'une goutte qui s'étale, la mécanique des fluides classique prédit une dissipation d'énergie infinie. C'est le paradoxe de Huh-Scriven, et le résoudre nécessite de comprendre ce qui se passe à l'échelle nanométrique.
+                Une goutte déposée sur une surface mouillante s'étale. Pourtant, à sa ligne de contact mobile, l'hydrodynamique classique prédit une dissipation visqueuse divergente. C'est le paradoxe de Huh-Scriven, et le résoudre nécessite de comprendre ce qui se passe à l'échelle nanométrique.
             </p>
             <p>
-                La solution implique un <strong>film précurseur</strong>&nbsp;: une fine couche de liquide, de seulement quelques nanomètres d'épaisseur, qui avance devant le bord visible de la goutte. Ce film dissipe l'énergie qui autrement divergerait dans nos équations. Sur les surfaces atomiquement lisses, on comprend bien ce phénomène. Mais les vraies surfaces ne sont jamais atomiquement lisses.
+                La solution implique un <strong>film précurseur</strong>&nbsp;: une fine couche de liquide, de seulement quelques nanomètres d'épaisseur, qui avance devant le bord visible de la goutte. Ce film fournit la coupure microscopique qui maintient la dissipation finie. Sur les surfaces atomiquement lisses, on comprend bien ce phénomène. Mais les vraies surfaces ne sont jamais atomiquement lisses.
             </p>
             <p>
-                C'est là que ça devient intéressant. Sur les surfaces avec une rugosité micrométrique, un phénomène différent prend le relais&nbsp;: le <strong><em>hemiwicking</em></strong>, où les forces capillaires entraînent le liquide à travers les structures de surface. La physique change complètement. Mais que se passe-t-il entre les deux, quand les défauts de surface font quelques nanomètres de haut, comparables au film précurseur lui-même&#8239;?
+                Sur les surfaces avec une rugosité micrométrique, un phénomène différent prend le relais&nbsp;: le <strong><em>hemiwicking</em></strong>, où les forces capillaires entraînent le liquide à travers les structures de surface. La physique change complètement. Mais que se passe-t-il entre les deux, quand les défauts de surface font quelques nanomètres de haut, comparables au film précurseur lui-même&#8239;?
             </p>
 
             <blockquote>
@@ -171,7 +162,7 @@
             </blockquote>
 
             <p>
-                C'était inconnu. J'ai entrepris de répondre à ces questions expérimentalement.
+                À ma connaissance, ces questions n'avaient pas été abordées expérimentalement. Ce stage visait à y répondre.
             </p>
 
             <div class="article__image">
@@ -186,7 +177,7 @@
         <section>
             <h2>Pourquoi c'est difficile</h2>
             <p>
-                Trois défis rendaient ce problème expérimentalement inaccessible jusqu'à présent&nbsp;:
+                Trois défis rendent ce problème expérimentalement difficile&nbsp;:
             </p>
 
             <p>
@@ -293,19 +284,19 @@
                 où \(r\) est le rayon, \(V\) est le volume, \(\gamma\) est la tension de surface, \(\eta\) est la viscosité, et \(t\) est le temps. L'exposant 1/10 émerge de l'équilibre entre les forces capillaires motrices et la dissipation visqueuse&nbsp;: c'est une signature de la physique sous-jacente.
             </p>
             <p>
-                L'attente était que les défauts nanométriques pourraient perturber cela. Quand la hauteur des défauts approche l'épaisseur du film, le liquide rencontre des obstacles comparables à sa propre profondeur. Les travaux théoriques de Cormier et al. (2012) suggéraient que des films suffisamment épais pourraient faire basculer la dynamique vers un régime différent (loi en \(t^{1/2}\)).
+                L'attente était que les défauts nanométriques pourraient perturber cela. Quand la hauteur des défauts approche l'épaisseur du film, le liquide rencontre des obstacles comparables à sa propre profondeur. Cormier et al. (2012) ont montré qu'une goutte qui s'étale sur un film du même liquide quitte le régime de Tanner dès que le film est plus épais que la goutte&nbsp;: sa hauteur décroît alors en \(t^{-1/2}\) au lieu de \(t^{-1/5}\).
             </p>
             <p>
-                <strong>Ce que j'ai trouvé&nbsp;: la loi de Tanner est valide sur toutes les surfaces testées.</strong>
+                <strong>Ce que j'ai trouvé&nbsp;: la loi de Tanner est valide sur les surfaces testées.</strong>
             </p>
             <p>
-                Hauteurs de défauts de 20 à 80 nm, densités de 0 à 12 défauts/μm², viscosités couvrant trois ordres de grandeur, les données se regroupent sur une seule courbe maîtresse quand elles sont correctement renormalisées&nbsp;:
+                Hauteurs de défauts de 20 à 80 nm, densités de 0 à 12 défauts/μm², viscosités couvrant trois ordres de grandeur, les courbes de rayon se regroupent sur une seule courbe maîtresse lorsqu'on les trace en fonction de la combinaison de paramètres qui apparaît dans la loi de Tanner,
             </p>
             <p class="text-center">
-                \[ r \text{ vs. } t/\tau, \quad \text{où } \tau = \eta/(\gamma V^3) \]
+                \[ r \;\text{ vs. }\; \frac{\gamma V^3 t}{\eta} \]
             </p>
             <p>
-                C'est un résultat important. Cela signifie que la rugosité nanométrique, au moins dans ces paramètres, n'altère pas fondamentalement le mécanisme d'étalement. Le cadre classique reste valide.
+                La variable renormalisée a la dimension de m<sup>10</sup>&nbsp;: la superposition teste l'exposant et la dépendance en \(V\), \(\gamma\) et \(\eta\), pas le préfacteur. Quelques surfaces s'écartent légèrement de la courbe maîtresse (par exemple 1130&nbsp;°C avec 40&nbsp;min d'incubation). La rugosité nanométrique, au moins dans ces paramètres, n'altère pas fondamentalement le mécanisme d'étalement. Le cadre classique reste valide.
             </p>
 
             <div class="article__image">
@@ -354,24 +345,18 @@
 
             <h3>Pour le domaine</h3>
             <p>
-                C'est la première étude expérimentale systématique de la dynamique de mouillage sur des surfaces avec une rugosité nanométrique contrôlée. Les travaux précédents examinaient soit des surfaces atomiquement lisses (validant les films précurseurs) soit des textures micrométriques (caractérisant le <em>hemiwicking</em>). Le régime nanométrique, où la hauteur des défauts correspond à l'épaisseur du film, restait inexploré.
+                À ma connaissance, la loi de Tanner n'avait pas encore été testée sur des surfaces dont la rugosité nanométrique est variée de façon contrôlée, en hauteur comme en densité de défauts. La littérature que j'ai utilisée porte sur des surfaces atomiquement lisses (films précurseurs) et des textures micrométriques (<em>hemiwicking</em>).
             </p>
             <p>
                 Le résultat clé est que la loi de Tanner est plus robuste qu'attendu. Cela contraint les modèles théoriques&nbsp;: tout cadre pour le mouillage sur surfaces rugueuses doit se réduire à une loi en \(t^{1/10}\) dans cette gamme de paramètres.
             </p>
 
-            <h3>Pour les applications</h3>
+            <h3>Domaine de validité</h3>
             <p>
-                Comprendre quand la théorie classique du mouillage s'applique, et quand elle échoue, importe pour&nbsp;:
+                Le résultat vaut dans les conditions testées&nbsp;: des huiles silicone non volatiles (100 et 100 000&nbsp;cSt) qui mouillent totalement le substrat de silicium, sur des défauts de 20 à 80&nbsp;nm de haut à des densités allant jusqu'à 12 par μm². Dans cette gamme, les défauts ne modifient pas la loi d'étalement de la goutte macroscopique. Les liquides en mouillage partiel ou volatils n'ont pas été testés.
             </p>
             <p>
-                <strong>Procédés de revêtement&nbsp;:</strong> Si vous concevez un revêtement qui doit s'étaler uniformément sur un substrat texturé, savoir que la loi de Tanner tient à l'échelle nanométrique signifie que vous pouvez utiliser les modèles établis pour la conception du procédé. La texture n'introduira pas de dynamique inattendue.
-            </p>
-            <p>
-                <strong>Microfluidique&nbsp;:</strong> Les surfaces de canaux dans les dispositifs microfluidiques sont rarement atomiquement lisses. Ce travail suggère qu'une rugosité nanométrique modérée n'altérera pas fondamentalement l'écoulement piloté par capillarité, ce qui simplifie la conception des dispositifs.
-            </p>
-            <p>
-                <strong>Impression jet d'encre&nbsp;:</strong> L'étalement de gouttes sur papier ou substrats polymères implique des structures de surface nanométriques. La robustesse de la loi de Tanner fournit un cadre prédictif.
+                La texture modifie en revanche ce qui se passe devant la goutte&nbsp;: un film apparaît, dont la largeur croît en \(\sqrt{t}\), et qui peut vider entièrement une petite goutte.
             </p>
         </section>
 
@@ -457,11 +442,11 @@
     </footer>
 
     <!-- Back Link -->
-    <a href="../../index.html#publications" class="article__back-link">
+    <a href="../../index.html#research" class="article__back-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-        Retour aux Publications
+        Retour à la recherche
     </a>
 </article>
 
@@ -469,14 +454,14 @@
 <footer class="footer">
     <div class="container">
         <p class="footer__text" data-i18n="footer.copyright">
-            &copy; 2026 Alexandre De Cuyper. Conçu avec curiosité et code.
+            &copy; 2026 Alexandre De Cuyper
         </p>
     </div>
 </footer>
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"
-        integrity="sha384-sGXNIHpdJSEfTkXLnvHLLQNgJVCBh+FvzGmIHKHPD+lVELKZjVKkPvGHxVz0kVhk"
+        integrity="sha384-vdScihEZCfbPnBQf+lc7LgXUdJVYyhC3yWHUW5C5P5GpHRqVnaM6HJELJxT6IqwM"
         crossorigin="anonymous"></script>
 <script src="../../js/i18n.js"></script>
 <script src="../../js/theme.js"></script>

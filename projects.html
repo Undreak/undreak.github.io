@@ -7,12 +7,11 @@
     <meta name="author" content="Alexandre De Cuyper">
 
     <!-- Security Headers -->
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com https://gitlab.com; frame-ancestors 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com https://gitlab.com; base-uri 'self';">
 
     <title>All Projects | Alexandre De Cuyper</title>
 
@@ -51,14 +50,7 @@
     <link rel="stylesheet" href="css/projects-page.css">
 
     <!-- FOUC prevention: detect language before render -->
-    <script>
-        (function(){
-            var l=localStorage.getItem('language');
-            if(!l){l=navigator.language.split('-')[0];if(l!=='en'&&l!=='fr')l='en';}
-            document.documentElement.lang=l;
-            document.documentElement.dataset.lang=l;
-        })();
-    </script>
+    <script src="js/lang-init.js"></script>
     <style>
         /* Hide i18n elements until translations load */
         html:not([data-i18n-loaded]) [data-i18n] { visibility: hidden; }
@@ -68,7 +60,7 @@
     <!-- Navigation -->
     <nav class="nav" role="navigation">
         <div class="nav__container">
-            <a href="index.html" class="nav__logo" aria-label="Home">Alexandre De Cuyper</a>
+            <a href="index.html" class="nav__logo" aria-label="Home">ADC</a>
             <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" data-i18n-aria="nav.toggleMenu">
                 <span class="nav__toggle-line"></span>
                 <span class="nav__toggle-line"></span>
@@ -106,9 +98,69 @@
         <div class="container">
             <!-- Header -->
             <header class="projects-page__header">
-                <h1 class="projects-page__title" data-i18n="projects.title">All Projects</h1>
-                <p class="projects-page__subtitle" data-i18n="projects.subtitle">Complete collection of my GitHub and GitLab repositories</p>
+                <h1 class="projects-page__title" data-i18n="projects.title">Projects</h1>
+                <p class="projects-page__subtitle" data-i18n="projects.subtitle">Simulation and analysis code from research, coursework, and independent study</p>
             </header>
+
+            <!-- Featured: most recent work, curated by hand -->
+            <section class="featured-projects" aria-labelledby="featured-projects-title">
+                <h2 class="featured-projects__title" id="featured-projects-title" data-i18n="projects.featured.title">Recent work</h2>
+                <div class="featured-projects__grid">
+                    <article class="featured-project">
+                        <figure class="featured-project__figure">
+                            <img src="images/projects/active-brownian-dls/multiangle-validation.webp"
+                                 alt="Heterodyne intensity correlation functions at six scattering angles. Simulated points lie on the analytical curves, which show damped oscillations whose period shortens as the angle increases."
+                                 data-i18n-alt="projects.featured.dls.alt"
+                                 width="1000" height="858" loading="lazy">
+                        </figure>
+                        <div class="featured-project__body">
+                            <p class="featured-project__meta">2025–2026 · Python · C++ · OpenMP</p>
+                            <h3 class="featured-project__name">
+                                <a href="https://gitlab.com/Undreak/active-brownian-dls" target="_blank" rel="noopener noreferrer" data-i18n="projects.featured.dls.name">Heterodyne DLS of self-propelled nanoparticles</a>
+                            </h3>
+                            <p class="featured-project__desc" data-i18n="projects.featured.dls.desc">Numerical reproduction of Christoulaki and Buhler, Phys. Rev. E 111, 015433 (2025). Light-driven nanoparticles are modelled as Brownian particles with a constant drift, and the field correlation function is computed from 10,000 simulated trajectories, then checked against the analytical result at six scattering angles. For this aligned ensemble, homodyne detection loses the propulsion velocity; heterodyne detection recovers it from the oscillations of the correlation function.</p>
+                            <ul class="featured-project__tags">
+                                <li class="tag">DLS</li>
+                                <li class="tag">Active matter</li>
+                                <li class="tag">Brownian dynamics</li>
+                                <li class="tag">pybind11</li>
+                            </ul>
+                            <a href="https://gitlab.com/Undreak/active-brownian-dls" class="featured-project__link" target="_blank" rel="noopener noreferrer">
+                                <span data-i18n="projects.featured.viewCode">Code on GitLab</span> <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="featured-project">
+                        <figure class="featured-project__figure featured-project__figure--video">
+                            <video class="featured-project__video"
+                                   src="images/projects/sph-simulation/sph-demo.mp4"
+                                   poster="images/projects/sph-simulation/sph-demo-poster.webp"
+                                   width="800" height="598"
+                                   muted loop playsinline controls preload="none"
+                                   aria-label="Screen recording of the simulation: particles fall from a spawner and settle into a pool, shading from blue at the surface to red at the bottom, next to the live control panel."
+                                   data-i18n-aria="projects.featured.sph.alt"></video>
+                        </figure>
+                        <div class="featured-project__body">
+                            <p class="featured-project__meta">2025–2026 · C++20 · SFML</p>
+                            <h3 class="featured-project__name">
+                                <a href="https://gitlab.com/Undreak/sph-simulation" target="_blank" rel="noopener noreferrer" data-i18n="projects.featured.sph.name">2D smoothed particle hydrodynamics</a>
+                            </h3>
+                            <p class="featured-project__desc" data-i18n="projects.featured.sph.desc">A real-time 2D fluid solver: weakly compressible pressure, surface tension from a colour field, ghost-particle walls, a CFL-limited adaptive timestep, and neighbour search on a spatial hash grid. Parameters are tuned for interactive display rather than quantitative accuracy; the known deviations from physical water are documented in the repository.</p>
+                            <ul class="featured-project__tags">
+                                <li class="tag">SPH</li>
+                                <li class="tag">Fluid dynamics</li>
+                                <li class="tag">Numerical methods</li>
+                            </ul>
+                            <a href="https://gitlab.com/Undreak/sph-simulation" class="featured-project__link" target="_blank" rel="noopener noreferrer">
+                                <span data-i18n="projects.featured.viewCode">Code on GitLab</span> <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <h2 class="projects-page__section-title" data-i18n="projects.allRepos">All repositories</h2>
 
             <!-- Controls -->
             <div class="projects-page__controls">
@@ -183,7 +235,7 @@
     <footer class="footer">
         <div class="container">
             <p class="footer__text" data-i18n="footer.copyright">
-                &copy; 2026 Alexandre De Cuyper. Built with curiosity and code.
+                &copy; 2026 Alexandre De Cuyper
             </p>
         </div>
     </footer>
@@ -197,7 +249,7 @@
         3. Uncomment the onerror handler below
     -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"
-            integrity="sha384-sGXNIHpdJSEfTkXLnvHLLQNgJVCBh+FvzGmIHKHPD+lVELKZjVKkPvGHxVz0kVhk"
+            integrity="sha384-vdScihEZCfbPnBQf+lc7LgXUdJVYyhC3yWHUW5C5P5GpHRqVnaM6HJELJxT6IqwM"
             crossorigin="anonymous"></script>
             <!-- onerror="this.onerror=null;this.src='js/vendor/purify.min.js';this.removeAttribute('integrity')"> -->
     <script src="js/i18n.js"></script>

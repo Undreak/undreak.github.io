@@ -5,6 +5,8 @@ class AllProjectsManager {
         this.githubUsername = 'Undreak';
         this.gitlabUsername = 'Undreak';
         this.API_TIMEOUT = 10000; // 10 seconds
+        // Repos that are not projects (profile README, config, scratch); matched case-insensitively
+        this.EXCLUDED_REPOS = ['undreak', 'dotfiles', 'test'];
 
         this.grid = document.getElementById('projects-grid');
         this.loading = document.getElementById('loading');
@@ -98,12 +100,39 @@ class AllProjectsManager {
             console.warn('GitLab fetch failed:', gitlabProjects.reason);
         }
 
+        this.allProjects = this.dedupeMirrors(
+            this.allProjects.filter(p => !this.EXCLUDED_REPOS.includes(p.name.toLowerCase()))
+        );
+
         if (this.allProjects.length === 0) {
             throw new Error('No projects found');
         }
 
         this.populateLanguageFilter();
         this.hideLoading();
+    }
+
+    /**
+     * Collapse repos mirrored on both platforms (same name) into one card.
+     * Keeps the copy with a description, then the most recently updated.
+     */
+    dedupeMirrors(projects) {
+        const byName = new Map();
+        projects.forEach(project => {
+            const key = project.name.toLowerCase();
+            const kept = byName.get(key);
+            if (!kept) {
+                byName.set(key, project);
+                return;
+            }
+            const preferNew = (!!project.description !== !!kept.description)
+                ? !!project.description
+                : new Date(project.updated_at) > new Date(kept.updated_at);
+            if (preferNew) {
+                byName.set(key, project);
+            }
+        });
+        return [...byName.values()];
     }
 
     async fetchAllGitHubRepos() {
@@ -484,11 +513,34 @@ class AllProjectsManager {
     }
 }
 
+// Featured demo videos play only while on screen, and never on their own
+// under prefers-reduced-motion (the native controls still work).
+function setupFeaturedVideos() {
+    const videos = document.querySelectorAll('.featured-project__video');
+    if (videos.length === 0) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // play() rejects if the browser blocks autoplay; the poster stays up
+                entry.target.play().catch(() => {});
+            } else {
+                entry.target.pause();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    videos.forEach(video => observer.observe(video));
+}
+
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         new AllProjectsManager();
+        setupFeaturedVideos();
     });
 } else {
     new AllProjectsManager();
+    setupFeaturedVideos();
 }

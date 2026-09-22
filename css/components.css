@@ -265,6 +265,12 @@
     cursor: pointer;
 }
 
+/* Title link: keyboard entry point for cards that are otherwise clickable via JS */
+.publication-card__link {
+    color: inherit;
+    text-decoration: none;
+}
+
 .code-badge {
     display: inline-flex;
     align-items: center;
