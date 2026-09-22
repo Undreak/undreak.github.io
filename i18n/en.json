@@ -2,8 +2,8 @@
   "meta": {
     "lang": "en",
     "locale": "en_US",
-    "title": "Alexandre De Cuyper | Physics Researcher",
-    "description": "Alexandre De Cuyper - Physics Researcher specializing in soft matter, polymer physics, and scattering techniques",
+    "title": "Alexandre De Cuyper | Experimental Physicist",
+    "description": "Alexandre De Cuyper - Experimental physicist specializing in soft matter, polymer physics, and scattering techniques",
     "ogDescription": "Experimental physicist specializing in soft matter, polymer dynamics, and scattering techniques (SAXS/SANS). Master's in Physics of Soft Matter from Universit\u00e9 Paris Cit\u00e9."
   },
   "nav": {
@@ -61,12 +61,11 @@
     }
   },
   "research": {
-    "title": "Research & Publications",
+    "title": "Research",
     "subtitle": "Experimental work, academic outputs, and professional development",
     "thesis": {
       "date": "June - Sept 2024",
       "codeLink": "Code & Data (LLB)",
-      "featured": "Featured",
       "type": "Master's Thesis",
       "title": "Polymer Wetting Dynamics on Nano-textured Surfaces",
       "venue": "Laboratoire L\u00e9on Brillouin, CEA Saclay",
@@ -161,7 +160,7 @@
     "text": "I'm currently preparing doctoral school applications and exploring research opportunities in soft matter physics, polymer dynamics, and scattering techniques. Feel free to reach out for collaborations, discussions, or opportunities."
   },
   "footer": {
-    "copyright": "\u00a9 2026 Alexandre De Cuyper. Built with curiosity and code."
+    "copyright": "\u00a9 2026 Alexandre De Cuyper"
   },
   "projects": {
     "title": "Projects",
@@ -229,7 +228,7 @@
   },
   "articles": {
     "home": "Home",
-    "publications": "Publications",
+    "publications": "Research",
     "readInOtherLang": "Lire en fran\u00e7ais"
   }
 }

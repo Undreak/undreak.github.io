@@ -61,12 +61,11 @@
     }
   },
   "research": {
-    "title": "Recherche et publications",
+    "title": "Recherche",
     "subtitle": "Travaux exp\u00e9rimentaux, productions acad\u00e9miques et d\u00e9veloppement professionnel",
     "thesis": {
       "date": "Juin - Sept 2024",
       "codeLink": "Code et donn\u00e9es (LLB)",
-      "featured": "Mis en avant",
       "type": "M\u00e9moire de master",
       "title": "Dynamique de mouillage de polym\u00e8res sur surfaces nano-textur\u00e9es",
       "venue": "Laboratoire L\u00e9on Brillouin, CEA Saclay",
@@ -161,7 +160,7 @@
     "text": "Je pr\u00e9pare actuellement mes candidatures en th\u00e8se et explore les opportunit\u00e9s de recherche en physique de la mati\u00e8re molle, dynamique des polym\u00e8res et techniques de diffusion. N'h\u00e9sitez pas \u00e0 me contacter pour des collaborations, discussions ou opportunit\u00e9s."
   },
   "footer": {
-    "copyright": "\u00a9 2026 Alexandre De Cuyper. Con\u00e7u avec curiosit\u00e9 et code."
+    "copyright": "\u00a9 2026 Alexandre De Cuyper"
   },
   "projects": {
     "title": "Projets",
@@ -229,7 +228,7 @@
   },
   "articles": {
     "home": "Accueil",
-    "publications": "Publications",
+    "publications": "Recherche",
     "readInOtherLang": "Read in English"
   }
 }
