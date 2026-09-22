@@ -21,6 +21,9 @@
     --border: rgba(26, 26, 26, 0.08);
     --shadow: rgba(26, 26, 26, 0.08);
 
+    /* Backdrop for embedded plots (white matplotlib canvas); same in both themes */
+    --figure-bg: #FFFFFF;
+
     /* Gradient meshes for atmospheric depth */
     --gradient-mesh-1: radial-gradient(circle at 20% 50%, rgba(69, 123, 157, 0.04), transparent 50%);
     --gradient-mesh-2: radial-gradient(circle at 80% 80%, rgba(230, 57, 70, 0.03), transparent 50%);

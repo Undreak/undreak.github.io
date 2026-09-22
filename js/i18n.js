@@ -217,6 +217,15 @@ class I18nManager {
             }
         });
 
+        // Translate image alt text
+        document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+            const key = el.getAttribute('data-i18n-alt');
+            const translation = this.t(key);
+            if (translation) {
+                el.alt = translation;
+            }
+        });
+
         // Translate title attributes
         document.querySelectorAll('[data-i18n-title]').forEach(el => {
             const key = el.getAttribute('data-i18n-title');

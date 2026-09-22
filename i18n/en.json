@@ -116,7 +116,7 @@
     },
     "portal": {
       "title": "Computational Projects",
-      "description": "Explore open-source computational physics projects, data analysis tools, and scientific software development work from GitHub and GitLab.",
+      "description": "Simulation and analysis code, including a heterodyne DLS simulation of self-propelled nanoparticles and a 2D smoothed particle hydrodynamics solver.",
       "cta": "View All Projects"
     }
   },
@@ -164,8 +164,23 @@
     "copyright": "\u00a9 2026 Alexandre De Cuyper. Built with curiosity and code."
   },
   "projects": {
-    "title": "All Projects",
-    "subtitle": "Complete collection of my GitHub and GitLab repositories",
+    "title": "Projects",
+    "subtitle": "Simulation and analysis code from research, coursework, and independent study",
+    "featured": {
+      "title": "Recent work",
+      "viewCode": "Code on GitLab",
+      "dls": {
+        "name": "Heterodyne DLS of self-propelled nanoparticles",
+        "desc": "Numerical reproduction of Christoulaki and Buhler, Phys. Rev. E 111, 015433 (2025). Light-driven nanoparticles are modelled as Brownian particles with a constant drift, and the field correlation function is computed from 10,000 simulated trajectories, then checked against the analytical result at six scattering angles. For this aligned ensemble, homodyne detection loses the propulsion velocity; heterodyne detection recovers it from the oscillations of the correlation function.",
+        "alt": "Heterodyne intensity correlation functions at six scattering angles. Simulated points lie on the analytical curves, which show damped oscillations whose period shortens as the angle increases."
+      },
+      "sph": {
+        "name": "2D smoothed particle hydrodynamics",
+        "desc": "A real-time 2D fluid solver: weakly compressible pressure, surface tension from a colour field, ghost-particle walls, a CFL-limited adaptive timestep, and neighbour search on a spatial hash grid. Parameters are tuned for interactive display rather than quantitative accuracy; the known deviations from physical water are documented in the repository.",
+        "alt": "Screen recording of the simulation: particles fall from a spawner and settle into a pool, shading from blue at the surface to red at the bottom, next to the live control panel."
+      }
+    },
+    "allRepos": "All repositories",
     "search": "Search projects...",
     "searchLabel": "Search projects",
     "source": "Source:",

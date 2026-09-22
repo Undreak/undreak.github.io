@@ -116,7 +116,7 @@
     },
     "portal": {
       "title": "Projets informatiques",
-      "description": "D\u00e9couvrez mes projets open source en physique num\u00e9rique, outils d'analyse de donn\u00e9es et travaux de d\u00e9veloppement logiciel scientifique sur GitHub et GitLab.",
+      "description": "Code de simulation et d'analyse, dont une simulation de DLS h\u00e9t\u00e9rodyne de nanoparticules autopropuls\u00e9es et un solveur 2D d'hydrodynamique des particules liss\u00e9es (SPH).",
       "cta": "Voir tous les projets"
     }
   },
@@ -164,8 +164,23 @@
     "copyright": "\u00a9 2026 Alexandre De Cuyper. Con\u00e7u avec curiosit\u00e9 et code."
   },
   "projects": {
-    "title": "Tous les projets",
-    "subtitle": "Collection compl\u00e8te de mes d\u00e9p\u00f4ts GitHub et GitLab",
+    "title": "Projets",
+    "subtitle": "Code de simulation et d'analyse issu de la recherche, des cours et de projets personnels",
+    "featured": {
+      "title": "Travaux r\u00e9cents",
+      "viewCode": "Code sur GitLab",
+      "dls": {
+        "name": "DLS h\u00e9t\u00e9rodyne de nanoparticules autopropuls\u00e9es",
+        "desc": "Reproduction num\u00e9rique de Christoulaki et Buhler, Phys. Rev. E 111, 015433 (2025). Les nanoparticules propuls\u00e9es par la lumi\u00e8re sont mod\u00e9lis\u00e9es comme des particules browniennes soumises \u00e0 une d\u00e9rive constante\u00a0; la fonction de corr\u00e9lation du champ est calcul\u00e9e \u00e0 partir de 10\u202f000 trajectoires simul\u00e9es, puis compar\u00e9e au r\u00e9sultat analytique pour six angles de diffusion. Pour cet ensemble align\u00e9, la d\u00e9tection homodyne perd la vitesse de propulsion\u00a0; la d\u00e9tection h\u00e9t\u00e9rodyne la retrouve \u00e0 partir des oscillations de la fonction de corr\u00e9lation.",
+        "alt": "Fonctions de corr\u00e9lation d'intensit\u00e9 h\u00e9t\u00e9rodyne pour six angles de diffusion. Les points simul\u00e9s suivent les courbes analytiques, qui pr\u00e9sentent des oscillations amorties dont la p\u00e9riode diminue quand l'angle augmente."
+      },
+      "sph": {
+        "name": "Hydrodynamique des particules liss\u00e9es en 2D",
+        "desc": "Un solveur de fluide 2D en temps r\u00e9el\u00a0: pression faiblement compressible, tension de surface par champ de couleur, parois en particules fant\u00f4mes, pas de temps adaptatif limit\u00e9 par la condition CFL et recherche de voisins sur grille de hachage spatiale. Les param\u00e8tres sont r\u00e9gl\u00e9s pour l'affichage interactif plut\u00f4t que pour la pr\u00e9cision quantitative\u00a0; les \u00e9carts connus \u00e0 l'eau r\u00e9elle sont document\u00e9s dans le d\u00e9p\u00f4t.",
+        "alt": "Enregistrement d'\u00e9cran de la simulation\u00a0: des particules tombent d'un g\u00e9n\u00e9rateur et forment un bassin, du bleu en surface au rouge au fond, \u00e0 c\u00f4t\u00e9 du panneau de contr\u00f4le en temps r\u00e9el."
+      }
+    },
+    "allRepos": "Tous les d\u00e9p\u00f4ts",
     "search": "Rechercher des projets...",
     "searchLabel": "Rechercher des projets",
     "source": "Source\u00a0:",
