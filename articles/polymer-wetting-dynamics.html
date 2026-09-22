@@ -39,14 +39,7 @@
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 
     <!-- FOUC prevention: detect language before render -->
-    <script>
-        (function(){
-            var l=localStorage.getItem('language');
-            if(!l){l=navigator.language.split('-')[0];if(l!=='en'&&l!=='fr')l='en';}
-            document.documentElement.lang=l;
-            document.documentElement.dataset.lang=l;
-        })();
-    </script>
+    <script src="../js/lang-init.js"></script>
     <style>
         /* Hide i18n elements until translations load */
         html:not([data-i18n-loaded]) [data-i18n] { visibility: hidden; }
