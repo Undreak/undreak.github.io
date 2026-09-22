@@ -148,13 +148,13 @@
         <section>
             <h2>The Problem</h2>
             <p>
-                When you spill water on a table, it spreads. The physics seems straightforward—until you look closely. At the moving edge of a spreading droplet, classical fluid mechanics predicts infinite energy dissipation. This is the Huh-Scriven paradox, and resolving it requires understanding what happens at the nanoscale.
+                A droplet deposited on a wetting surface spreads. At its moving contact line, however, classical hydrodynamics predicts a diverging viscous dissipation. This is the Huh-Scriven paradox, and resolving it requires understanding what happens at the nanoscale.
             </p>
             <p>
-                The solution involves a <strong>precursor film</strong>: a thin layer of liquid, just nanometers thick, that races ahead of the visible droplet edge. This film dissipates the energy that would otherwise blow up in our equations. On atomically smooth surfaces, we understand this well. But real surfaces are never atomically smooth.
+                The solution involves a <strong>precursor film</strong>: a thin layer of liquid, just nanometers thick, that races ahead of the visible droplet edge. This film provides the microscopic cutoff that keeps the dissipation finite. On atomically smooth surfaces, we understand this well. But real surfaces are never atomically smooth.
             </p>
             <p>
-                Here's where it gets interesting. On surfaces with micrometer-scale roughness, a different phenomenon takes over: <strong>hemiwicking</strong>, where capillary forces drive liquid through surface features. The physics changes completely. But what happens in between—when surface defects are nanometers tall, comparable to the precursor film itself?
+                On surfaces with micrometer-scale roughness, a different phenomenon takes over: <strong>hemiwicking</strong>, where capillary forces drive liquid through surface features. The physics changes completely. But what happens in between—when surface defects are nanometers tall, comparable to the precursor film itself?
             </p>
 
             <blockquote>
@@ -162,7 +162,7 @@
             </blockquote>
 
             <p>
-                This was unknown. I set out to answer these questions experimentally.
+                To my knowledge, these questions had not been addressed experimentally. This internship set out to answer them.
             </p>
 
             <div class="article__image">
@@ -177,7 +177,7 @@
         <section>
             <h2>Why It's Hard</h2>
             <p>
-                Three challenges made this problem experimentally inaccessible until now:
+                Three challenges make this problem experimentally difficult:
             </p>
 
             <p>
@@ -284,19 +284,19 @@
                 where \(r\) is radius, \(V\) is volume, \(\gamma\) is surface tension, \(\eta\) is viscosity, and \(t\) is time. The exponent 1/10 emerges from balancing capillary driving forces against viscous dissipation—it's a signature of the underlying physics.
             </p>
             <p>
-                The expectation was that nanoscale defects might disrupt this. When defect height approaches film thickness, the liquid encounters obstacles comparable to its own depth. Theoretical work by Cormier et al. (2012) suggested that sufficiently thick films could shift the dynamics to a different regime (\(t^{1/2}\) scaling).
+                The expectation was that nanoscale defects might disrupt this. When defect height approaches film thickness, the liquid encounters obstacles comparable to its own depth. Cormier et al. (2012) showed that a droplet leveling on a film of the same liquid leaves the Tanner regime once the film is thicker than the droplet: its height then decays as \(t^{-1/2}\) instead of \(t^{-1/5}\).
             </p>
             <p>
-                <strong>What I found: Tanner's law holds across all tested surfaces.</strong>
+                <strong>What I found: Tanner's law holds on the surfaces tested.</strong>
             </p>
             <p>
-                Defect heights from 20–80 nm, densities from 0–12 defects/μm², viscosities spanning three orders of magnitude—the data collapse onto a single master curve when properly rescaled:
+                Defect heights from 20–80 nm, densities from 0–12 defects/μm², viscosities spanning three orders of magnitude: the radius curves collapse onto a single master curve when plotted against the combination of parameters that appears in Tanner's law,
             </p>
             <p class="text-center">
-                \[ r \text{ vs. } t/\tau, \quad \text{where } \tau = \eta/(\gamma V^3) \]
+                \[ r \;\text{ vs. }\; \frac{\gamma V^3 t}{\eta} \]
             </p>
             <p>
-                This is significant. It means that nanoscale roughness, at least within these parameters, doesn't fundamentally alter the spreading mechanism. The classical framework remains valid.
+                The rescaled variable has units of m<sup>10</sup>, so the collapse tests the exponent and the dependence on \(V\), \(\gamma\) and \(\eta\), not the prefactor. A few surfaces deviate slightly from the master curve (for example 1130 °C with 40 min incubation). Nanoscale roughness, at least within these parameters, doesn't fundamentally alter the spreading mechanism. The classical framework remains valid.
             </p>
 
             <div class="article__image">
@@ -345,24 +345,18 @@
 
             <h3>For the Field</h3>
             <p>
-                This is the first systematic experimental study of wetting dynamics on surfaces with controlled nanometric roughness. Previous work examined either atomically smooth surfaces (validating precursor films) or micrometer-scale textures (characterizing hemiwicking). The nanoscale regime—where defect height matches film thickness—remained unexplored.
+                To my knowledge, Tanner's law had not previously been tested on surfaces whose nanometric roughness is varied in a controlled way, in both defect height and density. The literature I worked from covers atomically smooth surfaces (precursor films) and micrometer-scale textures (hemiwicking).
             </p>
             <p>
                 The key result is that Tanner's law is more robust than expected. This constrains theoretical models: any framework for wetting on rough surfaces must reduce to \(t^{1/10}\) scaling in this parameter range.
             </p>
 
-            <h3>For Applications</h3>
+            <h3>Scope</h3>
             <p>
-                Understanding when classical wetting theory applies—and when it breaks down—matters for:
+                The result holds for the conditions tested: non-volatile silicone oils (100 and 100,000 cSt) that completely wet the silicon substrate, on defects 20–80 nm tall at densities up to 12 per μm². Within this range, the defects do not change the spreading law of the macroscopic drop. Partially wetting or volatile liquids were not tested.
             </p>
             <p>
-                <strong>Coating processes:</strong> If you're designing a coating that must spread uniformly over a textured substrate, knowing that Tanner's law holds at the nanoscale means you can use established models for process design. The texture won't introduce unexpected dynamics.
-            </p>
-            <p>
-                <strong>Microfluidics:</strong> Channel surfaces in microfluidic devices are rarely atomically smooth. This work suggests that moderate nanoscale roughness won't fundamentally alter capillary-driven flow, which simplifies device design.
-            </p>
-            <p>
-                <strong>Inkjet printing:</strong> Droplet spreading on paper or polymer substrates involves nanoscale surface features. The robustness of Tanner's law provides a predictive framework.
+                The texture does change what happens ahead of the drop: a film appears whose width grows as \(\sqrt{t}\), and which can drain a small drop entirely.
             </p>
         </section>
 
